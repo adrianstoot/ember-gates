@@ -1196,6 +1196,87 @@ class K extends nt {
         return new K(t.width, t.height, t.depth, t.segments, t.radius)
     }
 }
+const d = {
+    steel: 8559791,
+    edge: 13358813,
+    dark: 2570311,
+    black: 1319473,
+    blue: 2254785,
+    blueLight: 3771626,
+    skin: 15249020,
+    shadowSkin: 13008978,
+    leather: 6308153,
+    gold: 15710545,
+    wood: 8935735,
+    purple: 8734159,
+    purpleLight: 11364075,
+    eye: 16733151,
+    red: 9314357,
+    orange: 15361309,
+    stone: 0x758090,
+    darkStone: 0x3d4552,
+    teal: 0x1abc9c
+};
+class Gt {
+    parts = [];
+    add(t, s, a = 0, e = 0, i = 0, o = 1, c = 1, l = 1, r = 0, n = 0, h = 0) {
+        const p = new Z().compose(new E(a, e, i), new wt().setFromEuler(new xt(r, n, h)), new E(o, c, l));
+        let u = t.index ? t.toNonIndexed() : t;
+        u !== t && t.dispose(), u.applyMatrix4(p), u.deleteAttribute("uv");
+        const b = u.getAttribute("position").count,
+            m = new Float32Array(b * 3),
+            v = new V(s);
+        for (let y = 0; y < b; y++) m[y * 3] = v.r, m[y * 3 + 1] = v.g, m[y * 3 + 2] = v.b;
+        u.setAttribute("color", new J(m, 3)), this.parts.push(u)
+    }
+    ell(t, s, a, e, i, o, c) {
+        this.add(new rt(1, 14, 10), t, s, a, e, i, o, c)
+    }
+    box(t, s, a, e, i, o, c, l = 0) {
+        this.add(new K(1, 1, 1, 2, .08), t, s, a, e, i, o, c, 0, 0, l)
+    }
+    cyl(t, s, a, e, i, o, c, l = 0, r = 0, n = 12) {
+        this.add(new lt(i, o, c, n), t, s, a, e, 1, 1, 1, l, 0, r)
+    }
+    cone(t, s, a, e, i, o, c = 0, l = 0) {
+        this.add(new ct(i, o, 8), t, s, a, e, 1, 1, 1, c, 0, l)
+    }
+    ring(t, s, a, e, i, o, c = 0, l = 1, r = 1) {
+        this.add(new Mt(i, o, 6, 18), t, s, a, e, l, r, 1, c)
+    }
+    finish() {
+        const t = ut(this.parts);
+        for (const s of this.parts) s.dispose();
+        return t.computeBoundingSphere(), t
+    }
+}
+
+function $t(g, t, s, a, e) {
+    const i = new At;
+    i.moveTo(-.29, .35), i.lineTo(0, .44), i.lineTo(.29, .35), i.lineTo(.25, -.18), i.lineTo(0, -.46), i.lineTo(-.25, -.18), i.closePath();
+    const o = new _(i, {
+            depth: .1,
+            bevelEnabled: !0,
+            bevelSize: .025,
+            bevelThickness: .025,
+            bevelSegments: 1,
+            steps: 1
+        }),
+        c = e ? 1.38 : 1;
+    g.add(o, d.edge, t, s, a, c, c, 1);
+    const l = new _(i, {
+        depth: .025,
+        bevelEnabled: !1
+    });
+    g.add(l, e ? d.dark : d.blue, t, s, a + .125, c * .87, c * .86, 1);
+    for (const [r, n] of [
+            [-.22, .29],
+            [.22, .29],
+            [0, -.33]
+        ]) g.ell(d.steel, t + r * c, s + n * c, a + .16, .034, .034, .021);
+    e ? (g.box(d.steel, t, s + .1, a + .17, .36, .035, .027), g.box(d.steel, t, s, a + .17, .035, .5, .027)) : g.add(new W(.13), d.edge, t, s, a + .17, .65, 1.8, .3)
+}
+
 
 // ==========================================
 // PROCEDURAL 3D UNIT MODELS (ot) - PRO QUALITY
@@ -1729,8 +1810,8 @@ class Ft {
     nextRing = 0;
     cameraQuaternion;
 
-    constructor(t, s) {
-        this.cameraQuaternion = s.quaternion.clone();
+    constructor(t, s = null) {
+        if (s && s.quaternion) this.cameraQuaternion = s.quaternion.clone();
 
         const a = new Gt;
         a.ell(16777215, 0, 0, 0, .09, .09, .09);

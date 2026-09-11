@@ -625,9 +625,8 @@
 
 .card-level-badge {
   position: absolute;
-  bottom: 4px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 5px;
+  right: 5px;
   background: rgba(10, 18, 30, 0.92);
   border: 1px solid #3c6194;
   border-radius: 6px;
