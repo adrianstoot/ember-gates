@@ -441,7 +441,7 @@ class Jt {
 
     initSounds() {
         const soundList = [
-            "sword", "lightning", "fireball", "poison", "freeze",
+            "sword", "spear", "lightning", "fireball", "poison", "freeze",
             "charge", "titan", "arrow", "the_log", "bomb_tower",
             "xbow", "deploy", "gate_hit", "gate_destroyed", "ui_click"
         ];
@@ -526,8 +526,10 @@ class Jt {
                         this.play("sword", 0.75);
                         this.lastHit = performance.now();
                     }
-                } else if (s.kind === "lancer" || s.kind === "knight_rider") {
-                    this.play("charge", 0.8);
+                } else if (s.kind === "lancer") {
+                    this.play("spear", 0.85);
+                } else if (s.kind === "knight_rider") {
+                    this.play("charge", 0.85);
                 } else if (s.kind === "titan") {
                     this.play("titan", 0.9);
                 } else if (s.kind === "archers" || s.kind === "arrows") {
