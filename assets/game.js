@@ -3002,3 +3002,4 @@ class Kt {
 }
 
 const H = new Kt;
+window.__EMBER__ = H;

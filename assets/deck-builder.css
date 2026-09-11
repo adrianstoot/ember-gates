@@ -646,7 +646,8 @@
   right: 0;
   padding: 12px 2px 2px;
   background: linear-gradient(180deg, transparent, rgba(5, 10, 18, 0.95));
-  font-size: 10px;
+  font-size: 9.5px;
+  letter-spacing: -0.1px;
   font-weight: 800;
   text-align: center;
   color: #fff;
