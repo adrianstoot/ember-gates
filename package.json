@@ -1,0 +1,15 @@
+{
+  "name": "ember-gates",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ember Gates - Duelos de estrategia en tiempo real estilo Clash Royale en Three.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
