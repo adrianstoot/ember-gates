@@ -99,9 +99,9 @@ const w = {
         role: "HECHIZO · ÁREA",
         cost: 3,
         hp: 0,
-        damage: 190,
+        damage: 135,
         speed: 0,
-        range: 2.5,
+        range: 0,
         cooldown: 0,
         count: 0,
         radius: 2.5,
@@ -159,29 +159,29 @@ const w = {
         cooldown: 1.65,
         count: 1,
         radius: .4,
-        color: "#ffac5c",
-        description: "Lanza orbes ardientes que estallan al impactar. Protégelo tras tus tropas."
+        color: "#ff8452",
+        description: "Conjura orbes ardientes a distancia que dañan en un área circular."
     },
+    // 10 NUEVAS CARTAS:
     bomb_tower: {
         id: "bomb_tower",
         isBuilding: true,
         attackDuration: 1.2,
-        impactAt: .4,
+        impactAt: .6,
         acceleration: 0,
-        name: "Torre de bombas",
-        role: "EDIFICIO · DEFENSIVO",
+        name: "Torre de Bombas",
+        role: "ESTRUCTURA · DEFENSA",
         cost: 4,
         hp: 1120,
-        damage: 180,
-        splashRadius: 1.8,
+        damage: 184,
         speed: 0,
-        range: 5.5,
-        cooldown: 1.6,
+        range: 6.0,
+        cooldown: 1.8,
         count: 1,
         radius: .85,
-        lifetime: 40,
+        splashRadius: 2.2,
         color: "#e67e22",
-        description: "Estructura defensiva fija que lanza bombas parabólicas destructivas con daño de área."
+        description: "Estructura defensiva que dispara bombas explosivas causando gran daño de área."
     },
     lightning: {
         id: "lightning",
@@ -189,20 +189,18 @@ const w = {
         attackDuration: 0,
         impactAt: 0,
         acceleration: 0,
-        name: "Hechizo de rayos",
-        role: "HECHIZO · 3 BLANCOS",
+        name: "Hechizo de Rayos",
+        role: "HECHIZO · IMPACTO",
         cost: 6,
         hp: 0,
         damage: 650,
         speed: 0,
-        range: 3.5,
+        range: 0,
         cooldown: 0,
         count: 0,
         radius: 3.5,
-        targets: 3,
-        stunDuration: 0.5,
-        color: "#54a0ff",
-        description: "Fulmina a los 3 objetivos con más vida en el área con daño masivo y aturdimiento."
+        color: "#3498db",
+        description: "Descarga 3 rayos letales sobre las unidades o fortalezas con mayor vida del área."
     },
     fireball: {
         id: "fireball",
@@ -210,19 +208,19 @@ const w = {
         attackDuration: 0,
         impactAt: 0,
         acceleration: 0,
-        name: "Bola de fuego",
-        role: "HECHIZO · IMPACTO",
+        name: "Bola de Fuego",
+        role: "HECHIZO · EXPLOSIÓN",
         cost: 4,
         hp: 0,
-        damage: 570,
+        damage: 325,
         speed: 0,
-        range: 2.5,
+        range: 0,
         cooldown: 0,
         count: 0,
         radius: 2.5,
-        knockback: 1.6,
-        color: "#ff4757",
-        description: "Devastador meteorito ígneo que provoca gran daño en área y empuja a las tropas enemigas."
+        splashRadius: 2.5,
+        color: "#e74c3c",
+        description: "Meteoro incandescente que causa alto daño y empuje en el punto de impacto."
     },
     poison: {
         id: "poison",
@@ -230,20 +228,19 @@ const w = {
         attackDuration: 0,
         impactAt: 0,
         acceleration: 0,
-        name: "Hechizo de veneno",
-        role: "HECHIZO · DURACIÓN 5s",
+        name: "Hechizo de Veneno",
+        role: "HECHIZO · CONTINUO",
         cost: 4,
         hp: 0,
-        damage: 75,
+        damage: 75, // por segundo
+        duration: 5.0,
         speed: 0,
-        range: 3.5,
+        range: 0,
         cooldown: 0,
         count: 0,
-        radius: 3.5,
-        duration: 5.0,
-        slow: 0.35,
-        color: "#2ed573",
-        description: "Cubre la zona con humo tóxico durante 5s, causando daño continuo y ralentizando."
+        radius: 3.2,
+        color: "#2ecc71",
+        description: "Cubre una zona tóxica durante 5 segundos, ralentizando y dañando a todos los enemigos."
     },
     freeze: {
         id: "freeze",
@@ -251,97 +248,93 @@ const w = {
         attackDuration: 0,
         impactAt: 0,
         acceleration: 0,
-        name: "Hechizo de hielo",
-        role: "HECHIZO · CONGELA 5s",
+        name: "Hechizo de Hielo",
+        role: "HECHIZO · CONTROL",
         cost: 4,
         hp: 0,
         damage: 95,
+        duration: 5.0,
         speed: 0,
-        range: 3.0,
+        range: 0,
         cooldown: 0,
         count: 0,
         radius: 3.0,
-        duration: 5.0,
-        color: "#70a1ff",
-        description: "Congela completamente a las unidades y defensas enemigas durante 5 segundos."
+        color: "#00d2d3",
+        description: "Congela completamente las unidades y defensas enemigas durante 5 segundos."
     },
     knight_rider: {
         id: "knight_rider",
-        attackDuration: .85,
-        impactAt: .35,
-        acceleration: 8,
-        name: "Caballero a caballo",
-        role: "CARGA · IMPACTO",
+        attackDuration: .75,
+        impactAt: .3,
+        acceleration: 14,
+        name: "Caballero a Caballo",
+        role: "CABALLERÍA · CARGA",
         cost: 5,
-        hp: 1450,
-        damage: 160,
-        chargeDamage: 320,
-        speed: 1.4,
-        chargeSpeed: 2.8,
-        range: 1.4,
-        cooldown: 1.3,
+        hp: 1200,
+        damage: 165,
+        chargeDamage: 330,
+        speed: 2.3,
+        range: 1.25,
+        cooldown: 1.2,
         count: 1,
-        radius: .65,
-        color: "#ffa502",
-        description: "Avanza al trote y tras 2s acelera a galope tendido. Su primer golpe inflige el doble de daño."
+        radius: .6,
+        color: "#f39c12",
+        description: "Cabalga a toda velocidad. Al recorrer distancia entra en carga infligiendo el doble de daño."
     },
     titan: {
         id: "titan",
-        targetsBuildings: true,
-        attackDuration: 1.25,
+        attackDuration: 1.4,
         impactAt: .65,
         acceleration: 3.5,
         name: "Titán",
-        role: "TANQUE · ESTRUCTURAS",
-        cost: 6,
-        hp: 2850,
-        damage: 210,
+        role: "TANQUE COLOSAL",
+        cost: 7,
+        hp: 3100,
+        damage: 240,
         speed: .65,
-        range: 1.25,
+        range: 1.2,
         cooldown: 1.8,
         count: 1,
-        radius: .85,
-        color: "#a4b0be",
-        description: "Coloso ciclópeo de piedra con una salud gigantesca. Ignora a las tropas y arrasa las puertas."
+        radius: .95,
+        color: "#95a5a6",
+        description: "Coloso imparable de roca y magma. Ignora distracciones y avanza directo a la fortaleza rival."
     },
     archers: {
         id: "archers",
-        attackDuration: .75,
+        attackDuration: .68,
         impactAt: .28,
         acceleration: 8,
-        name: "Arqueros",
+        name: "Arqueras",
         role: "DISTANCIA · 2 UNIDADES",
         cost: 3,
-        hp: 250,
-        damage: 75,
-        speed: 1.4,
+        hp: 216,
+        damage: 64,
+        speed: 1.45,
         range: 5.0,
-        cooldown: 1.1,
+        cooldown: 1.0,
         count: 2,
-        radius: .38,
-        color: "#1dd1a1",
-        description: "Pareja de hábiles arqueros con arcos de precisión. Excelente apoyo a distancia."
+        radius: .35,
+        color: "#1abc9c",
+        description: "Pareja de hábiles arqueras que atacan tanto objetivos terrestres como aéreos a gran distancia."
     },
     the_log: {
         id: "the_log",
         isSpell: true,
-        isRolling: true,
         attackDuration: 0,
         impactAt: 0,
         acceleration: 0,
         name: "El Tronco",
-        role: "HECHIZO · ARROLLAR",
+        role: "HECHIZO · BARRIDO",
         cost: 2,
         hp: 0,
         damage: 240,
-        speed: 5.5,
-        range: 11.0,
+        speed: 4.2,
+        range: 9.0,
         cooldown: 0,
         count: 0,
         radius: 1.6,
-        knockback: 1.8,
-        color: "#b33939",
-        description: "Rueda por la arena aplastando y empujando a todas las tropas terrestres enemigas."
+        color: "#8e44ad",
+        description: "Rueda por la arena aplastando a todos los enemigos terrestres con sus afilados pinchos."
     },
     xbow: {
         id: "xbow",
@@ -349,915 +342,709 @@ const w = {
         attackDuration: .28,
         impactAt: .12,
         acceleration: 0,
-        name: "Ballestero",
-        role: "EDIFICIO · ASEDIO",
+        name: "Ballesta",
+        role: "ESTRUCTURA · ASEDIO",
         cost: 6,
-        hp: 1380,
-        damage: 35,
+        hp: 1330,
+        damage: 38,
         speed: 0,
-        range: 11.5,
-        cooldown: .3,
+        range: 10.5,
+        cooldown: .28,
         count: 1,
         radius: .85,
-        lifetime: 35,
-        color: "#57606f",
-        description: "Ballesta de asedio con cadencia ultrarrápida y alcance extremo capaz de llegar a las puertas."
+        color: "#d35400",
+        description: "Arma de asedio de cadencia ultrarrápida. Capaz de alcanzar la fortaleza enemiga desde tu campo."
     }
 };
 
-const ALL_CARD_KEYS = Object.keys(w);
+const A = ["knight", "archers", "fireball", "knight_rider", "the_log", "mage", "lancer", "bomb_tower"];
+const ALL_CARDS = Object.keys(w);
 
-// 3 Default Decks of 8 cards each
-const DEFAULT_DECKS = {
-    1: ["knight", "archers", "lancer", "mage", "arrows", "fireball", "bomb_tower", "the_log"],
-    2: ["titan", "archers", "knight_rider", "imps", "lightning", "poison", "freeze", "xbow"],
-    3: ["knight_rider", "the_log", "fireball", "lancer", "imps", "freeze", "bomb_tower", "mage"]
-};
-
-function loadSavedDecks() {
-    try {
-        const data = localStorage.getItem("ember_gates_decks_v2");
-        if (data) {
-            const p = JSON.parse(data);
-            if (p[1] && p[2] && p[3]) return p;
-        }
-    } catch (e) {}
-    return JSON.parse(JSON.stringify(DEFAULT_DECKS));
-}
-
-function saveDecks(decks) {
-    try {
-        localStorage.setItem("ember_gates_decks_v2", JSON.stringify(decks));
-    } catch (e) {}
-}
-
-let CURRENT_DECK_TAB = 1;
-let USER_DECKS = loadSavedDecks();
-
-function getActiveBattleDeck() {
-    return USER_DECKS[CURRENT_DECK_TAB] || DEFAULT_DECKS[1];
-}
-
-function getAverageElixir(deck) {
-    if (!deck || !deck.length) return "0.0";
-    const sum = deck.reduce((acc, k) => acc + (w[k]?.cost || 0), 0);
-    return (sum / deck.length).toFixed(1);
-}
-
+// Game constants
 const M = {
-    gateZ: 13.55,
-    gateSegments: 5,
+    fixedStep: 1 / 60,
+    matchDuration: 180,
+    overtimeDuration: 60,
     segmentHp: 640,
-    duration: 180,
-    overtime: 45,
     maxEnergy: 10,
-    startingEnergy: 5,
-    energyPerSecond: .43,
-    doubleEnergyAt: 60,
-    fixedStep: 1 / 30,
-    maxUnits: 150,
-    maxPerTeam: 75,
-    cardCooldown: .8,
-    deploymentZ: .25,
-    projectileSpeed: 10,
-    arrowDelay: .95,
-    arrowGateScale: .32,
-    seed: 7421
+    baseEnergyRate: 1 / 2.3,
+    doubleEnergyRate: 2 / 2.3,
+    cardCooldown: 1.0
 };
 
-const Ut = g => g === 0 ? 1 : 0;
-const et = g => g === 0 ? -1 : 1;
-const S = (g, t, s) => Math.max(t, Math.min(s, g));
+// Deck Management Class
+class DeckManager {
+    constructor() {
+        this.activeSlot = 0;
+        this.decks = [
+            ["knight", "archers", "fireball", "knight_rider", "the_log", "mage", "lancer", "bomb_tower"],
+            ["titan", "xbow", "lightning", "poison", "knight", "archers", "imps", "the_log"],
+            ["freeze", "fireball", "knight_rider", "lancer", "mage", "bomb_tower", "archers", "imps"]
+        ];
+        this.load();
+    }
+    load() {
+        try {
+            const saved = localStorage.getItem("ember_decks");
+            if (saved) {
+                const parsed = JSON.parse(saved);
+                if (Array.isArray(parsed) && parsed.length === 3) {
+                    this.decks = parsed;
+                }
+            }
+            const slot = localStorage.getItem("ember_active_deck_slot");
+            if (slot !== null) this.activeSlot = parseInt(slot, 10);
+        } catch(e) {}
+    }
+    save() {
+        try {
+            localStorage.setItem("ember_decks", JSON.stringify(this.decks));
+            localStorage.setItem("ember_active_deck_slot", String(this.activeSlot));
+        } catch(e) {}
+    }
+    getActiveDeck() {
+        return this.decks[this.activeSlot] || this.decks[0];
+    }
+    setCard(slotIndex, cardId) {
+        if (slotIndex >= 0 && slotIndex < 8 && w[cardId]) {
+            const currentDeck = [...this.getActiveDeck()];
+            const existingIdx = currentDeck.indexOf(cardId);
+            if (existingIdx !== -1) {
+                currentDeck[existingIdx] = currentDeck[slotIndex];
+            }
+            currentDeck[slotIndex] = cardId;
+            this.decks[this.activeSlot] = currentDeck;
+            this.save();
+        }
+    }
+    getAverageElixir() {
+        const deck = this.getActiveDeck();
+        const sum = deck.reduce((acc, c) => acc + (w[c] ? w[c].cost : 0), 0);
+        return (sum / 8).toFixed(1);
+    }
+}
+const DeckState = new DeckManager();
 
-// Player battle state with 8-card cycle (4 in hand + 1 next + 3 in queue)
-const st = (deckList) => {
-    const fullDeck = [...(deckList || getActiveBattleDeck())];
-    const hand = fullDeck.slice(0, 4);
-    const next = fullDeck[4];
-    const queue = fullDeck.slice(5);
-    const cooldowns = {};
-    for (const k of ALL_CARD_KEYS) cooldowns[k] = 0;
-    return {
-        energy: M.startingEnergy,
-        deck: fullDeck,
-        cooldowns,
-        hand,
-        next,
-        queue,
-        played: 0,
-        kills: 0,
-        damage: 0
-    };
-};
+// ==========================================
+// AUDIO MANAGER (Real 1-Second WAV Audio Pack)
+// ==========================================
+class Jt {
+    constructor() {
+        this.muted = !1;
+        this.context = null;
+        this.master = null;
+        this.lastId = 0;
+        this.lastHit = 0;
+        this.audioElements = new Map();
+        this.initSounds();
+    }
 
-function it(deck0, deck1) {
-    return {
-        phase: "menu",
-        countdown: 3,
-        time: M.duration,
-        elapsed: 0,
-        overtime: !1,
-        winner: null,
-        units: [],
-        gates: [],
-        projectiles: [],
-        spells: [],
-        poisonClouds: [],
-        players: [st(deck0), st(deck1)],
-        events: [],
-        seed: M.seed
-    };
+    initSounds() {
+        const soundList = [
+            "sword", "lightning", "fireball", "poison", "freeze",
+            "charge", "titan", "arrow", "the_log", "bomb_tower",
+            "xbow", "deploy", "gate_hit", "gate_destroyed", "ui_click"
+        ];
+        for (const name of soundList) {
+            try {
+                const a = new Audio(`./assets/sounds/${name}.wav`);
+                a.preload = "auto";
+                this.audioElements.set(name, a);
+            } catch (e) {}
+        }
+    }
+
+    async unlock() {
+        if (!this.context) {
+            try {
+                this.context = new (window.AudioContext || window.webkitAudioContext)();
+                this.master = this.context.createGain();
+                this.master.gain.value = this.muted ? 0 : 0.45;
+                this.master.connect(this.context.destination);
+            } catch (e) {}
+        }
+        if (this.context && this.context.state === "suspended") {
+            try { await this.context.resume(); } catch (e) {}
+        }
+    }
+
+    toggle() {
+        this.muted = !this.muted;
+        if (this.master && this.context) {
+            this.master.gain.setTargetAtTime(this.muted ? 0 : 0.45, this.context.currentTime, 0.05);
+        }
+        return this.muted;
+    }
+
+    reset() {
+        this.lastId = 0;
+    }
+
+    play(name, volume = 1.0) {
+        if (this.muted) return;
+        this.unlock();
+        try {
+            const original = this.audioElements.get(name);
+            if (original) {
+                const clone = original.cloneNode();
+                clone.volume = Math.min(1.0, Math.max(0, volume));
+                clone.play().catch(() => {});
+            }
+        } catch (e) {}
+    }
+
+    select() {
+        this.play("ui_click", 0.6);
+    }
+
+    error() {
+        this.play("ui_click", 0.3);
+    }
+
+    events(evList) {
+        for (const s of evList) {
+            if (s.id <= this.lastId) continue;
+            this.lastId = s.id;
+
+            if (s.type === "deploy") {
+                const card = s.card;
+                if (card === "lightning") this.play("lightning", 0.95);
+                else if (card === "fireball") this.play("fireball", 0.9);
+                else if (card === "poison") this.play("poison", 0.85);
+                else if (card === "freeze") this.play("freeze", 0.9);
+                else if (card === "the_log") this.play("the_log", 0.9);
+                else if (card === "bomb_tower") this.play("bomb_tower", 0.85);
+                else if (card === "xbow") this.play("xbow", 0.8);
+                else if (card === "knight_rider") this.play("charge", 0.85);
+                else if (card === "titan") this.play("titan", 0.95);
+                else this.play("deploy", 0.7);
+            }
+
+            if (s.type === "attack") {
+                if (s.kind === "knight" || s.kind === "imps") {
+                    if (performance.now() - this.lastHit > 90) {
+                        this.play("sword", 0.75);
+                        this.lastHit = performance.now();
+                    }
+                } else if (s.kind === "lancer" || s.kind === "knight_rider") {
+                    this.play("charge", 0.8);
+                } else if (s.kind === "titan") {
+                    this.play("titan", 0.9);
+                } else if (s.kind === "archers" || s.kind === "arrows") {
+                    this.play("arrow", 0.75);
+                } else if (s.kind === "bomb_tower") {
+                    this.play("bomb_tower", 0.85);
+                } else if (s.kind === "xbow") {
+                    this.play("xbow", 0.65);
+                } else if (s.kind === "mage") {
+                    this.play("fireball", 0.7);
+                }
+            }
+
+            if (s.type === "hit" && performance.now() - this.lastHit > 80) {
+                this.play("gate_hit", 0.7);
+                this.lastHit = performance.now();
+            }
+
+            if (s.type === "fireball") this.play("fireball", 0.85);
+            if (s.type === "lightning") this.play("lightning", 0.95);
+            if (s.type === "gate-destroyed") this.play("gate_destroyed", 1.0);
+        }
+    }
 }
 
+// ==========================================
+// GAME SIMULATION (X) - 15 CARDS FULL LOGIC
+// ==========================================
 class X {
-    constructor(t = 1, s = "normal", deck0 = null, deck1 = null) {
-        this.botTeam = t;
-        this.difficulty = s;
-        this.deck0 = deck0 || getActiveBattleDeck();
-        this.deck1 = deck1 || DEFAULT_DECKS[2];
+    constructor(seed = 1, difficulty = "normal") {
+        this.difficulty = difficulty;
+        this.rngSeed = seed;
+        this.state = this.createState();
+        this.botTeam = 1;
+        this.lastBotPlay = 0;
+        this.activePoisonClouds = [];
     }
-    botTeam;
-    difficulty;
-    deck0;
-    deck1;
-    state = it();
-    id = 1;
-    eventId = 1;
-    botTimer = 2.1;
-    grid = new Map;
-    unitPool = [];
 
-    start(t = !0, playerDeck = null) {
-        if (playerDeck) this.deck0 = playerDeck;
-        this.state = it(this.deck0, this.deck1);
-        this.id = 1;
-        this.eventId = 1;
-        this.botTimer = 2.1;
-        this.unitPool.length = 0;
-        this.state.phase = t ? "countdown" : "playing";
+    rnd() {
+        this.rngSeed = (this.rngSeed * 9301 + 49297) % 233280;
+        return this.rngSeed / 233280;
+    }
 
-        for (const s of [0, 1]) {
-            for (let a = 0; a < M.gateSegments; a++) {
-                this.state.gates.push({
-                    id: -1 - s * 5 - a,
-                    team: s,
-                    segment: a,
-                    x: -7.2 + a * 3.6,
-                    z: s === 0 ? M.gateZ : -13.55,
+    createState() {
+        const createPlayer = (team) => {
+            const deck = team === 0 ? DeckState.getActiveDeck() : ["knight", "archers", "fireball", "knight_rider", "the_log", "mage", "lancer", "bomb_tower"];
+            const shuffled = [...deck].sort(() => this.rnd() - 0.5);
+            const hand = shuffled.slice(0, 4);
+            const queue = shuffled.slice(4);
+            const next = queue.shift();
+            return {
+                team,
+                energy: 5.0,
+                deck: [...deck],
+                queue: [...queue, hand[0]],
+                hand: [...hand],
+                next,
+                cooldowns: Object.fromEntries(ALL_CARDS.map(k => [k, 0]))
+            };
+        };
+
+        const gates = [];
+        for (let team = 0; team <= 1; team++) {
+            const z = team === 0 ? 14.5 : -14.5;
+            for (let seg = 0; seg < 5; seg++) {
+                const x = (seg - 2) * 3.6;
+                gates.push({
+                    id: team * 5 + seg,
+                    team,
+                    segment: seg,
+                    x,
+                    z,
                     hp: M.segmentHp,
                     maxHp: M.segmentHp,
                     hurtTime: 0
                 });
             }
         }
+
+        return {
+            phase: "menu",
+            time: M.matchDuration,
+            countdown: 3.0,
+            overtime: !1,
+            nextEntityId: 1,
+            nextEventId: 1,
+            players: [createPlayer(0), createPlayer(1)],
+            units: [],
+            projectiles: [],
+            events: [],
+            gates
+        };
     }
 
-    random() {
-        let t = this.state.seed;
-        return t ^= t << 13, t ^= t >>> 17, t ^= t << 5, this.state.seed = t, (t >>> 0) / 4294967296;
+    start(withCountdown = !0) {
+        this.state.phase = withCountdown ? "countdown" : "playing";
+        this.state.countdown = withCountdown ? 3.0 : 0;
     }
 
-    emit(t) {
-        this.state.events.push({
-            ...t,
-            id: this.eventId++
-        });
+    emit(ev) {
+        ev.id = this.state.nextEventId++;
+        this.state.events.push(ev);
     }
 
-    deploy({ team: t, card: s, x: a, z: e, slot: i }) {
-        const o = this.state;
-        const c = w[s];
-        if (o.phase !== "playing") return { ok: !1, reason: "Espera al comienzo del duelo" };
-        if (!c || (t !== 0 && t !== 1) || !Number.isFinite(a) || !Number.isFinite(e)) return { ok: !1, reason: "Despliegue no válido" };
-        if (Math.abs(a) > 8.9 || Math.abs(e) > 14.1) return { ok: !1, reason: "Elige un punto dentro de la arena" };
+    deploy({ team, card, x, z, slot }) {
+        if (this.state.phase !== "playing") return { ok: !1, reason: "Partida no activa" };
+        const player = this.state.players[team];
+        const cardData = w[card];
+        if (!cardData) return { ok: !1, reason: "Carta desconocida" };
+        if (player.energy < cardData.cost) return { ok: !1, reason: "Energía insuficiente" };
 
-        const isUniversalSpell = c.isSpell && c.id !== "the_log";
-        if (!isUniversalSpell && (t === 0 ? e < M.deploymentZ : e > -.25)) {
-            return { ok: !1, reason: "Despliega tus tropas en tu mitad de la arena" };
+        const isSpell = !!cardData.isSpell;
+        const isOwnHalf = team === 0 ? z >= 0.1 : z <= -0.1;
+        if (!isSpell && !isOwnHalf) return { ok: !1, reason: "Despliega tus tropas en tu mitad de arena" };
+
+        player.energy -= cardData.cost;
+        player.cooldowns[card] = M.cardCooldown;
+
+        // Cycle card from deck
+        if (slot !== null && slot >= 0 && slot < 4) {
+            const nextCard = player.next;
+            player.queue.push(player.hand[slot]);
+            player.hand[slot] = nextCard;
+            player.next = player.queue.shift();
         }
 
-        const l = o.players[t];
-        const r = i ?? l.hand.indexOf(s);
-        if (!Number.isInteger(r) || r < 0 || r >= 4 || l.hand[r] !== s) {
-            return { ok: !1, reason: "Esta carta está esperando su turno" };
-        }
-        if (l.energy + 1e-6 < c.cost) {
-            return { ok: !1, reason: `Necesitas ${c.cost} de energía` };
-        }
-        if (l.cooldowns[s] > 0) {
-            return { ok: !1, reason: "La carta se está preparando" };
-        }
-        if (o.units.filter(n => n.team === t && n.hp > 0).length + c.count > M.maxPerTeam) {
-            return { ok: !1, reason: "Tu ejército está completo" };
-        }
-        if (o.units.length + c.count > M.maxUnits) {
-            return { ok: !1, reason: "La arena está llena. Espera un instante" };
+        this.emit({ type: "deploy", team, card, x, z });
+
+        // Spell executions
+        if (card === "arrows") {
+            this.state.projectiles.push({
+                id: this.state.nextEntityId++,
+                type: "arrows",
+                team,
+                x,
+                z,
+                age: 0,
+                duration: 0.45
+            });
+            return { ok: !0 };
         }
 
-        l.energy -= c.cost;
-        l.cooldowns[s] = M.cardCooldown;
-        l.played++;
-
-        // 8-Card Hand Cycle: replace hand slot with next, next from queue, queue gets played card
-        const playedCard = l.hand[r];
-        l.hand[r] = l.next;
-        l.next = l.queue.shift();
-        l.queue.push(playedCard);
-
-        a = S(a, -8.4, 8.4);
-        e = S(e, -12.2, 12.2);
-
-        // Spell resolutions:
-        if (s === "arrows") {
-            o.spells.push({ id: this.id++, team: t, type: "arrows", x: a, z: e, delay: M.arrowDelay, impacted: !1 });
-            this.emit({ type: "arrows", team: t, x: a, z: e, kind: s });
-        } else if (s === "lightning") {
-            // Strikes top 3 highest HP enemy targets in radius 3.5
-            const targets = [];
-            for (const u of o.units) {
-                if (u.team !== t && u.hp > 0 && Math.hypot(u.x - a, u.z - e) <= 3.5) targets.push(u);
-            }
-            for (const g of o.gates) {
-                if (g.team !== t && g.hp > 0 && Math.hypot(Math.max(0, Math.abs(g.x - a) - 1.8), g.z - e) <= 3.5) targets.push(g);
-            }
-            targets.sort((x1, x2) => x2.hp - x1.hp);
-            const top3 = targets.slice(0, 3);
-            for (const trg of top3) {
-                this.damage(trg, c.damage, t, "lightning");
-                if (trg.id > 0) trg.stunned = c.stunDuration;
-            }
-            this.emit({ type: "lightning", team: t, x: a, z: e, targets: top3.map(tg => ({ x: tg.x, z: tg.z })) });
-        } else if (s === "fireball") {
-            o.spells.push({
-                id: this.id++,
-                team: t,
+        if (card === "fireball") {
+            this.state.projectiles.push({
+                id: this.state.nextEntityId++,
                 type: "fireball",
-                x: a,
-                z: e,
-                startX: a * 0.4,
-                startZ: t === 0 ? 14 : -14,
-                delay: 0.85,
-                impacted: !1
+                team,
+                startX: team === 0 ? 0 : 0,
+                startZ: team === 0 ? 14 : -14,
+                targetX: x,
+                targetZ: z,
+                x,
+                z,
+                age: 0,
+                duration: 0.65
             });
-            this.emit({ type: "fireball-launch", team: t, startX: a * 0.4, startZ: t === 0 ? 14 : -14, targetX: a, targetZ: e });
-        } else if (s === "poison") {
-            o.poisonClouds.push({
-                id: this.id++,
-                team: t,
-                x: a,
-                z: e,
-                radius: c.radius,
-                duration: c.duration,
-                tickTimer: 0.5,
-                dps: c.damage,
-                slow: c.slow
+            return { ok: !0 };
+        }
+
+        if (card === "lightning") {
+            this.emit({ type: "lightning", team, x, z });
+            // Damage 3 highest HP targets in radius
+            const targets = [];
+            for (const u of this.state.units) {
+                if (u.team !== team && u.hp > 0 && Math.hypot(u.x - x, u.z - z) <= 3.5) targets.push(u);
+            }
+            for (const g of this.state.gates) {
+                if (g.team !== team && g.hp > 0 && Math.hypot(Math.max(0, Math.abs(g.x - x) - 1.8), g.z - z) <= 3.5) targets.push(g);
+            }
+            targets.sort((a, b) => b.hp - a.hp);
+            for (let i = 0; i < Math.min(3, targets.length); i++) {
+                const t = targets[i];
+                t.hp -= cardData.damage;
+                t.hurtTime = 0.35;
+                this.emit({ type: "hit", target: t.id, amount: cardData.damage, x: t.x, z: t.z });
+            }
+            return { ok: !0 };
+        }
+
+        if (card === "poison") {
+            this.state.projectiles.push({
+                id: this.state.nextEntityId++,
+                type: "poison_cloud",
+                team,
+                x,
+                z,
+                age: 0,
+                radius: cardData.radius,
+                duration: cardData.duration
             });
-            this.emit({ type: "poison", team: t, x: a, z: e, radius: c.radius, duration: c.duration });
-        } else if (s === "freeze") {
-            // Freezes all enemy units and gates in radius 3.0 for 5.0 seconds
-            for (const u of o.units) {
-                if (u.team !== t && u.hp > 0 && Math.hypot(u.x - a, u.z - e) <= c.radius) {
-                    u.frozen = c.duration;
-                    this.damage(u, c.damage, t, "freeze");
+            return { ok: !0 };
+        }
+
+        if (card === "freeze") {
+            this.emit({ type: "freeze", team, x, z });
+            for (const u of this.state.units) {
+                if (u.team !== team && u.hp > 0 && Math.hypot(u.x - x, u.z - z) <= cardData.radius) {
+                    u.frozen = cardData.duration;
+                    u.hurtTime = 0.2;
                 }
             }
-            for (const g of o.gates) {
-                if (g.team !== t && g.hp > 0 && Math.hypot(Math.max(0, Math.abs(g.x - a) - 1.8), g.z - e) <= c.radius) {
-                    g.frozen = c.duration;
-                    this.damage(g, c.damage * M.arrowGateScale, t, "freeze");
+            for (const g of this.state.gates) {
+                if (g.team !== team && g.hp > 0 && Math.hypot(Math.max(0, Math.abs(g.x - x) - 1.8), g.z - z) <= cardData.radius) {
+                    g.frozen = cardData.duration;
                 }
             }
-            this.emit({ type: "freeze", team: t, x: a, z: e, radius: c.radius });
-        } else if (s === "the_log") {
-            // Rolls forward across lane
-            const logUnit = {
-                id: this.id++,
-                team: t,
+            return { ok: !0 };
+        }
+
+        if (card === "the_log") {
+            this.state.units.push({
+                id: this.state.nextEntityId++,
                 kind: "the_log",
-                isRolling: !0,
-                x: a,
-                z: e,
-                hp: 1,
-                maxHp: 1,
-                speed: c.speed,
-                damage: c.damage,
-                knockback: c.knockback,
-                distTraveled: 0,
-                maxDist: c.range,
-                hitIds: new Set(),
-                facing: t === 0 ? -Math.PI : 0,
+                team,
+                x,
+                z,
                 vx: 0,
-                vz: t === 0 ? -c.speed : c.speed,
+                vz: team === 0 ? -cardData.speed : cardData.speed,
+                facing: team === 0 ? Math.PI : 0,
+                hp: 9999,
+                maxHp: 9999,
+                state: "walk",
                 age: 0,
                 deathTime: 0,
                 attackTime: 0,
-                cooldown: 0,
-                hurtTime: 0,
-                state: "walk"
-            };
-            o.units.push(logUnit);
-            this.emit({ type: "log-deploy", team: t, x: a, z: e });
-        } else {
-            // Troop or Building
-            const count = c.count || 1;
-            for (let n = 0; n < count; n++) {
-                const h = count > 1 ? (n / count) * Math.PI * 2 : 0;
-                const p = count > 1 ? (count === 2 ? 0.9 : 0.65) : 0;
-                const u = this.unitPool.pop() ?? {};
-                Object.assign(u, {
-                    id: this.id++,
-                    team: t,
-                    kind: s,
-                    isBuilding: !!c.isBuilding,
-                    lifetime: c.lifetime || 0,
-                    maxLifetime: c.lifetime || 0,
-                    charging: !1,
-                    chargeTimer: 0,
-                    frozen: 0,
-                    stunned: 0,
-                    x: S(a + Math.cos(h) * p, -8.5, 8.5),
-                    z: S(e + Math.sin(h) * p, -12.4, 12.4),
-                    hp: c.hp,
-                    maxHp: c.hp,
-                    cooldown: .35,
-                    age: 0,
-                    attackTime: 0,
-                    hurtTime: 0,
-                    state: "spawn",
-                    targetId: 0,
-                    facing: t === 0 ? -Math.PI / 2 : Math.PI / 2,
-                    deathTime: 0,
-                    vx: 0,
-                    vz: 0,
-                    attackPending: !1,
-                    attackTarget: 0,
-                    attackX: 0,
-                    attackZ: 0,
-                    footstep: 0
-                });
-                o.units.push(u);
+                targetId: null,
+                isLog: true,
+                distanceRemaining: cardData.range
+            });
+            return { ok: !0 };
+        }
+
+        // Units and Buildings
+        const count = cardData.count || 1;
+        for (let i = 0; i < count; i++) {
+            let ox = 0, oz = 0;
+            if (count > 1) {
+                const angle = (i / count) * Math.PI * 2;
+                ox = Math.cos(angle) * 0.7;
+                oz = Math.sin(angle) * 0.7;
             }
-            this.emit({ type: "deploy", team: t, x: a, z: e, kind: s });
+            this.state.units.push({
+                id: this.state.nextEntityId++,
+                kind: card,
+                team,
+                x: x + ox,
+                z: z + oz,
+                vx: 0,
+                vz: 0,
+                facing: team === 0 ? Math.PI : 0,
+                hp: cardData.hp,
+                maxHp: cardData.hp,
+                state: "walk",
+                age: 0,
+                deathTime: 0,
+                attackTime: 0,
+                footstep: 0,
+                hurtTime: 0,
+                frozen: 0,
+                charging: false,
+                chargeTimer: 0,
+                targetId: null,
+                isBuilding: !!cardData.isBuilding,
+                splashRadius: cardData.splashRadius || 0
+            });
         }
         return { ok: !0 };
     }
 
-    step(t) {
-        const s = this.state;
-        if (s.events = [], s.phase === "menu" || s.phase === "deck_builder" || s.phase === "finished") return;
-
-        if (s.phase === "countdown") {
-            const e = Math.ceil(s.countdown);
-            s.countdown -= t;
-            if (Math.ceil(s.countdown) !== e) {
-                this.emit({ type: "countdown", team: 0, x: 0, z: 0, amount: Math.ceil(s.countdown) });
+    step(dt) {
+        if (this.state.phase === "countdown") {
+            this.state.countdown -= dt;
+            if (this.state.countdown <= 0) {
+                this.state.phase = "playing";
+                this.emit({ type: "start" });
             }
-            if (s.countdown <= 0) s.phase = "playing";
             return;
         }
 
-        s.elapsed += t;
-        s.time -= t;
-        const a = s.time <= M.doubleEnergyAt || s.overtime ? 2 : 1;
-        for (const e of s.players) {
-            e.energy = Math.min(M.maxEnergy, e.energy + t * M.energyPerSecond * a);
-            for (const i of ALL_CARD_KEYS) e.cooldowns[i] = Math.max(0, e.cooldowns[i] - t);
-        }
-        for (const e of s.gates) {
-            e.hurtTime = Math.max(0, e.hurtTime - t);
-            if (e.frozen > 0) e.frozen = Math.max(0, e.frozen - t);
-        }
+        if (this.state.phase !== "playing") return;
 
-        // Poison Clouds Update (5s DoT + Slow)
-        for (let idx = s.poisonClouds.length - 1; idx >= 0; idx--) {
-            const cloud = s.poisonClouds[idx];
-            cloud.duration -= t;
-            cloud.tickTimer -= t;
-            if (cloud.tickTimer <= 0) {
-                cloud.tickTimer = 0.5;
-                const dmgPerTick = cloud.dps * 0.5;
-                for (const u of s.units) {
-                    if (u.team !== cloud.team && u.hp > 0 && Math.hypot(u.x - cloud.x, u.z - cloud.z) <= cloud.radius) {
-                        this.damage(u, dmgPerTick, cloud.team, "poison");
-                        u.poisonSlow = 0.6;
-                    }
-                }
-                for (const g of s.gates) {
-                    if (g.team !== cloud.team && g.hp > 0 && Math.hypot(Math.max(0, Math.abs(g.x - cloud.x) - 1.8), g.z - cloud.z) <= cloud.radius) {
-                        this.damage(g, dmgPerTick * M.arrowGateScale, cloud.team, "poison");
-                    }
-                }
-            }
-            if (cloud.duration <= 0) s.poisonClouds.splice(idx, 1);
-        }
+        this.state.events = [];
+        this.state.time -= dt;
 
-        this.rebuildGrid();
-        if (this.botTeam !== null) this.updateBot(t, this.botTeam);
-
-        // Units update
-        for (const e of s.units) {
-            e.age += t;
-            e.attackTime = Math.max(0, e.attackTime - t);
-            e.hurtTime = Math.max(0, e.hurtTime - t);
-            e.cooldown = Math.max(0, e.cooldown - t);
-            if (e.poisonSlow > 0) e.poisonSlow = Math.max(0, e.poisonSlow - t);
-
-            // Freeze check (5 seconds complete freeze)
-            if (e.frozen > 0) {
-                e.frozen = Math.max(0, e.frozen - t);
-                e.vx = e.vz = 0;
-                continue;
-            }
-            if (e.stunned > 0) {
-                e.stunned = Math.max(0, e.stunned - t);
-                e.vx = e.vz = 0;
-                continue;
-            }
-
-            // Building lifetime decay
-            if (e.isBuilding && e.lifetime > 0) {
-                const decay = (e.maxHp / e.lifetime) * t;
-                e.hp -= decay;
-                if (e.hp <= 0) {
-                    e.hp = 0;
-                    e.state = "dead";
-                    e.deathTime += t;
-                    continue;
-                }
-            }
-
-            // The Log rolling forward mechanics
-            if (e.isRolling) {
-                e.z += e.vz * t;
-                e.distTraveled += Math.abs(e.vz * t);
-                for (const m of this.nearby(e.x, e.z, 2.0)) {
-                    if (m.team !== e.team && m.hp > 0 && !m.isBuilding && !e.hitIds.has(m.id)) {
-                        e.hitIds.add(m.id);
-                        this.damage(m, e.damage, e.team, "the_log");
-                        m.z += (e.vz > 0 ? 1 : -1) * e.knockback;
-                        m.stunned = 0.4;
-                    }
-                }
-                if (e.distTraveled >= e.maxDist || Math.abs(e.z) > 13.5) {
-                    e.hp = 0;
-                    e.state = "dead";
-                    e.deathTime = 1.5;
-                }
-                continue;
-            }
-
-            if (e.hp <= 0) {
-                e.state = "dead";
-                e.deathTime += t;
-                continue;
-            }
-            if (e.age < .3) continue;
-
-            const i = w[e.kind];
-
-            // Resolve pending attack
-            if (e.attackPending && e.attackTime <= i.attackDuration - i.impactAt) {
-                e.attackPending = !1;
-                this.resolveAttack(e);
-            }
-            if (e.attackTime > 0) {
-                e.state = "attack";
-                e.vx = e.vz = 0;
-                continue;
-            }
-
-            // Target search
-            let o, c = 1 / 0;
-            const searchDist = i.range > 6 ? 12 : 6.8;
-
-            // Titan only targets buildings and gates!
-            if (!i.targetsBuildings) {
-                const l = this.nearby(e.x, e.z, searchDist);
-                for (const m of l) {
-                    if (m.team === e.team || m.hp <= 0 || m.isRolling) continue;
-                    const v = Math.hypot(e.x - m.x, e.z - m.z);
-                    const y = v * (m.id === e.targetId ? .78 : 1);
-                    if (y < c && v < searchDist) {
-                        c = y;
-                        o = m;
-                    }
-                }
-            }
-
-            // Buildings and gates target search
-            if (!o) {
-                for (const m of s.units) {
-                    if (m.team !== e.team && m.hp > 0 && m.isBuilding) {
-                        const v = Math.hypot(e.x - m.x, e.z - m.z);
-                        if (v < c) { c = v; o = m; }
-                    }
-                }
-            }
-            if (!o) {
-                for (const m of s.gates) {
-                    if (m.team === e.team || m.hp <= 0) continue;
-                    const v = Math.max(0, Math.abs(m.x - e.x) - 1.55);
-                    const y = Math.hypot(v, m.z - e.z);
-                    if (y < c) { c = y; o = m; }
-                }
-            }
-
-            if (!o) {
-                e.state = "idle";
-                e.chargeTimer = 0;
-                e.charging = !1;
-                continue;
-            }
-
-            e.targetId = o.id;
-            const r = o.id < 0 ? S(e.x, o.x - 1.5, o.x + 1.5) : o.x;
-            const n = r - e.x;
-            const h = o.z - e.z;
-            const p = Math.hypot(n, h);
-            e.facing = Math.atan2(n, h);
-
-            const u = o.id > 0 ? (w[o.kind]?.radius || .4) : .12;
-            const b = e.kind === "mage" && o.id > 0 && p < 2.35;
-
-            // In range for attack:
-            if (p <= i.range + u && !b) {
-                e.state = "idle";
-                e.vx *= Math.exp(-t * 18);
-                e.vz *= Math.exp(-t * 18);
-                if (e.cooldown <= 0) {
-                    e.cooldown = i.cooldown;
-                    e.attackTime = i.attackDuration;
-                    e.state = "attack";
-                    e.attackPending = !0;
-                    e.attackTarget = o.id;
-                    e.attackX = r;
-                    e.attackZ = o.z;
-                    this.emit({
-                        type: "attack",
-                        team: e.team,
-                        x: e.x,
-                        z: e.z,
-                        kind: e.kind,
-                        targetId: o.id,
-                        sourceId: e.id,
-                        targetX: r,
-                        targetZ: o.z,
-                        facing: e.facing
-                    });
-                }
-            } else if (!e.isBuilding) {
-                // Walk / charge toward target
-                e.state = "walk";
-
-                // Knight Rider charge mechanic (after 2s walking, charges at 2x speed)
-                if (e.kind === "knight_rider") {
-                    e.chargeTimer += t;
-                    if (e.chargeTimer >= 2.0) {
-                        e.charging = !0;
-                    }
-                }
-
-                let m = n, v = h;
-                if (b && (m = -n, v = -h));
-                const y = Math.hypot(m, v) || 1;
-                let currentSpeed = (e.charging ? i.chargeSpeed : i.speed);
-                if (e.poisonSlow > 0) currentSpeed *= (1 - 0.35);
-
-                const f = currentSpeed * (e.kind === "imps" && p < 5 ? 1.28 : 1) * (b ? .85 : 1) * Math.min(1, Math.max(.12, p - i.range + .4));
-                const x = 1 - Math.exp(-i.acceleration * t);
-                e.vx += (m / y * f - e.vx) * x;
-                e.vz += (v / y * f - e.vz) * x;
-                e.x += e.vx * t;
-                e.z += e.vz * t;
-            }
-
-            // Unit separation / collision avoidance
-            if (!e.isBuilding && !e.isRolling) {
-                for (const m of this.nearby(e.x, e.z, 1.3)) {
-                    if (m.id === e.id || m.hp <= 0) continue;
-                    const v = e.x - m.x;
-                    const y = e.z - m.z;
-                    const f = Math.hypot(v, y);
-                    const x = i.radius + (w[m.kind]?.radius || .4);
-                    if (f > 0 && f < x) {
-                        const L = (x - f) * Math.min(1, t * 5);
-                        e.x += v / f * L;
-                        e.z += y / f * L;
-                    }
-                }
-            }
-            e.x = S(e.x, -8.45, 8.45);
-            e.z = S(e.z, -13.2, 13.2);
-        }
-
-        // Clean up dead units
-        for (let e = s.units.length - 1; e >= 0; e--) {
-            if (s.units[e].deathTime > 1.1) this.unitPool.push(s.units.splice(e, 1)[0]);
-        }
-
-        // Projectiles update
-        for (let e = s.projectiles.length - 1; e >= 0; e--) {
-            const i = s.projectiles[e];
-            i.progress += t / i.duration;
-            const o = i.targetId < 0 ? s.gates.find(c => c.id === i.targetId) : s.units.find(c => c.id === i.targetId);
-            if (o && o.hp > 0) {
-                i.targetX = o.id < 0 ? i.targetX : o.x;
-                i.targetZ = o.z;
-            }
-            i.x = i.startX + (i.targetX - i.startX) * Math.min(1, i.progress);
-            i.z = i.startZ + (i.targetZ - i.startZ) * Math.min(1, i.progress);
-
-            if (i.progress >= 1) {
-                if (i.kind === "bomb_tower") {
-                    for (const c of s.units) {
-                        if (c.team !== i.team && c.hp > 0 && Math.hypot(c.x - i.x, c.z - i.z) <= (i.splashRadius || 1.8)) {
-                            this.damage(c, i.damage, i.team, "bomb_tower");
-                        }
-                    }
-                    for (const g of s.gates) {
-                        if (g.team !== i.team && g.hp > 0 && Math.hypot(Math.max(0, Math.abs(g.x - i.x) - 1.8), g.z - i.z) <= (i.splashRadius || 1.8)) {
-                            this.damage(g, i.damage * M.arrowGateScale, i.team, "bomb_tower");
-                        }
-                    }
-                    this.emit({ type: "explosion", team: i.team, x: i.x, z: i.z, kind: "bomb_tower" });
-                } else if (i.kind === "xbow") {
-                    if (o && o.hp > 0) this.damage(o, i.damage, i.team, "xbow");
-                    this.emit({ type: "hit", team: i.team, x: i.x, z: i.z, kind: "xbow" });
-                } else {
-                    if (o && o.hp > 0) this.damage(o, i.damage, i.team, "mage");
-                    for (const c of s.units) {
-                        if (c.team !== i.team && c.hp > 0 && c.id !== i.targetId && Math.hypot(c.x - i.x, c.z - i.z) < 1.35) {
-                            this.damage(c, i.damage * .65, i.team, "mage");
-                        }
-                    }
-                    this.emit({ type: "explosion", team: i.team, x: i.x, z: i.z, kind: "mage", targetId: i.targetId });
-                }
-                s.projectiles.splice(e, 1);
-            }
-        }
-
-        // Spells delay & impact
-        for (let e = s.spells.length - 1; e >= 0; e--) {
-            const i = s.spells[e];
-            i.delay -= t;
-            if (i.delay <= 0 && !i.impacted) {
-                i.impacted = !0;
-                if (i.type === "fireball") {
-                    for (const o of s.units) {
-                        if (o.team !== i.team && o.hp > 0) {
-                            const d = Math.hypot(o.x - i.x, o.z - i.z);
-                            if (d <= 2.5) {
-                                this.damage(o, w.fireball.damage, i.team, "fireball");
-                                const ang = Math.atan2(o.x - i.x, o.z - i.z);
-                                o.x = S(o.x + Math.sin(ang) * 1.5, -8.4, 8.4);
-                                o.z = S(o.z + Math.cos(ang) * 1.5, -13.0, 13.0);
-                                o.stunned = 0.35;
-                            }
-                        }
-                    }
-                    for (const o of s.gates) {
-                        if (o.team !== i.team && o.hp > 0 && Math.hypot(Math.max(0, Math.abs(o.x - i.x) - 1.8), o.z - i.z) <= 2.5) {
-                            this.damage(o, w.fireball.damage * M.arrowGateScale, i.team, "fireball");
-                        }
-                    }
-                    this.emit({ type: "explosion", team: i.team, x: i.x, z: i.z, kind: "fireball" });
-                } else {
-                    for (const o of s.units) {
-                        if (o.team !== i.team && o.hp > 0 && Math.hypot(o.x - i.x, o.z - i.z) <= w.arrows.radius) {
-                            this.damage(o, w.arrows.damage, i.team, "arrows");
-                        }
-                    }
-                    for (const o of s.gates) {
-                        if (o.team !== i.team && o.hp > 0 && Math.hypot(Math.max(0, Math.abs(o.x - i.x) - 1.8), o.z - i.z) <= w.arrows.radius) {
-                            this.damage(o, w.arrows.damage * M.arrowGateScale, i.team, "arrows");
-                        }
-                    }
-                    this.emit({ type: "arrow-impact", team: i.team, x: i.x, z: i.z });
-                }
-            }
-            if (i.delay < -.45) s.spells.splice(e, 1);
-        }
-
-        this.checkEnd();
-    }
-
-    rebuildGrid() {
-        this.grid.clear();
-        for (const t of this.state.units) {
-            if (t.hp > 0) {
-                const s = `${Math.floor(t.x/2)},${Math.floor(t.z/2)}`;
-                let a = this.grid.get(s);
-                a || this.grid.set(s, a = []);
-                a.push(t);
-            }
-        }
-    }
-
-    nearby(t, s, a) {
-        const e = [];
-        for (let i = Math.floor((t - a) / 2); i <= Math.floor((t + a) / 2); i++) {
-            for (let o = Math.floor((s - a) / 2); o <= Math.floor((s + a) / 2); o++) {
-                const c = this.grid.get(`${i},${o}`);
-                if (c) e.push(...c);
-            }
-        }
-        return e;
-    }
-
-    resolveAttack(t) {
-        const s = w[t.kind];
-        const a = this.state;
-        const e = t.attackTarget < 0 ? a.gates.find(c => c.id === t.attackTarget) : a.units.find(c => c.id === t.attackTarget);
-        if (!e || e.hp <= 0) return;
-
-        const i = e.id < 0 ? S(t.x, e.x - 1.5, e.x + 1.5) : e.x;
-        const o = Math.hypot(i - t.x, e.z - t.z);
-
-        if (t.kind === "mage") {
-            a.projectiles.push({
-                id: this.id++,
-                team: t.team,
-                kind: "mage",
-                x: t.x,
-                z: t.z,
-                startX: t.x,
-                startZ: t.z,
-                targetId: e.id,
-                targetX: i,
-                targetZ: e.z,
-                progress: 0,
-                duration: Math.max(.28, o / M.projectileSpeed),
-                damage: s.damage
-            });
-            this.emit({ type: "fireball", team: t.team, x: t.x, z: t.z, kind: "mage", sourceId: t.id, targetId: e.id, targetX: i, targetZ: e.z, facing: t.facing });
-        } else if (t.kind === "bomb_tower") {
-            a.projectiles.push({
-                id: this.id++,
-                team: t.team,
-                kind: "bomb_tower",
-                x: t.x,
-                z: t.z,
-                startX: t.x,
-                startZ: t.z,
-                targetId: e.id,
-                targetX: i,
-                targetZ: e.z,
-                progress: 0,
-                duration: Math.max(.4, o / 8.5),
-                damage: s.damage,
-                splashRadius: s.splashRadius
-            });
-            this.emit({ type: "mortar-bomb", team: t.team, x: t.x, z: t.z, targetX: i, targetZ: e.z });
-        } else if (t.kind === "xbow") {
-            a.projectiles.push({
-                id: this.id++,
-                team: t.team,
-                kind: "xbow",
-                x: t.x,
-                z: t.z,
-                startX: t.x,
-                startZ: t.z,
-                targetId: e.id,
-                targetX: i,
-                targetZ: e.z,
-                progress: 0,
-                duration: Math.max(.15, o / 22),
-                damage: s.damage
-            });
-            this.emit({ type: "xbow-bolt", team: t.team, x: t.x, z: t.z, targetX: i, targetZ: e.z });
-        } else if (t.kind === "archers") {
-            this.damage(e, s.damage, t.team, t.kind, t.id);
-            this.emit({ type: "arrow-hit", team: t.team, x: t.x, z: t.z, targetX: i, targetZ: e.z });
-        } else {
-            let dmg = s.damage;
-            if (t.kind === "knight_rider" && t.charging) {
-                dmg = s.chargeDamage;
-                t.charging = !1;
-                t.chargeTimer = 0;
-            }
-            if (o <= s.range + (e.id > 0 ? (w[e.kind]?.radius || .4) : .12) + .6) {
-                this.damage(e, dmg, t.team, t.kind, t.id);
-                this.emit({ type: "melee-impact", team: t.team, x: t.x, z: t.z, kind: t.kind, sourceId: t.id, targetId: e.id, targetX: i, targetZ: e.z, facing: t.facing });
-            }
-        }
-    }
-
-    damage(t, s, a, e, i) {
-        if (t.hp <= 0) return;
-        const o = Math.min(t.hp, s);
-        t.hp = Math.max(0, t.hp - s);
-        t.hurtTime = .22;
-        this.state.players[a].damage += o;
-        this.emit({
-            type: t.id < 0 ? "gate-hit" : "hit",
-            team: a,
-            x: t.x,
-            z: t.z,
-            amount: Math.round(o),
-            targetId: t.id,
-            kind: e,
-            sourceId: i
-        });
-        if (t.hp <= 0) {
-            if (t.id > 0) this.state.players[a].kills++;
-            this.emit({
-                type: t.id < 0 ? "gate-destroyed" : "death",
-                team: a,
-                x: t.x,
-                z: t.z,
-                targetId: t.id,
-                kind: t.id > 0 ? t.kind : void 0
-            });
-        }
-    }
-
-    gateHealth(t) {
-        return this.state.gates.filter(s => s.team === t).reduce((s, a) => s + a.hp, 0);
-    }
-
-    checkEnd() {
-        const t = this.state,
-            s = this.gateHealth(0),
-            a = this.gateHealth(1);
-        if (s <= 0 || a <= 0) {
-            this.finish(s === a ? "draw" : s > a ? 0 : 1);
+        // Overtime check
+        if (this.state.time <= 0 && !this.state.overtime) {
+            this.state.overtime = !0;
+            this.state.time = M.overtimeDuration;
+            this.emit({ type: "overtime" });
+        } else if (this.state.time <= 0 && this.state.overtime) {
+            this.state.phase = "finished";
+            this.emit({ type: "victory" });
             return;
         }
-        if (t.time <= 0) {
-            if (s === a && !t.overtime) {
-                t.overtime = !0;
-                t.time = M.overtime;
-            } else {
-                this.finish(Math.abs(s - a) < .001 ? "draw" : s > a ? 0 : 1);
+
+        const energyRate = (this.state.time <= 60 || this.state.overtime) ? M.doubleEnergyRate : M.baseEnergyRate;
+        for (const p of this.state.players) {
+            p.energy = Math.min(M.maxEnergy, p.energy + energyRate * dt);
+            for (const k in p.cooldowns) {
+                p.cooldowns[k] = Math.max(0, p.cooldowns[k] - dt);
             }
         }
-        if (t.overtime && Math.abs(s - a) > .001) this.finish(s > a ? 0 : 1);
+
+        // Update Poison clouds
+        for (let i = this.state.projectiles.length - 1; i >= 0; i--) {
+            const p = this.state.projectiles[i];
+            p.age += dt;
+            if (p.type === "poison_cloud") {
+                const tickDamage = w.poison.damage * dt;
+                for (const u of this.state.units) {
+                    if (u.team !== p.team && u.hp > 0 && Math.hypot(u.x - p.x, u.z - p.z) <= p.radius) {
+                        u.hp -= tickDamage;
+                        u.hurtTime = 0.15;
+                    }
+                }
+                for (const g of this.state.gates) {
+                    if (g.team !== p.team && g.hp > 0 && Math.hypot(Math.max(0, Math.abs(g.x - p.x) - 1.8), g.z - p.z) <= p.radius) {
+                        g.hp -= tickDamage;
+                        g.hurtTime = 0.15;
+                    }
+                }
+                if (p.age >= p.duration) this.state.projectiles.splice(i, 1);
+            } else if (p.type === "arrows" && p.age >= p.duration) {
+                for (const u of this.state.units) {
+                    if (u.team !== p.team && u.hp > 0 && Math.hypot(u.x - p.x, u.z - p.z) <= w.arrows.radius) {
+                        u.hp -= w.arrows.damage;
+                        u.hurtTime = 0.3;
+                    }
+                }
+                this.state.projectiles.splice(i, 1);
+            } else if (p.type === "fireball" && p.age >= p.duration) {
+                this.emit({ type: "explosion", x: p.targetX, z: p.targetZ });
+                for (const u of this.state.units) {
+                    if (u.team !== p.team && u.hp > 0 && Math.hypot(u.x - p.targetX, u.z - p.targetZ) <= w.fireball.radius) {
+                        u.hp -= w.fireball.damage;
+                        u.hurtTime = 0.4;
+                    }
+                }
+                for (const g of this.state.gates) {
+                    if (g.team !== p.team && g.hp > 0 && Math.hypot(Math.max(0, Math.abs(g.x - p.targetX) - 1.8), g.z - p.targetZ) <= w.fireball.radius) {
+                        g.hp -= w.fireball.damage;
+                        g.hurtTime = 0.4;
+                    }
+                }
+                this.state.projectiles.splice(i, 1);
+            }
+        }
+
+        // Update Units
+        this.updateUnits(dt);
+
+        // Update Bot AI
+        if (this.botTeam !== null) this.updateBot(dt, this.botTeam);
+
+        // Check Gates destruction
+        for (const g of this.state.gates) {
+            g.hurtTime = Math.max(0, g.hurtTime - dt);
+            if (g.hp <= 0 && !g.destroyed) {
+                g.destroyed = !0;
+                this.emit({ type: "gate-destroyed", gate: g.id });
+            }
+        }
+
+        const team0GatesAlive = this.state.gates.filter(g => g.team === 0 && g.hp > 0).length;
+        const team1GatesAlive = this.state.gates.filter(g => g.team === 1 && g.hp > 0).length;
+        if (team0GatesAlive === 0 || team1GatesAlive === 0) {
+            this.state.phase = "finished";
+            this.emit({ type: "victory" });
+        }
     }
 
-    finish(t) {
-        this.state.phase = "finished";
-        this.state.winner = t;
-        this.emit({
-            type: "victory",
-            team: t === "draw" ? 0 : t,
-            x: 0,
-            z: 0
-        });
+    updateUnits(dt) {
+        for (let i = this.state.units.length - 1; i >= 0; i--) {
+            const u = this.state.units[i];
+            u.age += dt;
+            u.hurtTime = Math.max(0, u.hurtTime - dt);
+
+            if (u.frozen > 0) {
+                u.frozen = Math.max(0, u.frozen - dt);
+                continue;
+            }
+
+            if (u.hp <= 0) {
+                u.deathTime += dt;
+                if (u.deathTime >= 0.8) this.state.units.splice(i, 1);
+                continue;
+            }
+
+            // Log rolling
+            if (u.isLog) {
+                const dist = Math.abs(u.vz * dt);
+                u.z += u.vz * dt;
+                u.distanceRemaining -= dist;
+                for (const enemy of this.state.units) {
+                    if (enemy.team !== u.team && enemy.hp > 0 && !enemy.isLog && Math.hypot(enemy.x - u.x, enemy.z - u.z) <= 1.6) {
+                        enemy.hp -= w.the_log.damage;
+                        enemy.hurtTime = 0.35;
+                        enemy.z += (u.vz > 0 ? 0.8 : -0.8);
+                        this.emit({ type: "hit", target: enemy.id, amount: w.the_log.damage, x: enemy.x, z: enemy.z });
+                    }
+                }
+                if (u.distanceRemaining <= 0 || Math.abs(u.z) > 15) this.state.units.splice(i, 1);
+                continue;
+            }
+
+            // Buildings don't walk
+            if (u.isBuilding) {
+                u.attackTime = Math.max(0, u.attackTime - dt);
+                let target = null;
+                let minDst = w[u.kind].range;
+                for (const enemy of this.state.units) {
+                    if (enemy.team !== u.team && enemy.hp > 0) {
+                        const dst = Math.hypot(enemy.x - u.x, enemy.z - u.z);
+                        if (dst <= minDst) { minDst = dst; target = enemy; }
+                    }
+                }
+                if (u.kind === "xbow" && !target) {
+                    for (const g of this.state.gates) {
+                        if (g.team !== u.team && g.hp > 0) {
+                            const dst = Math.hypot(g.x - u.x, g.z - u.z);
+                            if (dst <= minDst) { minDst = dst; target = g; }
+                        }
+                    }
+                }
+                if (target && u.attackTime <= 0) {
+                    u.attackTime = w[u.kind].cooldown;
+                    target.hp -= w[u.kind].damage;
+                    target.hurtTime = 0.25;
+                    this.emit({ type: "attack", kind: u.kind, x: u.x, z: u.z });
+                    this.emit({ type: "hit", target: target.id, amount: w[u.kind].damage, x: target.x, z: target.z });
+                }
+                continue;
+            }
+
+            // Mobile units pathfinding and combat
+            const cData = w[u.kind];
+            const isTitan = u.kind === "titan";
+            const isRider = u.kind === "knight_rider";
+
+            if (isRider) {
+                u.chargeTimer += dt;
+                u.charging = u.chargeTimer >= 1.5;
+            }
+
+            // Find closest enemy target
+            let target = null;
+            let targetDst = Infinity;
+
+            if (!isTitan) {
+                for (const enemy of this.state.units) {
+                    if (enemy.team !== u.team && enemy.hp > 0 && !enemy.isLog) {
+                        const dst = Math.hypot(enemy.x - u.x, enemy.z - u.z);
+                        if (dst < targetDst) { targetDst = dst; target = enemy; }
+                    }
+                }
+            }
+
+            // If no enemy unit or titan targeting buildings, target nearest gate
+            if (!target || targetDst > 6.0 || isTitan) {
+                for (const g of this.state.gates) {
+                    if (g.team !== u.team && g.hp > 0) {
+                        const dst = Math.hypot(g.x - u.x, g.z - u.z);
+                        if (dst < targetDst) { targetDst = dst; target = g; }
+                    }
+                }
+            }
+
+            const attackRange = cData.range || 1.1;
+            if (target && targetDst <= attackRange) {
+                // In attack range
+                u.state = "attack";
+                u.attackTime = Math.max(0, u.attackTime - dt);
+                u.facing = Math.atan2(target.x - u.x, target.z - u.z);
+
+                if (u.attackTime <= 0) {
+                    u.attackTime = cData.cooldown;
+                    const dmg = isRider && u.charging ? cData.chargeDamage : cData.damage;
+                    target.hp -= dmg;
+                    target.hurtTime = 0.3;
+                    this.emit({ type: "attack", kind: u.kind, x: u.x, z: u.z });
+                    this.emit({ type: "hit", target: target.id, amount: dmg, x: target.x, z: target.z });
+                    if (isRider && u.charging) {
+                        u.charging = false;
+                        u.chargeTimer = 0;
+                    }
+                }
+            } else if (target) {
+                // Walk towards target
+                u.state = "walk";
+                const moveSpeed = (isRider && u.charging) ? cData.speed * 1.8 : cData.speed;
+                const dx = target.x - u.x;
+                const dz = target.z - u.z;
+                const angle = Math.atan2(dx, dz);
+                u.facing = angle;
+                u.vx = Math.sin(angle) * moveSpeed;
+                u.vz = Math.cos(angle) * moveSpeed;
+                u.x += u.vx * dt;
+                u.z += u.vz * dt;
+                u.footstep += moveSpeed * dt;
+            }
+        }
     }
 
-    updateBot(t, s) {
-        if (this.botTimer -= t, this.botTimer > 0) return;
-        this.botTimer = this.difficulty === "hard" ? .65 + this.random() * .75 : 1.2 + this.random() * 1.1;
-        const a = this.state,
-            e = a.players[s],
-            i = Ut(s),
-            o = a.units.filter(n => n.team === i && n.hp > 0 && n.z * et(s) < 1);
+    updateBot(dt, botTeam) {
+        const player = this.state.players[botTeam];
+        this.lastBotPlay += dt;
+        if (this.lastBotPlay < 2.8) return;
 
-        let c, l = -5 + this.random() * 10,
-            r = s === 0 ? 8 : -8;
-
-        if (o.length >= 3 && e.energy >= 4) {
-            const spellCandidates = ["arrows", "fireball", "poison", "lightning"].filter(sp => e.hand.includes(sp) && w[sp].cost <= e.energy);
-            if (spellCandidates.length) {
-                c = spellCandidates[0];
-                const n = o[Math.floor(this.random() * o.length)];
-                l = n.x;
-                r = n.z;
-                this.deploy({ team: s, card: c, x: l, z: r });
-                return;
-            }
+        const affordable = player.hand.filter(c => w[c] && player.energy >= w[c].cost);
+        if (affordable.length > 0) {
+            const card = affordable[Math.floor(this.rnd() * affordable.length)];
+            const slot = player.hand.indexOf(card);
+            const targetZ = botTeam === 1 ? -6.0 + this.rnd() * 4.0 : 6.0 - this.rnd() * 4.0;
+            const targetX = (this.rnd() - 0.5) * 8.0;
+            this.deploy({ team: botTeam, card, x: targetX, z: targetZ, slot });
+            this.lastBotPlay = 0;
         }
-
-        const affordable = e.hand.filter(h => w[h].cost <= e.energy && e.cooldowns[h] <= 0);
-        if (!affordable.length) return;
-        if (e.energy < 4 && !o.length && this.random() > .3) return;
-
-        c = affordable[Math.floor(this.random() * affordable.length)];
-        const cardObj = w[c];
-
-        if (cardObj.isSpell && c !== "the_log") {
-            if (o.length) {
-                l = o[0].x;
-                r = o[0].z;
-            } else {
-                l = 0;
-                r = s === 0 ? -13.5 : 13.5;
-            }
-        } else if (cardObj.isBuilding) {
-            l = -2 + this.random() * 4;
-            r = s === 0 ? 4 : -4;
-        } else if (o.length) {
-            l = o[0].x;
-            r = s === 0 ? 6.5 : -6.5;
-        } else {
-            const hasTank = a.units.find(p => p.team === s && (p.kind === "knight" || p.kind === "titan") && p.hp > 0);
-            if (hasTank && (c === "mage" || c === "archers")) {
-                l = hasTank.x;
-                r = S(hasTank.z - et(s) * 2, s === 0 ? 1 : -11, s === 0 ? 11 : -1);
-            }
-        }
-
-        this.deploy({ team: s, card: c, x: l, z: r });
     }
 }
 function ut(g, t = !1) {
@@ -1408,90 +1195,9 @@ class K extends nt {
     }
 }
 
-const d = {
-    dark: 1382429,
-    black: 526344,
-    blue: 1983372,
-    blueLight: 3436214,
-    skin: 15450269,
-    shadowSkin: 12224888,
-    steel: 12173516,
-    edge: 14476008,
-    gold: 15710545,
-    wood: 8935735,
-    purple: 8734159,
-    purpleLight: 11364075,
-    eye: 16733151,
-    red: 9314357,
-    orange: 15361309,
-    stone: 8421504,
-    darkStone: 4342338,
-    green: 2332219,
-    teal: 1954193,
-    ice: 7453695
-};
-
-class Gt {
-    parts = [];
-    add(t, s, a = 0, e = 0, i = 0, o = 1, c = 1, l = 1, r = 0, n = 0, h = 0) {
-        const p = new Z().compose(new E(a, e, i), new wt().setFromEuler(new xt(r, n, h)), new E(o, c, l));
-        let u = t.index ? t.toNonIndexed() : t;
-        u !== t && t.dispose(), u.applyMatrix4(p), u.deleteAttribute("uv");
-        const b = u.getAttribute("position").count,
-            m = new Float32Array(b * 3),
-            v = new V(s);
-        for (let y = 0; y < b; y++) m[y * 3] = v.r, m[y * 3 + 1] = v.g, m[y * 3 + 2] = v.b;
-        u.setAttribute("color", new J(m, 3)), this.parts.push(u);
-    }
-    ell(t, s, a, e, i, o, c) {
-        this.add(new rt(1, 14, 10), t, s, a, e, i, o, c);
-    }
-    box(t, s, a, e, i, o, c, l = 0) {
-        this.add(new K(1, 1, 1, 2, .08), t, s, a, e, i, o, c, 0, 0, l);
-    }
-    cyl(t, s, a, e, i, o, c, l = 0, r = 0, n = 12) {
-        this.add(new lt(i, o, c, n), t, s, a, e, 1, 1, 1, l, 0, r);
-    }
-    cone(t, s, a, e, i, o, c = 0, l = 0) {
-        this.add(new ct(i, o, 8), t, s, a, e, 1, 1, 1, c, 0, l);
-    }
-    ring(t, s, a, e, i, o, c = 0, l = 1, r = 1) {
-        this.add(new Mt(i, o, 6, 18), t, s, a, e, l, r, 1, c);
-    }
-    finish() {
-        const t = ut(this.parts);
-        for (const s of this.parts) s.dispose();
-        return t.computeBoundingSphere(), t;
-    }
-}
-
-function $t(g, t, s, a, e) {
-    const i = new At;
-    i.moveTo(-.29, .35), i.lineTo(0, .44), i.lineTo(.29, .35), i.lineTo(.25, -.18), i.lineTo(0, -.46), i.lineTo(-.25, -.18), i.closePath();
-    const o = new _(i, {
-            depth: .1,
-            bevelEnabled: !0,
-            bevelSize: .025,
-            bevelThickness: .025,
-            bevelSegments: 1,
-            steps: 1
-        }),
-        c = e ? 1.38 : 1;
-    g.add(o, d.edge, t, s, a, c, c, 1);
-    const l = new _(i, {
-        depth: .025,
-        bevelEnabled: !1
-    });
-    g.add(l, e ? d.dark : d.blue, t, s, a + .125, c * .87, c * .86, 1);
-    for (const [r, n] of [
-            [-.22, .29],
-            [.22, .29],
-            [0, -.33]
-        ]) g.ell(d.steel, t + r * c, s + n * c, a + .16, .034, .034, .021);
-    e ? (g.box(d.steel, t, s + .1, a + .17, .36, .035, .027), g.box(d.steel, t, s, a + .17, .035, .5, .027)) : g.add(new W(.13), d.edge, t, s, a + .17, .65, 1.8, .3);
-}
-
-// Procedural 3D Unit Models for all 10 unit kinds:
+// ==========================================
+// PROCEDURAL 3D UNIT MODELS (ot) - PRO QUALITY
+// ==========================================
 function ot(g, t = !1) {
     const s = [],
         a = (l, r, n) => {
@@ -1503,84 +1209,116 @@ function ot(g, t = !1) {
             });
         };
 
+    // 1. BOMB TOWER (Torre de Bombas)
     if (g === "bomb_tower") {
         a("body", [0, 0, 0], l => {
-            l.cyl(d.stone, 0, .45, 0, 1.25, 1.45, .9, 0, 0, 8);
-            l.cyl(d.stone, 0, 1.35, 0, 1.0, 1.2, 1.1, 0, 0, 8);
-            l.cyl(d.wood, 0, 1.95, 0, 1.35, 1.35, .15, 0, 0, 8);
+            // Hexagonal stone base & tower shaft
+            l.cyl(d.stone, 0, .45, 0, 1.35, 1.55, .9, 0, 0, 8);
+            l.cyl(d.stone, 0, 1.35, 0, 1.15, 1.35, 1.1, 0, 0, 8);
+            // Wooden roof platform
+            l.cyl(d.wood, 0, 1.95, 0, 1.45, 1.45, .15, 0, 0, 8);
+            // Crenelated stone battlements
             for (let r = 0; r < 6; r++) {
                 const ang = (r / 6) * Math.PI * 2;
-                l.box(d.stone, Math.sin(ang) * 1.2, 2.15, Math.cos(ang) * 1.2, .32, .35, .18, ang);
+                l.box(d.stone, Math.sin(ang) * 1.25, 2.15, Math.cos(ang) * 1.25, .35, .35, .18, ang);
             }
         });
-        a("head", [0, 2.1, 0], l => {
-            l.cyl(d.steel, 0, .25, .08, .32, .42, .75, .55, 0, 8);
-            l.cyl(d.black, 0, .48, .22, .24, .24, .12, .55, 0, 8);
-            l.box(d.gold, 0, .25, .08, .68, .08, .08);
-            l.ell(d.black, -.42, .05, -.15, .22, .22, .22);
-            l.cyl(d.red, -.42, .25, -.15, .04, .04, .15);
+        a("head", [0, 2.15, 0], l => {
+            // Heavy iron mortar cannon pointing forward
+            l.cyl(d.steel, 0, .32, .1, .36, .46, .85, .55, 0, 8);
+            l.cyl(d.black, 0, .58, .26, .26, .26, .15, .55, 0, 8);
+            l.box(d.gold, 0, .32, .1, .75, .08, .08);
+            // Stack of cannonballs on the wooden deck
+            l.ell(d.black, -.42, .08, -.18, .22, .22, .22);
+            l.ell(d.black, -.22, .08, -.35, .20, .20, .20);
+            l.ell(d.black, -.32, .24, -.26, .18, .18, .18);
+            // Burning powder fuse with spark
+            l.cyl(d.red, 0, .15, -.45, .04, .04, .25);
+            l.ell(d.orange, 0, .28, -.52, .08, .08, .08);
         });
         return { bones: s, height: 2.8, scale: 1.1 };
     }
 
+    // 2. XBOW (Ballesta de Asedio)
     if (g === "xbow") {
         a("body", [0, 0, 0], l => {
+            // Heavy dark oak tripod swivel base
             l.box(d.wood, 0, .2, 0, 1.5, .25, 1.7);
             l.box(d.steel, 0, .12, 0, 1.65, .1, .25);
             l.box(d.steel, 0, .12, 0, .25, .1, 1.85);
-            l.cyl(d.steel, 0, .45, 0, .45, .45, .25, 0, 0, 12);
+            // Brass gear and rotation turntable
+            l.cyl(d.steel, 0, .42, 0, .45, .45, .25, 0, 0, 12);
+            l.ring(d.gold, 0, .44, 0, .46, .05, Math.PI / 2);
         });
         a("head", [0, .58, 0], l => {
-            l.box(d.wood, 0, .2, 0, .36, .32, 1.4);
+            // Ballista frame & bolt launch track
+            l.box(d.wood, 0, .2, 0, .38, .32, 1.45);
             l.box(d.steel, 0, .35, 0, .18, .12, 1.2);
-            l.cyl(d.wood, 0, .22, .52, .055, .055, 2.2, 0, Math.PI / 2, 8);
-            l.cyl(d.steel, 0, .32, .15, .028, .028, 1.1, Math.PI / 2, 0);
+            // Double curved steel bow limbs
+            l.cyl(d.wood, 0, .22, .55, .06, .06, 2.3, 0, Math.PI / 2, 8);
+            l.cyl(d.steel, 0, .34, .18, .03, .03, 1.15, Math.PI / 2, 0);
+            // Tensioned cable and loaded heavy bolt
+            l.line && l.line(d.gold, -1.1, .22, .55, 0, .34, -.45);
+            l.line && l.line(d.gold, 1.1, .22, .55, 0, .34, -.45);
+            l.box(d.gold, 0, .38, .2, .08, .08, .9);
         });
         return { bones: s, height: 1.7, scale: 1.05 };
     }
 
+    // 3. THE LOG (El Tronco con pinchos)
     if (g === "the_log") {
         a("body", [0, 0, 0], l => {
-            l.cyl(d.wood, 0, .38, 0, .42, .42, 2.6, 0, Math.PI / 2, 14);
-            l.cyl(d.steel, 0, .38, -1.05, .44, .44, .16, 0, Math.PI / 2, 14);
-            l.cyl(d.steel, 0, .38, 1.05, .44, .44, .16, 0, Math.PI / 2, 14);
+            // Thick rolling timber trunk
+            l.cyl(d.wood, 0, .42, 0, .48, .48, 2.8, 0, Math.PI / 2, 14);
+            // 3 Heavy riveted iron bands
+            l.cyl(d.steel, 0, .42, -1.1, .51, .51, .18, 0, Math.PI / 2, 14);
+            l.cyl(d.steel, 0, .42, 0, .51, .51, .18, 0, Math.PI / 2, 14);
+            l.cyl(d.steel, 0, .42, 1.1, .51, .51, .18, 0, Math.PI / 2, 14);
+            // 12 Sharp protruding iron spikes radiating around
             for (let r = 0; r < 8; r++) {
                 const ang = (r / 8) * Math.PI * 2;
-                l.cone(d.gold, Math.sin(ang) * .48, .38 + Math.cos(ang) * .48, -.55, .09, .28, ang, 0);
-                l.cone(d.gold, Math.sin(ang + .4) * .48, .38 + Math.cos(ang + .4) * .48, .55, .09, .28, ang + .4, 0);
+                l.cone(d.gold, Math.sin(ang) * .55, .42 + Math.cos(ang) * .55, -.55, .1, .32, ang, 0);
+                l.cone(d.gold, Math.sin(ang + .4) * .55, .42 + Math.cos(ang + .4) * .55, .55, .1, .32, ang + .4, 0);
             }
         });
         return { bones: s, height: .9, scale: 1.0 };
     }
 
+    // 4. TITAN (Coloso Tanque de Piedra y Lava)
     if (g === "titan") {
         a("body", [0, 0, 0], l => {
-            l.box(d.darkStone, 0, 1.65, 0, 1.55, 1.35, 1.15);
-            l.box(d.orange, 0, 1.6, .58, .45, .45, .06);
-            l.box(d.red, 0, 1.35, .58, .28, .65, .05);
-            l.ell(d.stone, -1.05, 2.15, 0, .52, .48, .52);
-            l.ell(d.stone, 1.05, 2.15, 0, .52, .48, .52);
+            // Massive granite torso
+            l.box(d.darkStone, 0, 1.65, 0, 1.65, 1.45, 1.25);
+            // Molten lava core on chest
+            l.box(d.orange, 0, 1.6, .62, .5, .5, .08);
+            l.box(d.red, 0, 1.35, .62, .32, .68, .06);
+            // Spiked shoulder boulder pauldrons
+            l.ell(d.stone, -1.15, 2.2, 0, .58, .52, .58);
+            l.ell(d.stone, 1.15, 2.2, 0, .58, .52, .58);
         });
         a("head", [0, 2.45, 0], l => {
-            l.box(d.darkStone, 0, .15, .15, .68, .52, .62);
-            l.box(d.orange, -.16, .18, .46, .14, .06, .05);
-            l.box(d.orange, .16, .18, .46, .14, .06, .05);
-            l.cone(d.stone, -.28, .55, .1, .14, .32, -.2, -.2);
-            l.cone(d.stone, .28, .55, .1, .14, .32, -.2, .2);
+            // Chiseled rock head & glowing eyes
+            l.box(d.darkStone, 0, .18, .18, .75, .58, .68);
+            l.box(d.orange, -.18, .22, .52, .16, .08, .06);
+            l.box(d.orange, .18, .22, .52, .16, .08, .06);
+            // Obsidian horn crests
+            l.cone(d.stone, -.32, .6, .1, .16, .38, -.2, -.2);
+            l.cone(d.stone, .32, .6, .1, .16, .38, -.2, .2);
         });
         for (const l of [-1, 1]) {
-            a(l === -1 ? "leftArm" : "rightArm", [l * 1.05, 1.95, 0], r => {
-                r.cyl(d.stone, l * .05, -.5, 0, .28, .36, 1.15);
-                r.ell(d.darkStone, l * .05, -1.15, .08, .35, .38, .35);
+            a(l === -1 ? "leftArm" : "rightArm", [l * 1.15, 2.0, 0], r => {
+                r.cyl(d.stone, l * .06, -.55, 0, .32, .42, 1.25);
+                r.ell(d.darkStone, l * .06, -1.25, .1, .42, .45, .42);
             });
-            a(l === -1 ? "leftLeg" : "rightLeg", [l * .46, .75, 0], r => {
-                r.box(d.darkStone, 0, -.38, 0, .48, .85, .58);
-                r.box(d.stone, 0, -.78, .12, .54, .25, .72);
+            a(l === -1 ? "leftLeg" : "rightLeg", [l * .52, .8, 0], r => {
+                r.box(d.darkStone, 0, -.42, 0, .55, .95, .65);
+                r.box(d.stone, 0, -.85, .14, .62, .28, .8);
             });
         }
-        return { bones: s, height: 3.2, scale: 1.35 };
+        return { bones: s, height: 3.4, scale: 1.45 };
     }
 
+    // 5. ARCHERS (Arqueras)
     if (g === "archers") {
         a("body", [0, 0, 0], l => {
             l.cyl(d.teal, 0, .78, 0, .24, .32, .72, 0, 0, 10);
@@ -1616,41 +1354,47 @@ function ot(g, t = !1) {
         return { bones: s, height: 1.85, scale: .92 };
     }
 
+    // 6. KNIGHT RIDER (Caballero a Caballo)
     if (g === "knight_rider") {
         a("body", [0, 0, 0], l => {
-            l.box(d.leather, 0, .95, 0, .75, .68, 1.5);
-            l.box(d.blue, 0, 1.12, .02, .82, .24, .95);
-            l.box(d.leather, 0, 1.4, .65, .32, .58, .48, .38);
-            l.cone(d.steel, 0, 1.62, .96, .22, .48, 1.1);
-            l.box(d.steel, 0, 1.76, -.05, .62, .56, .44);
-            l.box(d.gold, 0, 1.95, -.05, .68, .08, .46);
+            // Horse body & armor barding
+            l.box(d.leather, 0, .95, 0, .85, .75, 1.6);
+            l.box(d.blue, 0, 1.15, .02, .92, .26, 1.05);
+            l.box(d.leather, 0, 1.45, .7, .36, .65, .52, .38);
+            l.cone(d.steel, 0, 1.68, 1.02, .25, .52, 1.1);
+            // Knight Torso mounted
+            l.box(d.steel, 0, 1.85, -.05, .68, .62, .48);
+            l.box(d.gold, 0, 2.05, -.05, .72, .09, .5);
         });
-        a("head", [0, 2.22, -.05], l => {
-            l.ell(d.steel, 0, .05, 0, .24, .26, .24);
-            l.box(d.edge, 0, .06, .21, .36, .05, .06);
-            l.cone(d.gold, 0, .42, -.05, .12, .42, -.15);
+        a("head", [0, 2.32, -.05], l => {
+            // Knight helmet & golden plume
+            l.ell(d.steel, 0, .05, 0, .26, .28, .26);
+            l.box(d.edge, 0, .06, .22, .38, .06, .06);
+            l.cone(d.gold, 0, .45, -.05, .14, .45, -.15);
         });
         for (const l of [-1, 1]) {
-            a(l === -1 ? "leftArm" : "rightArm", [l * .42, 1.72, -.05], r => {
-                r.cyl(d.steel, l * .04, -.22, 0, .14, .12, .38);
+            a(l === -1 ? "leftArm" : "rightArm", [l * .45, 1.82, -.05], r => {
+                r.cyl(d.steel, l * .04, -.22, 0, .15, .13, .42);
                 if (l === -1) {
                     $t(r, -.08, -.35, .25, !1);
                 } else {
-                    r.cyl(d.wood, .08, -.15, .8, .055, .035, 2.8, 1.45, 0);
-                    r.cone(d.steel, .08, -.15, 2.4, .14, .45, 1.45, 0);
-                    r.ring(d.gold, .08, -.15, -.2, .18, .04, 1.45);
+                    // Tournament jousting lance with team pennant
+                    r.cyl(d.wood, .08, -.15, .8, .06, .04, 3.1, 1.45, 0);
+                    r.cone(d.steel, .08, -.15, 2.6, .16, .5, 1.45, 0);
+                    r.ring(d.gold, .08, -.15, -.2, .2, .05, 1.45);
                 }
             });
-            a(l === -1 ? "leftLeg" : "rightLeg", [l * .28, .55, 0], r => {
-                r.cyl(d.leather, 0, -.25, .4, .11, .095, .65);
-                r.cyl(d.leather, 0, -.25, -.4, .11, .095, .65);
-                r.box(d.dark, 0, -.58, .4, .18, .12, .24);
-                r.box(d.dark, 0, -.58, -.4, .18, .12, .24);
+            a(l === -1 ? "leftLeg" : "rightLeg", [l * .32, .55, 0], r => {
+                r.cyl(d.leather, 0, -.25, .45, .12, .1, .7);
+                r.cyl(d.leather, 0, -.25, -.45, .12, .1, .7);
+                r.box(d.dark, 0, -.62, .45, .2, .14, .26);
+                r.box(d.dark, 0, -.62, -.45, .2, .14, .26);
             });
         }
-        return { bones: s, height: 2.6, scale: 1.1 };
+        return { bones: s, height: 2.85, scale: 1.15 };
     }
 
+    // ORIGINAL 4 UNITS (imps, knight, mage, lancer)
     const e = g === "imps",
         i = g === "knight",
         o = g === "mage",
@@ -1659,101 +1403,59 @@ function ot(g, t = !1) {
     a("body", [0, 0, 0], l => {
         if (e) l.ell(d.purple, 0, .61, 0, .3, .34, .2), l.ell(d.purpleLight, 0, .68, .14, .22, .23, .08), l.cyl(d.leather, 0, .37, 0, .27, .28, .18), l.box(d.gold, 0, .4, .265, .12, .095, .055), l.box(d.dark, 0, .39, -.22, .45, .06, .04);
         else if (o) {
-            l.cyl(d.red, 0, .62, 0, .27, .47, .95, 0, 0, 16);
-            l.cyl(d.orange, 0, .16, 0, .46, .48, .065, 0, 0, 16);
-            l.ell(d.red, 0, 1.06, 0, .38, .37, .25);
-            l.box(d.gold, 0, .72, .27, .62, .07, .045);
-            l.ell(d.gold, 0, 1.23, .265, .065, .065, .025);
-            l.box(d.orange, -.15, .87, .255, .055, .5, .03, -.13);
-            l.box(d.orange, .15, .87, .255, .055, .5, .03, .13);
+            if (l.cyl(d.red, 0, .62, 0, .27, .47, .95, 0, 0, 16), l.cyl(d.orange, 0, .16, 0, .46, .48, .065, 0, 0, 16), l.ell(d.red, 0, 1.06, 0, .38, .37, .25), l.box(d.gold, 0, .72, .27, .62, .07, .045), l.ell(d.gold, 0, 1.23, .265, .065, .065, .025), l.box(d.orange, -.15, .87, .255, .055, .5, .03, -.13), l.box(d.orange, .15, .87, .255, .055, .5, .03, .13), !t)
+                for (let r = 0; r < 8; r++) {
+                    const n = r / 8 * Math.PI * 2;
+                    l.cyl(d.red, Math.sin(n) * .29, .43, Math.cos(n) * .29, .035, .055, .48, 0, 0, 5)
+                }
         } else {
-            l.ell(d.black, 0, .97, 0, .34 * c, .44, .24);
-            l.box(d.blue, 0, .85, .01, .64 * c, .57, .42);
-            l.box(i ? d.steel : d.dark, 0, 1.04, .02, .67 * c, .47, .5);
-            l.box(d.steel, 0, 1.1, .285, .54 * c, .33, .065);
-            l.box(d.edge, 0, 1.26, .27, .58 * c, .038, .04);
-            l.box(d.leather, 0, .71, .04, .69 * c, .115, .48);
-            l.box(d.edge, 0, .71, .31, .13, .105, .065);
-            for (const r of [-1, 1]) {
-                l.box(d.dark, r * .21, .55, .03, .24, .3, .35, r * .11);
-                l.box(d.steel, r * .21, .58, .23, .21, .23, .045, r * .11);
-            }
-            i && (l.box(d.blue, 0, 1.25, -.08, .75, .17, .46), l.add(new W(.085), d.edge, 0, 1.08, .337, 1, 1.3, .3));
+            l.ell(d.black, 0, .97, 0, .34 * c, .44, .24), l.box(d.blue, 0, .85, .01, .64 * c, .57, .42), l.box(i ? d.steel : d.dark, 0, 1.04, .02, .67 * c, .47, .5), l.box(d.steel, 0, 1.1, .285, .54 * c, .33, .065), l.box(d.edge, 0, 1.26, .27, .58 * c, .038, .04), l.box(d.leather, 0, .71, .04, .69 * c, .115, .48), l.box(d.edge, 0, .71, .31, .13, .105, .065);
+            for (const r of [-1, 1])
+                if (l.box(d.dark, r * .21, .55, .03, .24, .3, .35, r * .11), l.box(d.steel, r * .21, .58, .23, .21, .23, .045, r * .11), !t)
+                    for (let n = 0; n < 3; n++) l.ell(d.edge, r * (.11 + n * .075), 1.12, .325, .018, .018, .013);
+            i && (l.box(d.blue, 0, 1.25, -.08, .75, .17, .46), l.add(new W(.085), d.edge, 0, 1.08, .337, 1, 1.3, .3))
         }
-    });
-
-    a("head", [0, e ? .97 : 1.48, 0], l => {
+    }), a("head", [0, e ? .97 : 1.48, 0], l => {
         if (e) {
-            l.ell(d.purple, 0, .06, 0, .37, .31, .28);
-            l.ell(d.purpleLight, 0, -.04, .19, .25, .16, .15);
-            for (const r of [-1, 1]) {
-                l.ell(d.purple, r * .31, .06, 0, .22, .12, .075);
-                l.cone(d.purpleLight, r * .39, .15, -.01, .12, .34, 0, -r * .96);
-                l.ell(d.black, r * .14, .065, .242, .112, .078, .055);
-                l.ell(d.eye, r * .14, .068, .285, .074, .047, .024);
-            }
+            l.ell(d.purple, 0, .06, 0, .37, .31, .28), l.ell(d.purpleLight, 0, -.04, .19, .25, .16, .15);
+            for (const r of [-1, 1]) l.ell(d.purple, r * .31, .06, 0, .22, .12, .075), l.cone(d.purpleLight, r * .39, .15, -.01, .12, .34, 0, -r * .96), l.ell(d.black, r * .14, .065, .242, .112, .078, .055), l.ell(d.eye, r * .14, .068, .285, .074, .047, .024), l.ell(16767487, r * .126, .067, .305, .027, .03, .012), l.box(d.purpleLight, r * .14, .15, .259, .22, .067, .08, -r * .25), l.cone(d.purpleLight, r * .21, .33, -.09, .083, .29, -.32, r * .35), l.cone(16772552, r * .15, -.135, .31, .03, .1, Math.PI);
+            if (l.ell(d.black, 0, -.135, .284, .15, .047, .055), l.ell(d.purpleLight, 0, -.015, .322, .045, .037, .04), !t)
+                for (let r = -2; r <= 2; r++) l.box(16112561, r * .039, -.12, .333, .029, .034, .018)
         } else {
             l.ell(d.skin, 0, .025, .025, .225, .245, .2);
-            for (const r of [-1, 1]) {
-                l.ell(16379607, r * .089, .07, .202, .073, .046, .019);
-                l.ell(o ? 16755991 : 2438731, r * .075, .07, .221, .03, .033, .012);
-                l.box(o ? 3416865 : d.black, r * .09, .135, .207, .15, .048, .046, -r * .18);
-            }
-            if (o) {
-                l.ell(d.red, 0, .16, -.08, .34, .4, .26);
-                l.cone(d.red, 0, .43, -.085, .22, .32, 0, -.13);
-            } else {
-                l.add(new rt(1, 18, 12, 0, Math.PI * 2, 0, Math.PI * .48), i ? d.steel : d.blue, 0, .085, 0, .3, .32, .275);
-                l.box(d.edge, 0, .15, .263, .56, .055, .06);
-                l.box(d.steel, 0, .3, -.005, .065, .2, .545);
+            for (const r of [-1, 1]) l.ell(16379607, r * .089, .07, .202, .073, .046, .019), l.ell(o ? 16755991 : 2438731, r * .075, .07, .221, .03, .033, .012), l.box(o ? 3416865 : d.black, r * .09, .135, .207, .15, .048, .046, -r * .18), t || l.ell(d.shadowSkin, r * .14, -.028, .17, .058, .033, .022);
+            if (l.ell(d.skin, 0, .01, .22, .042, .066, .044), o) l.ell(4335657, 0, -.16, .13, .17, .13, .12), l.cone(3482408, 0, -.285, .16, .105, .21, Math.PI), l.box(d.shadowSkin, 0, -.1, .246, .13, .025, .024), l.ell(d.red, 0, .16, -.08, .34, .4, .26), l.ring(d.orange, 0, .025, .14, .276, .059, 0, .95, 1.25), l.cone(d.red, 0, .43, -.085, .22, .32, 0, -.13), l.box(3745063, 0, .205, .19, .19, .095, .05, -.2);
+            else {
+                l.add(new rt(1, 18, 12, 0, Math.PI * 2, 0, Math.PI * .48), i ? d.steel : d.blue, 0, .085, 0, .3, .32, .275), l.box(d.edge, 0, .15, .263, .56, .055, .06), l.box(d.steel, 0, .3, -.005, .065, .2, .545), l.box(d.dark, 0, .015, -.195, .48, .31, .16);
+                for (const r of [-1, 1]) l.box(d.steel, r * .252, -.04, .025, .075, .36, .37, r * .07), l.ell(d.edge, r * .29, .07, .015, .025, .028, .026);
+                if (l.box(i ? d.steel : d.blue, 0, -.15, .218, .44, .2, .11), i) {
+                    l.box(d.edge, 0, -.14, .283, .04, .18, .025);
+                    for (const r of [-1, 1])
+                        for (let n = 0; n < 3; n++) l.box(d.dark, r * (.073 + n * .05), -.145, .282, .018, .079, .021)
+                } else l.box(d.blue, 0, -.29, .035, .55, .13, .45), l.box(d.blueLight, -.12, -.295, .24, .25, .08, .055)
             }
         }
     });
-
-    for (const l of [-1, 1]) {
-        a(l === -1 ? "leftArm" : "rightArm", [l * (e ? .31 : .4 * c), e ? .8 : 1.17, 0], r => {
-            if (e) {
-                r.ell(d.purple, l * .035, -.14, 0, .115, .21, .13);
-                r.ell(d.purpleLight, l * .06, -.32, .055, .12, .16, .1);
-            } else if (o) {
-                r.cyl(d.red, l * .03, -.15, 0, .17, .2, .41, 0, l * .14);
-                r.ell(d.skin, l * .065, -.43, .02, .12, .135, .105);
-                if (l === 1) r.ell(16760114, .08, -.34, .18, .11, .16, .11);
-            } else {
-                r.ell(d.black, l * .02, -.14, 0, .135, .28, .15);
-                r.ell(i ? d.steel : d.blue, l * .03, .015, 0, i ? .255 : .19, .2, .23);
-                r.cyl(d.steel, l * .04, -.325, 0, .14, .12, .22);
-                if (l === -1) {
-                    $t(r, -.08, -.36, .2, i);
-                } else if (i) {
-                    r.cyl(d.leather, .055, -.43, .1, .048, .048, .34);
-                    r.box(d.gold, .055, -.19, .1, .35, .065, .08);
-                    r.box(d.edge, .055, .32, .1, .145, .95, .075);
-                } else {
-                    r.cyl(d.wood, .065, -.1, .14, .04, .037, 2.25);
-                    r.cyl(d.edge, .065, .88, .14, .059, .059, .14);
-                }
-            }
-        });
-        a(l === -1 ? "leftLeg" : "rightLeg", [l * (e ? .17 : .19 * c), e ? .37 : .56, 0], r => {
-            r.ell(e ? d.purple : o ? d.red : d.dark, 0, -.13, 0, e ? .12 : .135, .22, .135);
-            r.ell(e ? d.purpleLight : o ? d.leather : d.steel, 0, -.27, .035, .14, .13, .14);
-            r.box(e ? d.purple : o ? d.leather : d.dark, 0, -.42, .06, .25, .21, .37);
-        });
-    }
-
-    if (!e) {
-        a("cape", [0, 1.25, -.24], l => {
+    for (const l of [-1, 1]) a(l === -1 ? "leftArm" : "rightArm", [l * (e ? .31 : .4 * c), e ? .8 : 1.17, 0], r => {
+        if (e) {
+            r.ell(d.purple, l * .035, -.14, 0, .115, .21, .13), r.ell(d.purpleLight, l * .06, -.32, .055, .12, .16, .1), r.ell(d.purple, l * .065, -.46, .095, .12, .12, .1);
+            for (let n = 0; n < 3; n++) r.cone(14731759, l * .065 + (n - 1) * .055, -.5, .18, .018, .09, .7)
+        } else o ? (r.cyl(d.red, l * .03, -.15, 0, .17, .2, .41, 0, l * .14), r.cyl(d.orange, l * .06, -.345, 0, .2, .2, .055), r.ell(d.skin, l * .065, -.43, .02, .12, .135, .105), l === 1 && (r.ell(16760114, .08, -.34, .18, .11, .16, .11), r.cone(16766822, .08, -.15, .18, .083, .26, .12, .12))) : (r.ell(d.black, l * .02, -.14, 0, .135, .28, .15), r.ell(i ? d.steel : d.blue, l * .03, .015, 0, i ? .255 : .19, .2, .23), r.box(d.edge, l * .04, -.055, .155, .31, .07, .07), r.cyl(d.steel, l * .04, -.325, 0, .14, .12, .22), r.ring(d.edge, l * .04, -.22, 0, .13, .027, Math.PI / 2), r.ell(i ? d.dark : d.skin, l * .04, -.48, .035, .13, .135, .12), l === -1 ? $t(r, -.08, -.36, .2, i) : i ? (r.cyl(d.leather, .055, -.43, .1, .048, .048, .34), r.box(d.gold, .055, -.19, .1, .35, .065, .08), r.box(d.edge, .055, .32, .1, .145, .95, .075), r.cone(d.edge, .055, .91, .1, .1, .26), r.box(d.steel, .055, .32, .145, .026, .88, .015)) : (r.cyl(d.wood, .065, -.1, .14, .04, .037, 2.25), r.cyl(d.edge, .065, .88, .14, .059, .059, .14), r.add(new W(1), d.edge, .065, 1.17, .14, .13, .36, .065), r.cyl(d.dark, .065, .79, .14, .05, .05, .065)))
+    }), a(l === -1 ? "leftLeg" : "rightLeg", [l * (e ? .17 : .19 * c), e ? .37 : .56, 0], r => {
+        if (r.ell(e ? d.purple : o ? d.red : d.dark, 0, -.13, 0, e ? .12 : .135, .22, .135), r.ell(e ? d.purpleLight : o ? d.leather : d.steel, 0, -.27, .035, .14, .13, .14), r.box(e ? d.purple : o ? d.leather : d.dark, 0, -.42, .06, .25, .21, .37), !e && !o && (r.box(d.steel, 0, -.36, .2, .2, .15, .06), r.box(d.steel, 0, -.45, .23, .23, .055, .08)), e)
+            for (let n = 0; n < 3; n++) r.cone(14271727, (n - 1) * .075, -.46, .265, .024, .095, Math.PI / 2)
+    });
+    if (e || a("cape", [0, 1.25, -.24], l => {
             const r = [new D(.24, 0), new D(.28, -.2), new D(.36, -.68), new D(.4, -.94)];
-            l.add(new kt(r, 10, Math.PI * .55, Math.PI * .9), o ? d.red : d.blue, 0, 0, 0);
-        });
-    }
-
+            if (l.add(new kt(r, 10, Math.PI * .55, Math.PI * .9), o ? d.red : d.blue, 0, 0, 0), !t)
+                for (const n of [-1, 1]) l.box(o ? d.orange : d.blueLight, n * .21, -.49, -.22, .045, .8, .025, n * -.1)
+        }), t)
+        for (const l of s) l.geometry.computeBoundingBox();
     return {
         bones: s,
         height: e ? 1.48 : i ? 2.08 : 2.2,
         scale: e ? .92 : i ? 1.16 : 1
-    };
+    }
 }
 
 class Ht {
@@ -1895,7 +1597,6 @@ class Ht {
                 const isTitan = h === "titan";
                 const isRider = h === "knight_rider";
                 const isLog = h === "the_log";
-                const isBuilding = !!f.isBuilding;
 
                 const stepSpeed = isRider && f.charging ? 22 : U ? 16 : isTitan ? 6 : 9;
                 const P = Math.sin(f.age * stepSpeed);
@@ -1915,7 +1616,7 @@ class Ht {
                 const G = mt ? Math.sin((1 - f.attackTime / .42) * Math.PI) : 0;
 
                 let bt = f.team === e ? 16777215 : 16757933;
-                if (f.frozen > 0) bt = 6675199;
+                if (f.frozen > 0) bt = 6675199; // Cyan frost tint
                 this.color.setHex(bt);
                 if (f.hurtTime > 0) this.color.multiplyScalar(1 + f.hurtTime * 4);
 
@@ -1953,344 +1654,139 @@ class Ht {
                     m[T].setColorAt(y, this.color);
                 }
 
-                if (!q && !isLog) {
-                    const ringSize = isTitan ? 1.7 : isBuilding ? 1.6 : isRider ? 1.4 : h === "knight" ? 1.35 : U ? .72 : 1.02;
-                    this.transform.position.set(x.x * l, .018, x.z * l);
-                    this.transform.rotation.set(-Math.PI / 2, 0, 0);
-                    this.transform.scale.set(ringSize * 1.4, ringSize, 1);
+                if (!q) {
+                    const T = h === "knight" ? 1.35 : isTitan ? 1.8 : isRider ? 1.4 : U ? .72 : 1.02;
+                    this.transform.position.set(x.x * l, .025, x.z * l);
+                    this.transform.rotation.set(Math.PI * -.5, 0, 0);
+                    this.transform.scale.set(T * 1.3, T * 1.3, 1);
                     this.transform.updateMatrix();
-                    this.shadow.setMatrixAt(n, this.transform.matrix);
+                    this.shadow.setMatrixAt(r, this.transform.matrix);
 
-                    this.transform.scale.setScalar(ringSize);
-                    this.transform.position.y = .025;
+                    const z = (w[h]?.radius ?? .45) * (isTitan ? 1.8 : 1.25);
+                    this.transform.scale.set(z * 2.3, z * 2.3, 1);
                     this.transform.updateMatrix();
-                    this.teamRing.setMatrixAt(n, this.transform.matrix);
-                    this.teamRing.setColorAt(n, this.color.setHex(f.team === e ? 7723007 : 16740963));
-                    n++;
-
-                    this.transform.position.set(x.x * l, v.height * v.scale + .12, x.z * l);
-                    this.transform.quaternion.copy(this.cameraQuaternion);
-                    this.transform.scale.set(.82, 1, 1);
-                    this.transform.updateMatrix();
-                    this.healthBack.setMatrixAt(r, this.transform.matrix);
-
-                    this.transform.position.x -= (1 - f.hp / f.maxHp) * .39;
-                    this.transform.position.y += .006;
-                    this.transform.scale.set(.78 * (f.hp / f.maxHp), 1, 1);
-                    this.transform.updateMatrix();
-                    this.healthFront.setMatrixAt(r, this.transform.matrix);
-                    this.healthFront.setColorAt(r, this.color.setHex(f.team === e ? 7198207 : 16739171));
+                    this.teamRing.setMatrixAt(r, this.transform.matrix);
+                    this.teamRing.setColorAt(r, this.color.setHex(f.team === e ? 4692479 : 16733286));
                     r++;
+
+                    const K = v.height * yt * .98;
+                    const tt2 = Math.max(0, f.hp / f.maxHp);
+                    this.transform.position.set(x.x * l, K, x.z * l);
+                    this.transform.quaternion.copy(this.cameraQuaternion);
+                    this.transform.scale.set(1.05 * T, 1, 1);
+                    this.transform.updateMatrix();
+                    this.healthBack.setMatrixAt(n, this.transform.matrix);
+
+                    this.transform.position.set(x.x * l - (1 - tt2) * .48 * T, K, x.z * l);
+                    this.transform.scale.set(Math.max(.001, tt2) * T, 1, 1);
+                    this.transform.updateMatrix();
+                    this.healthFront.setMatrixAt(n, this.transform.matrix);
+                    this.healthFront.setColorAt(n, this.color.setHex(f.team === e ? 4692479 : 16733286));
+                    n++;
                 }
             }
 
             for (const y of m) {
                 y.instanceMatrix.needsUpdate = !0;
-                if (y.instanceColor) y.instanceColor.needsUpdate = !0;
+                y.instanceColor && (y.instanceColor.needsUpdate = !0);
             }
         }
 
-        this.shadow.count = this.teamRing.count = n;
-        this.healthBack.count = this.healthFront.count = r;
-        for (const h of [this.shadow, this.teamRing, this.healthBack, this.healthFront]) {
-            h.instanceMatrix.needsUpdate = !0;
-            if (h.instanceColor) h.instanceColor.needsUpdate = !0;
-        }
+        this.shadow.count = r;
+        this.teamRing.count = r;
+        this.healthBack.count = n;
+        this.healthFront.count = n;
+        this.shadow.instanceMatrix.needsUpdate = !0;
+        this.teamRing.instanceMatrix.needsUpdate = !0;
+        this.teamRing.instanceColor && (this.teamRing.instanceColor.needsUpdate = !0);
+        this.healthBack.instanceMatrix.needsUpdate = !0;
+        this.healthFront.instanceMatrix.needsUpdate = !0;
+        this.healthFront.instanceColor && (this.healthFront.instanceColor.needsUpdate = !0);
     }
 
     dispose() {
+        for (const [, t] of this.batches) {
+            for (const s of t.meshes) s.geometry.dispose();
+            for (const s of t.low) s.geometry.dispose();
+        }
         this.material.dispose();
-        for (const t of this.batches.values()) {
-            for (const s of [...t.meshes, ...t.low]) s.geometry.dispose(), s.dispose();
-        }
-        for (const t of [this.shadow, this.teamRing, this.healthBack, this.healthFront]) {
-            t.geometry.dispose(), t.material.dispose(), t.dispose();
-        }
+        this.shadow.geometry.dispose();
+        this.teamRing.geometry.dispose();
+        this.healthBack.geometry.dispose();
+        this.healthFront.geometry.dispose();
     }
-}
-
-function Bt() {
-    const g = [];
-    const t = (a, e, i, o = 0) => {
-        let c = a.index ? a.toNonIndexed() : a;
-        c !== a && a.dispose();
-        c.rotateY(o);
-        c.translate(0, i, 0);
-        c.deleteAttribute("uv");
-        const l = new V(e);
-        const r = new Float32Array(c.getAttribute("position").count * 3);
-        for (let n = 0; n < r.length; n += 3) {
-            r[n] = l.r; r[n + 1] = l.g; r[n + 2] = l.b;
-        }
-        c.setAttribute("color", new J(r, 3));
-        g.push(c);
-    };
-    t(new lt(.024, .024, .95, 6), 9854774, 0);
-    t(new ct(.077, .25, 4), 12571618, .59);
-    for (let a = 0; a < 2; a++) t(new nt(.18, .27, .018), 14175032, -.32, a * Math.PI / 2);
-    const s = ut(g);
-    g.forEach(a => a.dispose());
-    return s;
 }
 
 class Ft {
-    constructor(t) {
-        this.scene = t;
-        this.mesh = new I(new Q(1, 0), new C({
-            transparent: !0,
-            opacity: .92,
-            depthWrite: !1
-        }), 1200);
-        this.mesh.frustumCulled = !1;
-        this.mesh.count = 0;
-        t.add(this.mesh);
+    particles;
+    rings;
+    projectiles;
+    shake = 0;
+    activeProjectiles = new Map;
+    nextParticle = 0;
+    nextRing = 0;
+    cameraQuaternion;
 
-        this.arrows = new I(Bt(), new ht({
+    constructor(t, s) {
+        this.cameraQuaternion = s.quaternion.clone();
+
+        const a = new Gt;
+        a.ell(16777215, 0, 0, 0, .09, .09, .09);
+        const e = a.finish();
+        this.particles = new I(e, new ht({
             vertexColors: !0,
-            metalness: .35,
-            roughness: .5
-        }), 200);
-        this.arrows.count = 0;
-        this.arrows.frustumCulled = !1;
-        t.add(this.arrows);
+            roughness: .3,
+            metalness: .1
+        }), 240);
+        this.particles.instanceMatrix.setUsage(Tt);
+        this.particles.count = 0;
+        this.particles.frustumCulled = !1;
+        t.add(this.particles);
 
-        this.fireballs = new I(new Q(.22, 1), new C({
-            color: 16768118
-        }), 120);
-        this.fireballs.count = 0;
-        this.fireballs.frustumCulled = !1;
-        t.add(this.fireballs);
+        this.rings = new I(new Y(.8, 1, 24), new C({
+            transparent: !0,
+            opacity: .85,
+            depthWrite: !1,
+            side: j
+        }), 40);
+        this.rings.frustumCulled = !1;
+        t.add(this.rings);
 
-        for (let s = 0; s < 32; s++) {
-            const a = new F(new Y(.88, 1, 48), new C({
-                transparent: !0,
-                opacity: 0,
-                depthWrite: !1,
-                side: j
-            }));
-            a.rotation.x = -Math.PI / 2;
-            a.visible = !1;
-            t.add(a);
-            this.rings.push({
-                mesh: a,
-                life: 0,
-                duration: 1,
-                radius: 1
-            });
+        this.projectiles = new I(new B(.25, .25), new C({
+            transparent: !0,
+            opacity: .9,
+            depthWrite: !1
+        }), 60);
+        this.projectiles.frustumCulled = !1;
+        t.add(this.projectiles);
+    }
+
+    events(evList, viewTeam) {
+        for (const ev of evList) {
+            if (ev.type === "explosion" || ev.type === "gate-destroyed") {
+                this.shake = Math.min(1.2, this.shake + .6);
+            }
+            if (ev.type === "lightning") {
+                this.shake = Math.min(1.0, this.shake + .4);
+            }
         }
     }
 
-    scene;
-    particles = Array.from({ length: 1200 }, () => ({
-        active: !1,
-        x: 0, y: 0, z: 0,
-        vx: 0, vy: 0, vz: 0,
-        life: 0, maxLife: 1,
-        size: 0, color: 16777215,
-        gravity: 0
-    }));
-    mesh;
-    rings = [];
-    arrows;
-    fireballs;
-    dummy = new dt;
-    color = new V;
-    cursor = 0;
-    lastEvent = 0;
-    shake = 0;
+    update(dt, time, state, viewTeam, quality) {
+        this.shake = Math.max(0, this.shake - dt * 3.5);
+    }
 
     reset() {
-        this.lastEvent = 0;
         this.shake = 0;
-        for (const t of this.particles) t.active = !1;
-        for (const t of this.rings) t.life = 0, t.mesh.visible = !1;
-    }
-
-    particle(t, s, a, e, i, o, c, l, r, n = 0) {
-        const h = this.particles[this.cursor++ % this.particles.length];
-        Object.assign(h, {
-            active: !0,
-            x: t, y: s, z: a,
-            color: e, size: i,
-            life: o, maxLife: o,
-            vx: c, vy: l, vz: r,
-            gravity: n
-        });
-    }
-
-    burst(t, s, a, e, i, o = .5) {
-        for (let c = 0; c < a; c++) {
-            const l = Math.random() * Math.PI * 2,
-                r = Math.random() * i;
-            this.particle(t, o, s, e, .035 + Math.random() * .065, .3 + Math.random() * .6, Math.cos(l) * r, .6 + Math.random() * i, Math.sin(l) * r, -5);
-        }
-    }
-
-    ring(t, s, a, e, i = .55) {
-        const o = this.rings.find(c => c.life <= 0) ?? this.rings[0];
-        o.life = o.duration = i;
-        o.radius = e;
-        o.mesh.position.set(t, .04, s);
-        o.mesh.visible = !0;
-        o.mesh.material.color.setHex(a);
-    }
-
-    events(t, s) {
-        const a = s === 0 ? 1 : -1;
-        for (const e of t) {
-            if (e.id <= this.lastEvent) continue;
-            this.lastEvent = e.id;
-            const i = e.x * a;
-            const o = e.z * a;
-
-            if (e.type === "deploy") {
-                this.ring(i, o, e.team === s ? 8642047 : 16749696, 1.2);
-                this.burst(i, o, 20, e.team === s ? 11069439 : 16753533, 1.2, .1);
-            }
-            if (e.type === "hit") this.burst(i, o, 6, 16769952, 1.5);
-            if (e.type === "death") this.burst(i, o, 18, e.kind === "imps" ? 12089334 : 13415578, 2);
-            if (e.type === "explosion") {
-                this.burst(i, o, 52, 16750641, 3.8);
-                this.burst(i, o, 26, 16770968, 2.4);
-                this.ring(i, o, 16758348, e.kind === "fireball" ? 2.6 : 1.8, .45);
-                this.shake = Math.max(this.shake, .2);
-            }
-            if (e.type === "arrows") this.ring(i, o, 16766106, 2.5, .68);
-            if (e.type === "arrow-impact") {
-                this.burst(i, o, 40, 15125649, 3, .1);
-                this.shake = Math.max(this.shake, .075);
-            }
-            if (e.type === "lightning") {
-                this.ring(i, o, 5546239, 3.5, .7);
-                for (let k = 0; k < 60; k++) {
-                    const l = Math.random() * Math.PI * 2, r = Math.random() * 3.2;
-                    this.particle(i + Math.cos(l) * r, .2 + Math.random() * 5.0, o + Math.sin(l) * r, 5546239, .06 + Math.random() * .08, .3 + Math.random() * .4, (Math.random() - .5) * 3, -8, (Math.random() - .5) * 3);
-                }
-                this.shake = .28;
-            }
-            if (e.type === "freeze") {
-                this.ring(i, o, 7381503, 3.0, 1.2);
-                for (let k = 0; k < 50; k++) {
-                    const l = Math.random() * Math.PI * 2, r = Math.random() * 2.8;
-                    this.particle(i + Math.cos(l) * r, .1 + Math.random() * 1.5, o + Math.sin(l) * r, 12644351, .05 + Math.random() * .06, .8 + Math.random() * .8, (Math.random() - .5) * .8, .8 + Math.random() * 1.2, (Math.random() - .5) * .8, -1);
-                }
-            }
-            if (e.type === "poison") {
-                this.ring(i, o, 3069299, 3.5, 2.5);
-                this.burst(i, o, 30, 3069299, 2.5, .2);
-            }
-            if (e.type === "gate-hit") this.burst(i, o, 12, 14066537, 2, .5);
-            if (e.type === "gate-destroyed") {
-                this.burst(i, o, 80, 9595715, 5);
-                this.burst(i, o, 35, 10204613, 4);
-                this.ring(i, o, 16767134, 3, .6);
-                this.shake = .25;
-            }
-            if (e.type === "victory") this.burst(0, 0, 110, 16766325, 6, 4);
-        }
-    }
-
-    update(t, s, a, e, i) {
-        const o = e === 0 ? 1 : -1;
-        this.shake = Math.max(0, this.shake - t * .8);
-
-        if (Math.random() < t * 18 * i) {
-            const n = [
-                [-9.25, -9.8], [9.25, -9.8],
-                [-9.5, -.1], [9.5, -.1],
-                [-8.55, 14], [8.55, 14]
-            ];
-            const [h, p] = n[Math.floor(Math.random() * n.length)];
-            this.particle(h, .25, p, 16758841, .025 + Math.random() * .035, .5 + Math.random(), (Math.random() - .5) * .15, .55, (Math.random() - .5) * .15);
-        }
-
-        if (a.poisonClouds && a.poisonClouds.length) {
-            for (const pc of a.poisonClouds) {
-                if (Math.random() < t * 35) {
-                    const ang = Math.random() * Math.PI * 2;
-                    const rad = Math.random() * pc.radius;
-                    this.particle(pc.x * o + Math.cos(ang) * rad, .1 + Math.random() * .8, pc.z * o + Math.sin(ang) * rad, 3069299, .05 + Math.random() * .06, .6 + Math.random() * .8, (Math.random() - .5) * .4, .8 + Math.random() * 1.1, (Math.random() - .5) * .4, .5);
-                }
-            }
-        }
-
-        let c = 0;
-        for (const n of a.projectiles) {
-            const isBomb = n.kind === "bomb_tower";
-            const h = isBomb ? (.8 + Math.sin(n.progress * Math.PI) * 2.2) : (.9 + Math.sin(n.progress * Math.PI) * .6);
-            this.dummy.position.set(n.x * o, h, n.z * o);
-            this.dummy.rotation.set(s * 4, s * 3, 0);
-            this.dummy.scale.setScalar(isBomb ? 1.4 : 1);
-            this.dummy.updateMatrix();
-            this.fireballs.setMatrixAt(c++, this.dummy.matrix);
-            this.particle(n.x * o, h, n.z * o, isBomb ? 526344 : (Math.random() > .5 ? 16746031 : 16763464), .09, .23, (Math.random() - .5) * .8, .5, (Math.random() - .5) * .8);
-        }
-        this.fireballs.count = c;
-        this.fireballs.instanceMatrix.needsUpdate = !0;
-
-        let l = 0;
-        for (const n of a.spells) {
-            if (n.type === "arrows") {
-                for (let h = 0; h < 24; h++) {
-                    const p = h * 2.39996;
-                    const u = Math.sqrt(h / 24) * 2.35;
-                    const b = Math.max(0, n.delay * 14 - (h % 5) * .25);
-                    this.dummy.position.set(n.x * o + Math.cos(p) * u + b * .18, b, n.z * o + Math.sin(p) * u);
-                    this.dummy.rotation.set(0, 0, Math.PI - .2);
-                    this.dummy.scale.setScalar(1);
-                    this.dummy.updateMatrix();
-                    this.arrows.setMatrixAt(l++, this.dummy.matrix);
-                }
-            }
-        }
-        this.arrows.count = l;
-        this.arrows.instanceMatrix.needsUpdate = !0;
-
-        let r = 0;
-        for (const n of this.particles) {
-            if (n.active) {
-                n.life -= t;
-                if (n.life <= 0) {
-                    n.active = !1;
-                    continue;
-                }
-                n.vy += n.gravity * t;
-                n.x += n.vx * t;
-                n.y += n.vy * t;
-                n.z += n.vz * t;
-                if (n.y < .03) {
-                    n.y = .03;
-                    n.vy = Math.abs(n.vy) * .2;
-                    n.vx *= .9;
-                    n.vz *= .9;
-                }
-                this.dummy.position.set(n.x, n.y, n.z);
-                this.dummy.rotation.set(n.life * 4, n.life * 6, 0);
-                this.dummy.scale.setScalar(n.size * Math.min(1, n.life * 4));
-                this.dummy.updateMatrix();
-                this.mesh.setMatrixAt(r, this.dummy.matrix);
-                this.mesh.setColorAt(r, this.color.setHex(n.color).multiplyScalar(.4 + .6 * n.life / n.maxLife));
-                r++;
-            }
-        }
-        this.mesh.count = r;
-        this.mesh.instanceMatrix.needsUpdate = !0;
-        if (this.mesh.instanceColor) this.mesh.instanceColor.needsUpdate = !0;
-
-        for (const n of this.rings) {
-            if (n.life <= 0) continue;
-            n.life -= t;
-            const h = 1 - n.life / n.duration;
-            n.mesh.scale.setScalar(n.radius * (.45 + .55 * h));
-            n.mesh.material.opacity = Math.max(0, (1 - h) * .65);
-            n.mesh.visible = n.life > 0;
-        }
+        this.particles.count = 0;
+        this.rings.count = 0;
+        this.projectiles.count = 0;
     }
 
     dispose() {
-        for (const t of [this.mesh, this.arrows, this.fireballs, ...this.rings.map(s => s.mesh)]) {
-            t.geometry.dispose(), t.material.dispose();
-        }
+        this.particles.geometry.dispose();
+        this.rings.geometry.dispose();
+        this.projectiles.geometry.dispose();
     }
 }
 class jt {
@@ -2393,43 +1889,303 @@ const $ = '<svg viewBox="0 0 64 72" aria-hidden="true"><path d="M32 3 57 21 49 5
     Zt = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7v1"/></svg>';
 
 class Wt {
-    constructor(t, s) {
-        this.actions = s;
+    constructor(t, actions) {
+        this.actions = actions;
+        this.currentTab = "battle";
+        this.cardElements = new Map();
+        this.damagePool = [];
+        this.lastHitAt = 0;
+        this.lastEnergy = -1;
+        this.lastTime = "";
+        this.lastPhase = "";
+        this.lastGateHealth = [-1, -1];
+        this.eventId = 0;
+        this.toastTimer = null;
+        this.resultTimer = null;
+        this.selectedCardSlot = null;
+        this.activeSwapSlot = null;
+
         t.innerHTML = `
-      <div class="ambient-backdrop" aria-hidden="true"></div>
-      <div class="desktop-wordmark" aria-hidden="true"><span class="mini-sigil">${$}</span><span>EMBER<br>GATES</span><small>EL ARTE DEL DUELO</small></div>
-      <div id="stage"><div id="game">
-        <div class="arena-art" aria-hidden="true"></div>
-        <div id="walls" aria-hidden="true"></div>
-        <canvas id="battlefield" aria-label="Arena de combate. Selecciona una carta y toca tu mitad para desplegar."></canvas>
-        <div class="zone" id="deploy-zone"><div class="zone-line"></div><span>TU ZONA DE DESPLIEGUE</span></div>
-        <div class="battle-top">
-          <div class="rival-tag"><span class="rival-gem">◇</span><div><small id="rival-mode">DUELO DE ENTRENAMIENTO</small><b id="rival-name">Guardia Carmesí</b></div></div>
-          <div class="timer-box"><span>Tiempo restante:</span><strong id="timer">3:00</strong><small id="overtime"></small></div>
+        <div class="ambient-backdrop" aria-hidden="true"></div>
+        <div class="desktop-wordmark" aria-hidden="true"><span class="mini-sigil">${$}</span><span>EMBER<br>GATES</span><small>EL ARTE DEL DUELO</small></div>
+        
+        <div id="stage">
+          <div id="game">
+            <!-- 3D Arena & Battlefield -->
+            <div class="arena-art" aria-hidden="true"></div>
+            <div id="walls" aria-hidden="true"></div>
+            <canvas id="battlefield" aria-label="Arena de combate. Selecciona una carta y toca tu mitad para desplegar."></canvas>
+            <div class="zone" id="deploy-zone"><div class="zone-line"></div><span>TU ZONA DE DESPLIEGUE</span></div>
+            
+            <div class="battle-top">
+              <div class="rival-tag"><span class="rival-gem">◇</span><div><small id="rival-mode">DUELO 1v1</small><b id="rival-name">Guardia Carmesí</b></div></div>
+              <div class="timer-box"><span>Tiempo:</span><strong id="timer">3:00</strong><small id="overtime"></small></div>
+            </div>
+            
+            <div class="fort-orb enemy-orb" id="enemy-fort-status"><b id="enemy-hp">100</b></div>
+            <div class="fort-orb own-orb" id="own-fort-status"><b id="own-hp">100</b></div>
+            
+            <div id="countdown" aria-live="polite"></div>
+            <div id="battle-announcement"></div>
+            <div id="floating-feedback" aria-hidden="true"></div>
+            <div id="toast" role="status" aria-live="polite"></div>
+
+            <!-- In-Game Battle Deck HUD (Square Cards) -->
+            <section class="battle-deck" id="battle-deck" aria-label="Cartas y energía">
+              <div class="deck-shine"></div>
+              <div class="next-card"><span>SIGUIENTE</span><div class="next-art" id="next-art"></div></div>
+              <div class="deck-cards" id="deck-cards"></div>
+              <div class="energy-orb"><div class="orb-frame"></div><div class="orb-drop"></div><strong id="energy-count">5</strong></div>
+              <div class="energy-track"><div id="energy-fill"></div><div class="energy-divisions">${"<i></i>".repeat(10)}</div></div>
+              <span class="energy-caption">ENERGÍA <b id="energy-rate">+1 / 2,3 s</b></span>
+              <div class="deck-controls">
+                <button id="sound-btn" class="icon-button" aria-label="Silenciar sonido">${Xt}</button>
+                <button id="help-btn" class="icon-button" aria-label="Cómo jugar">${Zt}</button>
+                <button id="home-btn-battle" class="icon-button" aria-label="Salir al menú">${Vt}</button>
+              </div>
+              <span id="selected-caption">ELIGE UNA CARTA · DESPLIÉGALA EN LA ARENA</span>
+            </section>
+
+            <!-- 1. FULL-VERTICAL INITIAL SPLASH SCREEN -->
+            <div id="splash-screen">
+              <div class="splash-top">
+                <div class="splash-sigil">${$}</div>
+                <h1 class="splash-title">EMBER<span>GATES</span></h1>
+                <div class="splash-subtitle">ARENA DE DUELOS</div>
+              </div>
+              <div class="splash-bottom">
+                <button class="splash-play-btn" id="splash-play-btn">⚔ ¡JUGAR!</button>
+                <p class="splash-hint">Toca para entrar al coliseo y abrir tus cofres</p>
+              </div>
+            </div>
+
+            <!-- 2. MAIN HUB (5-TAB CLASH ROYALE STYLE NAVIGATION) -->
+            <div id="main-hub" class="hidden">
+              <div class="hub-views-container">
+                
+                <!-- TAB 1: TIENDA (SHOP) -->
+                <div id="view-shop" class="hub-view">
+                  <div class="hub-header">
+                    <div class="user-profile-badge">
+                      <div class="user-avatar">🪙</div>
+                      <div class="user-info"><span class="user-name">Tienda Real</span><span class="user-clan-tag">Ofertas del día</span></div>
+                    </div>
+                    <div class="currency-bar">
+                      <div class="currency-pill currency-gold">🪙 2.450</div>
+                      <div class="currency-pill currency-gems">💎 180</div>
+                    </div>
+                  </div>
+                  <div class="shop-section-title">Cofres del Tesoro</div>
+                  <div class="shop-chests-row">
+                    <div class="shop-chest-card">
+                      <div class="shop-chest-icon">📦</div>
+                      <div class="shop-chest-name">Cofre de Madera</div>
+                      <div class="shop-chest-desc">Gratis cada 4 horas</div>
+                      <button class="shop-buy-btn" id="claim-free-chest">ABRIR GRATIS</button>
+                    </div>
+                    <div class="shop-chest-card">
+                      <div class="shop-chest-icon">🔮</div>
+                      <div class="shop-chest-name">Cofre Mágico</div>
+                      <div class="shop-chest-desc">Cartas épicas aseguradas</div>
+                      <button class="shop-buy-btn">💎 80 GEMAS</button>
+                    </div>
+                  </div>
+                  <div class="shop-section-title">Cartas del Día (Mejoras)</div>
+                  <div class="shop-grid" id="shop-cards-grid"></div>
+                </div>
+
+                <!-- TAB 2: BATALLA (HOME / BATTLE SCREEN) -->
+                <div id="view-battle" class="hub-view active">
+                  <div class="hub-header">
+                    <div class="user-profile-badge">
+                      <div class="user-avatar">👑</div>
+                      <div class="user-info"><span class="user-name">Comandante Adrian</span><span class="user-clan-tag">Nivel 10 · Clan #EG88</span></div>
+                    </div>
+                    <div class="currency-bar">
+                      <div class="currency-pill currency-gold">🪙 2.450</div>
+                      <div class="currency-pill currency-gems">💎 180</div>
+                    </div>
+                  </div>
+                  <div class="battle-view-content">
+                    <div class="arena-trophy-banner">
+                      <div class="arena-badge-title">Arena Actual</div>
+                      <div class="arena-name">Picos Nevados · Arena 8</div>
+                      <div class="arena-trophies">🏆 4.320 Copas</div>
+                    </div>
+                    <div class="battle-deck-preview">
+                      <div class="battle-deck-preview-header">
+                        <span class="battle-deck-preview-title">Mazo de Batalla Activo</span>
+                        <span class="avg-elixir-badge" id="hub-avg-elixir">⚡ 3.8</span>
+                      </div>
+                      <div class="battle-deck-grid-mini" id="mini-deck-grid"></div>
+                    </div>
+                    <div class="chest-slots-row">
+                      <div class="chest-slot filled"><span class="chest-slot-icon">📦</span><span class="chest-slot-label">Cofre de Oro</span></div>
+                      <div class="chest-slot filled"><span class="chest-slot-icon">🥈</span><span class="chest-slot-label">Cofre Plata</span></div>
+                      <div class="chest-slot"><span class="chest-slot-icon">🔒</span><span class="chest-slot-label">Vacío</span></div>
+                      <div class="chest-slot"><span class="chest-slot-icon">🔒</span><span class="chest-slot-label">Vacío</span></div>
+                    </div>
+                    <div class="battle-actions-group">
+                      <button class="main-battle-btn" id="btn-enter-battle">
+                        ⚔ BATALLA 1v1
+                        <small>DUELO CONTRA LA IA</small>
+                      </button>
+                      <div class="sub-battle-actions">
+                        <button class="hub-btn" id="btn-online-room">🌐 Sala Amiga</button>
+                        <button class="hub-btn" id="btn-toggle-difficulty">Dificultad: <b id="lbl-difficulty">Normal</b></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- TAB 3: MAZO (DECK BUILDER - 8 ACTIVE + 15 COLLECTION) -->
+                <div id="view-deck" class="hub-view">
+                  <div class="hub-header">
+                    <div class="user-profile-badge">
+                      <div class="user-avatar">🃏</div>
+                      <div class="user-info"><span class="user-name">Editor de Mazos</span><span class="user-clan-tag">8 Cartas Activas</span></div>
+                    </div>
+                    <div class="currency-bar">
+                      <span class="avg-elixir-badge" id="deck-avg-elixir">⚡ 3.8 Elixir</span>
+                    </div>
+                  </div>
+                  <div class="deck-view-content">
+                    <div class="deck-selector-row">
+                      <div class="deck-slot-tabs">
+                        <button class="deck-slot-btn active" data-deck-slot="0">Mazo 1</button>
+                        <button class="deck-slot-btn" data-deck-slot="1">Mazo 2</button>
+                        <button class="deck-slot-btn" data-deck-slot="2">Mazo 3</button>
+                      </div>
+                      <span style="font-size:12px;color:#8da7cc;font-weight:800;">Toca para info/usar</span>
+                    </div>
+                    <div class="active-deck-card-grid" id="deck-active-grid"></div>
+                    <div class="collection-section-header">
+                      <span class="collection-title">Colección de Cartas</span>
+                      <span class="collection-count">15 / 15 Descubiertas</span>
+                    </div>
+                    <div class="collection-cards-grid" id="deck-collection-grid"></div>
+                  </div>
+                </div>
+
+                <!-- TAB 4: CLAN -->
+                <div id="view-clan" class="hub-view">
+                  <div class="hub-header">
+                    <div class="user-profile-badge">
+                      <div class="user-avatar">🛡️</div>
+                      <div class="user-info"><span class="user-name">Clan Social</span><span class="user-clan-tag">Comunidad Ember</span></div>
+                    </div>
+                  </div>
+                  <div class="clan-banner">
+                    <div class="clan-crest">🔥</div>
+                    <div class="clan-details">
+                      <h3>Guardianes del Fuego</h3>
+                      <div class="clan-stats-text">48 / 50 Miembros · 🏆 38.900 Trofeos</div>
+                    </div>
+                  </div>
+                  <div class="clan-chat-box">
+                    <div class="clan-msg"><b>Capitán Valerius:</b> ¡Gran victoria en la arena! Necesito donaciones de Lancero.</div>
+                    <div class="clan-msg"><b>Elena_Frost:</b> He probado la nueva Torre de Bombas, ¡detiene al Titán fácilmente!</div>
+                    <div class="clan-msg"><b>Adrian (Tú):</b> ¡Listos para la guerra de clanes de esta noche!</div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
+                    <button class="hub-btn" id="btn-clan-donate">🎁 Donar Carta</button>
+                    <button class="hub-btn" id="btn-clan-friendly">⚔ Duelo de Clan</button>
+                  </div>
+                </div>
+
+                <!-- TAB 5: AJUSTES (SETTINGS) -->
+                <div id="view-settings" class="hub-view">
+                  <div class="hub-header">
+                    <div class="user-profile-badge">
+                      <div class="user-avatar">⚙️</div>
+                      <div class="user-info"><span class="user-name">Ajustes del Juego</span><span class="user-clan-tag">Audio, Gráficos y Ayuda</span></div>
+                    </div>
+                  </div>
+                  <div class="settings-list">
+                    <div class="setting-item">
+                      <span class="setting-label">Efectos de Sonido (SFX)</span>
+                      <div class="toggle-switch on" id="setting-sfx-toggle"></div>
+                    </div>
+                    <div class="setting-item">
+                      <span class="setting-label">Música de Combate</span>
+                      <div class="toggle-switch on" id="setting-music-toggle"></div>
+                    </div>
+                    <div class="setting-item">
+                      <span class="setting-label">Respuesta Háptica / Vibración</span>
+                      <div class="toggle-switch on" id="setting-haptic-toggle"></div>
+                    </div>
+                    <div class="setting-item">
+                      <span class="setting-label">Calidad Gráfica 3D</span>
+                      <button class="hub-btn" id="setting-quality-btn" style="padding:6px 14px;font-size:13px;">Ultra (60 FPS)</button>
+                    </div>
+                    <div class="setting-item">
+                      <span class="setting-label">Guía y Reglas de la Arena</span>
+                      <button class="hub-btn" id="setting-howtoplay-btn" style="padding:6px 14px;font-size:13px;">Ver Guía</button>
+                    </div>
+                    <div class="setting-item" style="flex-direction:column;align-items:flex-start;gap:6px;">
+                      <span class="setting-label">Ember Gates · Versión 2.5</span>
+                      <small style="color:#8da7cc;">Motor 3D WebGL con 15 Cartas Cuadradas y Audio 1s Pack.</small>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- DOCKED BOTTOM NAVIGATION (5 TABS) -->
+              <nav id="bottom-nav">
+                <button class="nav-tab-btn" data-tab="shop">
+                  <svg viewBox="0 0 24 24"><path d="M20 8h-3V6a3 3 0 0 0-6 0v2H8a3 3 0 0 0-3 3v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-9a3 3 0 0 0-3-3zm-7-2a1 1 0 0 1 2 0v2h-2zm7 13H6v-8a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1z"/></svg>
+                  <span class="nav-tab-label">Tienda</span>
+                </button>
+                <button class="nav-tab-btn active" data-tab="battle">
+                  <svg viewBox="0 0 24 24"><path d="M19.7 4.3a1 1 0 0 0-1.4 0L14 8.6l-1.3-1.3a1 1 0 0 0-1.4 1.4l1.3 1.3-5 5-2.3-.3a1 1 0 0 0-.8.3l-2 2a1 1 0 0 0 0 1.4l3.6 3.6a1 1 0 0 0 1.4 0l2-2a1 1 0 0 0 .3-.8l-.3-2.3 5-5 1.3 1.3a1 1 0 0 0 1.4-1.4L18.3 10l4.3-4.3a1 1 0 0 0 0-1.4z"/></svg>
+                  <span class="nav-tab-label">Batalla</span>
+                </button>
+                <button class="nav-tab-btn" data-tab="deck">
+                  <svg viewBox="0 0 24 24"><path d="M4 6h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2zm0 2v10h16V8H4zm4-5h8a1 1 0 0 1 1 1v1H7V4a1 1 0 0 1 1-1z"/></svg>
+                  <span class="nav-tab-label">Mazo</span>
+                </button>
+                <button class="nav-tab-btn" data-tab="clan">
+                  <svg viewBox="0 0 24 24"><path d="M12 2 4 5v6.1c0 5 3.4 9.8 8 10.9 4.6-1.1 8-5.9 8-10.9V5l-8-3zm6 9.1c0 4.1-2.7 8-6 9-3.3-1-6-4.9-6-9V6.4l6-2.2 6 2.2v4.7z"/></svg>
+                  <span class="nav-tab-label">Clan</span>
+                </button>
+                <button class="nav-tab-btn" data-tab="settings">
+                  <svg viewBox="0 0 24 24"><path d="m19.4 13 .1-1-.1-1 2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7 7 0 0 0-1.7-1l-.4-2.6a.5.5 0 0 0-.5-.4h-4a.5.5 0 0 0-.5.4L9.4 6a7 7 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L4.8 12l-.1 1 .1 1-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5a.5.5 0 0 0 .6.2l2.5-1a7 7 0 0 0 1.7 1l.4 2.6a.5.5 0 0 0 .5.4h4a.5.5 0 0 0 .5-.4l.4-2.6a7 7 0 0 0 1.7-1l2.5 1a.5.5 0 0 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6L19.4 13zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
+                  <span class="nav-tab-label">Ajustes</span>
+                </button>
+              </nav>
+            </div>
+
+            <!-- CARD DETAIL & SWAP MODAL -->
+            <div id="card-modal-backdrop" class="hidden">
+              <div class="card-modal-panel">
+                <button class="modal-close-btn" id="modal-card-close">✕</button>
+                <img class="modal-card-img-large" id="modal-card-img" src="./assets/cards/knight.png" alt="Carta" />
+                <h3 class="modal-card-name" id="modal-card-name">Caballero pesado</h3>
+                <span class="modal-card-role" id="modal-card-role">TANQUE · 1 UNIDAD</span>
+                <div class="modal-stats-grid">
+                  <div class="modal-stat-pill"><div class="modal-stat-val" id="modal-stat-cost">5</div><div class="modal-stat-lbl">Elixir</div></div>
+                  <div class="modal-stat-pill"><div class="modal-stat-val" id="modal-stat-hp">1.040</div><div class="modal-stat-lbl">Vida</div></div>
+                  <div class="modal-stat-pill"><div class="modal-stat-val" id="modal-stat-dmg">105</div><div class="modal-stat-lbl">Daño</div></div>
+                  <div class="modal-stat-pill"><div class="modal-stat-val" id="modal-stat-spd">Media</div><div class="modal-stat-lbl">Velocidad</div></div>
+                  <div class="modal-stat-pill"><div class="modal-stat-val" id="modal-stat-rng">Cuerpo a C.</div><div class="modal-stat-lbl">Alcance</div></div>
+                  <div class="modal-stat-pill"><div class="modal-stat-val" id="modal-stat-count">1</div><div class="modal-stat-lbl">Cantidad</div></div>
+                </div>
+                <p class="modal-card-desc" id="modal-card-desc">Descripción de la carta...</p>
+                <button class="modal-use-btn" id="modal-card-use-btn">USAR EN EL MAZO</button>
+              </div>
+            </div>
+
+            <!-- Standard Game Results Modal -->
+            <div id="modal" class="modal-backdrop hidden">
+              <section id="modal-content" class="modal-panel" role="dialog" aria-modal="true"></section>
+            </div>
+
+            <div id="connection-status" role="status"></div>
+            <div id="performance" hidden></div>
+          </div>
         </div>
-        <div class="fort-orb enemy-orb" id="enemy-fort-status" role="img" aria-label="Fortaleza rival, vida completa" title="Fortaleza rival: 3.200 de vida"><svg viewBox="0 0 64 64"><circle class="fort-orb-base" cx="32" cy="32" r="26"/><circle class="fort-orb-meter" id="enemy-health-fill" cx="32" cy="32" r="26"/><path class="fort-orb-shield" d="m32 17 9 4-2 12-7 5-7-5-2-12z"/></svg><b id="enemy-hp">100</b></div>
-        <div class="fort-orb own-orb" id="own-fort-status" role="img" aria-label="Tu fortaleza, vida completa" title="Tu fortaleza: 3.200 de vida"><svg viewBox="0 0 64 64"><circle class="fort-orb-base" cx="32" cy="32" r="26"/><circle class="fort-orb-meter" id="own-health-fill" cx="32" cy="32" r="26"/><path class="fort-orb-shield" d="m32 17 9 4-2 12-7 5-7-5-2-12z"/></svg><b id="own-hp">100</b></div>
-        <div id="countdown" aria-live="polite"></div>
-        <div id="battle-announcement"></div>
-        <div id="floating-feedback" aria-hidden="true"></div>
-        <div id="toast" role="status" aria-live="polite"></div>
-        <section class="battle-deck" aria-label="Cartas y energía">
-          <div class="deck-shine"></div>
-          <div class="next-card"><span>SIGUIENTE</span><div class="next-art" id="next-art"></div></div>
-          <div class="deck-cards" id="deck-cards"></div>
-          <div class="energy-orb"><div class="orb-frame"></div><div class="orb-drop"></div><strong id="energy-count">5</strong></div>
-          <div class="energy-track"><div id="energy-fill"></div><div class="energy-divisions">${"<i></i>".repeat(10)}</div></div>
-          <span class="energy-caption">ENERGÍA <b id="energy-rate">+1 / 2,3 s</b></span>
-          <div class="deck-controls"><button id="sound-btn" class="icon-button" aria-label="Silenciar sonido">${Xt}</button><button id="help-btn" class="icon-button" aria-label="Cómo jugar">${Zt}</button><button id="pause-btn" class="icon-button" aria-label="Pausar partida">${Vt}</button></div>
-          <span id="selected-caption">ELIGE UNA CARTA · DESPLIÉGALA EN LA ARENA</span>
-        </section>
-        <div id="modal" class="modal-backdrop"><section id="modal-content" class="modal-panel" role="dialog" aria-modal="true" aria-label="Menú de Ember Gates"></section></div>
-        <div id="deck-builder-container"></div>
-        <div id="connection-status" role="status"></div>
-        <div id="performance" hidden></div>
-      </div></div>
-      <p class="desktop-hint">15 CARTAS. TU MAZO DE 8. TU ESTRATEGIA.<span>Ratón o táctil · 1–4 para elegir · Esc para pausar</span></p>
-    `;
+        `;
 
         this.stage = t.querySelector("#stage");
         this.game = t.querySelector("#game");
@@ -2440,767 +2196,430 @@ class Wt {
         this.modal = t.querySelector("#modal");
         this.modalContent = t.querySelector("#modal-content");
         this.toastEl = t.querySelector("#toast");
-        this.deckBuilderContainer = t.querySelector("#deck-builder-container");
+        this.splashScreen = t.querySelector("#splash-screen");
+        this.mainHub = t.querySelector("#main-hub");
+        this.cardModal = t.querySelector("#card-modal-backdrop");
+        this.battleDeck = t.querySelector("#battle-deck");
 
+        // Build Battle HUD Hand Slots
         const a = t.querySelector("#deck-cards");
         for (let idx = 0; idx < 4; idx++) {
             const c = document.createElement("button");
             c.className = "battle-card";
             c.dataset.slot = String(idx);
             c.setAttribute("aria-pressed", "false");
-            c.innerHTML = `<div class="card-art"></div><div class="card-gloss"></div><div class="card-name"></div><span class="card-cost"></span><div class="card-cooldown"></div><span class="card-key">${idx + 1}</span>`;
-            c.addEventListener("click", () => {
-                const cardId = c.dataset.card;
-                if (cardId) this.actions.select(cardId, idx);
-            });
+            c.innerHTML = `
+              <div class="card-art"></div>
+              <div class="card-gloss"></div>
+              <div class="card-name"></div>
+              <span class="card-cost"></span>
+              <div class="card-cooldown"></div>
+              <span class="card-key">${idx + 1}</span>
+            `;
             a.append(c);
-            this.handSlotElements[idx] = c;
+            this.cardElements.set(idx, c);
         }
 
-        const e = t.querySelector("#walls");
-        for (let i = 0; i < 2; i++) {
-            const o = i === 0 ? 1263 : 29;
-            const c = i === 0 ? 115 : 125;
-            const l = document.createElement("div");
-            l.className = "gate-underlay";
-            l.style.cssText = `left:109px;top:${o}px;width:726px;height:${c}px;background-position:-109px -590px;`;
-            e.append(l);
-            for (let r = 0; r < 5; r++) {
-                const n = 109 + r * 145.2;
-                const h = document.createElement("div");
-                h.className = "gate-piece";
-                h.dataset.side = String(i);
-                h.dataset.segment = String(r);
-                h.style.cssText = `left:${n}px;top:${o}px;width:146px;height:${c}px;background-position:-${n}px -${o}px;--fall-rotation:${r % 2 ? 12 : -14}deg;`;
-                h.innerHTML = '<svg class="gate-cracks" viewBox="0 0 145 125"><path d="m38 0 12 24-9 13 20 13-8 26 15 12-6 37M50 24l29 4 13 23 24 4M53 76l-25 7-7 22M92 51l-7 18 17 17 5 39"/></svg><div class="gate-damage"></div>';
-                e.append(h);
-                this.gatePieces.push(h);
-            }
-        }
+        this.bindEvents();
+        this.renderHubDeckViews();
+    }
 
-        t.querySelector("#sound-btn").addEventListener("click", () => this.actions.sound());
-        t.querySelector("#pause-btn").addEventListener("click", () => this.actions.pause());
-        t.querySelector("#help-btn").addEventListener("click", () => {
-            this.wasHelpPaused = this.modalKind === "pause";
-            this.actions.pause();
+    bindEvents() {
+        // Splash Screen Play Button
+        this.splashScreen.querySelector("#splash-play-btn").addEventListener("click", () => {
+            this.actions.soundUnlock();
+            this.actions.clickSound();
+            this.splashScreen.classList.add("hidden");
+            this.mainHub.classList.remove("hidden");
+            this.switchTab("battle");
+        });
+
+        // Bottom Navigation Tabs
+        const navTabs = this.mainHub.querySelectorAll(".nav-tab-btn");
+        navTabs.forEach(btn => {
+            btn.addEventListener("click", () => {
+                this.actions.clickSound();
+                const tab = btn.dataset.tab;
+                this.switchTab(tab);
+            });
+        });
+
+        // Battle View Buttons
+        this.mainHub.querySelector("#btn-enter-battle").addEventListener("click", () => {
+            this.actions.clickSound();
+            this.mainHub.classList.add("hidden");
+            this.actions.start();
+        });
+
+        this.mainHub.querySelector("#btn-online-room").addEventListener("click", () => {
+            this.actions.clickSound();
+            this.showRoom();
+        });
+
+        this.mainHub.querySelector("#btn-toggle-difficulty").addEventListener("click", () => {
+            this.actions.clickSound();
+            const cur = this.actions.getDifficulty();
+            const nxt = cur === "normal" ? "hard" : "normal";
+            this.actions.difficulty(nxt);
+            this.mainHub.querySelector("#lbl-difficulty").textContent = nxt === "normal" ? "Normal" : "Veterano";
+        });
+
+        // Battle HUD Return Home
+        this.game.querySelector("#home-btn-battle").addEventListener("click", () => {
+            this.actions.clickSound();
+            this.actions.home();
+        });
+
+        this.game.querySelector("#sound-btn").addEventListener("click", () => {
+            this.actions.sound();
+        });
+
+        this.game.querySelector("#help-btn").addEventListener("click", () => {
             this.showHelp();
         });
 
-        this.showHome();
-        this.resize();
-        new ResizeObserver(() => this.resize()).observe(this.stage);
+        // Card Modal Close
+        this.cardModal.querySelector("#modal-card-close").addEventListener("click", () => {
+            this.actions.clickSound();
+            this.cardModal.classList.add("hidden");
+        });
+
+        // Shop claim
+        this.mainHub.querySelector("#claim-free-chest")?.addEventListener("click", () => {
+            this.actions.clickSound();
+            this.toast("¡Has abierto el Cofre! +150 Oro y 20 Cartas");
+        });
+
+        // Settings toggles
+        const toggles = this.mainHub.querySelectorAll(".toggle-switch");
+        toggles.forEach(tog => {
+            tog.addEventListener("click", () => {
+                this.actions.clickSound();
+                tog.classList.toggle("on");
+            });
+        });
+
+        this.mainHub.querySelector("#setting-howtoplay-btn")?.addEventListener("click", () => {
+            this.actions.clickSound();
+            this.showHelp();
+        });
     }
 
-    actions;
-    stage;
-    game;
-    canvas;
-    handSlotElements = [];
-    timer;
-    energy;
-    energyFill;
-    modal;
-    modalContent;
-    deckBuilderContainer;
-    toastEl;
-    toastTimer = 0;
-    gatePieces = [];
-    selected = null;
-    selectedSlot = null;
-    lastEnergy = -1;
-    lastTime = "";
-    lastPhase = "";
-    lastGateHealth = [-1, -1];
-    eventId = 0;
-    modalKind = "home";
-    isOnline = !1;
-    lastResult = null;
-    lastView = 0;
-    wasHelpPaused = !1;
-    damagePool = [];
-    lastHitAt = 0;
-    resultTimer = 0;
-    swapPendingCard = null;
+    switchTab(tabName) {
+        this.currentTab = tabName;
+        // Update nav tabs
+        this.mainHub.querySelectorAll(".nav-tab-btn").forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.tab === tabName);
+        });
+        // Update views
+        this.mainHub.querySelectorAll(".hub-view").forEach(v => {
+            v.classList.remove("active");
+        });
+        const targetView = this.mainHub.querySelector(`#view-${tabName}`);
+        if (targetView) targetView.classList.add("active");
 
-    artStyle(t) {
-        return `background-image: url('./assets/cards/${t}.png'); background-size: cover; background-position: center; border-radius: 8px;`;
-    }
-
-    resize() {
-        this.game.style.transform = `scale(${this.stage.getBoundingClientRect().width / 940})`;
-    }
-
-    get currentModal() {
-        return this.modalKind;
-    }
-
-    show(t, s = "") {
-        this.modalKind = t;
-        this.modal.classList.toggle("hidden", t === null);
-        if (s) this.modalContent.innerHTML = s;
-        this.game.classList.toggle("in-menu", t === "home" || t === "deck_builder");
-        if (t !== null) {
-            window.setTimeout(() => this.modalContent.querySelector("button,input")?.focus({ preventScroll: !0 }), 50);
+        if (tabName === "battle" || tabName === "deck") {
+            this.renderHubDeckViews();
         }
     }
 
-    hide() {
-        this.show(null);
+    renderHubDeckViews() {
+        const activeDeck = DeckState.getActiveDeck();
+        const avgElixir = DeckState.getAverageElixir();
+
+        const hubAvg = this.mainHub.querySelector("#hub-avg-elixir");
+        if (hubAvg) hubAvg.textContent = `⚡ ${avgElixir} Elixir`;
+        const deckAvg = this.mainHub.querySelector("#deck-avg-elixir");
+        if (deckAvg) deckAvg.textContent = `⚡ ${avgElixir} Elixir`;
+
+        // Render Mini Deck in Battle Tab
+        const miniGrid = this.mainHub.querySelector("#mini-deck-grid");
+        if (miniGrid) {
+            miniGrid.innerHTML = activeDeck.map(c => `
+                <div class="card-tile-mini" style="background-image:url('./assets/cards/${c}.png');">
+                    <span class="mini-cost">${w[c]?.cost || 3}</span>
+                </div>
+            `).join("");
+        }
+
+        // Render Active Deck in Deck Tab (8 Cards)
+        const activeGrid = this.mainHub.querySelector("#deck-active-grid");
+        if (activeGrid) {
+            activeGrid.innerHTML = activeDeck.map((c, idx) => `
+                <div class="card-tile" data-slot="${idx}" data-card="${c}">
+                    <img class="card-tile-img" src="./assets/cards/${c}.png" alt="${w[c]?.name}" />
+                    <span class="card-cost-badge">${w[c]?.cost}</span>
+                    <span class="card-level-badge">Nvl 9</span>
+                    <span class="card-name-tag">${w[c]?.name}</span>
+                </div>
+            `).join("");
+
+            activeGrid.querySelectorAll(".card-tile").forEach(tile => {
+                tile.addEventListener("click", () => {
+                    this.actions.clickSound();
+                    const cardId = tile.dataset.card;
+                    const slotIdx = parseInt(tile.dataset.slot, 10);
+                    this.openCardDetails(cardId, slotIdx);
+                });
+            });
+        }
+
+        // Render Collection Grid in Deck Tab (All 15 Cards)
+        const colGrid = this.mainHub.querySelector("#deck-collection-grid");
+        if (colGrid) {
+            colGrid.innerHTML = ALL_CARDS.map(c => `
+                <div class="card-tile collection-tile" data-card="${c}">
+                    <img class="card-tile-img" src="./assets/cards/${c}.png" alt="${w[c]?.name}" />
+                    <span class="card-cost-badge">${w[c]?.cost}</span>
+                    <span class="card-level-badge">Nvl 9</span>
+                    <span class="card-name-tag">${w[c]?.name}</span>
+                </div>
+            `).join("");
+
+            colGrid.querySelectorAll(".card-tile").forEach(tile => {
+                tile.addEventListener("click", () => {
+                    this.actions.clickSound();
+                    const cardId = tile.dataset.card;
+                    this.openCardDetails(cardId, null);
+                });
+            });
+        }
+
+        // Deck Slot Selector Buttons (Mazo 1, 2, 3)
+        const slotBtns = this.mainHub.querySelectorAll(".deck-slot-btn");
+        slotBtns.forEach(btn => {
+            const slot = parseInt(btn.dataset.deckSlot, 10);
+            btn.classList.toggle("active", slot === DeckState.activeSlot);
+            btn.onclick = () => {
+                this.actions.clickSound();
+                DeckState.activeSlot = slot;
+                DeckState.save();
+                this.renderHubDeckViews();
+            };
+        });
+    }
+
+    openCardDetails(cardId, fromActiveSlot = null) {
+        const c = w[cardId];
+        if (!c) return;
+
+        this.cardModal.querySelector("#modal-card-img").src = `./assets/cards/${cardId}.png`;
+        this.cardModal.querySelector("#modal-card-name").textContent = c.name;
+        this.cardModal.querySelector("#modal-card-role").textContent = c.role;
+        this.cardModal.querySelector("#modal-stat-cost").textContent = String(c.cost);
+        this.cardModal.querySelector("#modal-stat-hp").textContent = c.hp > 0 ? c.hp.toLocaleString("es") : "-";
+        this.cardModal.querySelector("#modal-stat-dmg").textContent = c.damage > 0 ? c.damage.toLocaleString("es") : "-";
+        this.cardModal.querySelector("#modal-stat-spd").textContent = c.speed === 0 ? "Fija" : c.speed > 1.8 ? "Rápida" : "Media";
+        this.cardModal.querySelector("#modal-stat-rng").textContent = c.range > 2.0 ? `${c.range} m` : "Cuerpo a C.";
+        this.cardModal.querySelector("#modal-stat-count").textContent = String(c.count || 1);
+        this.cardModal.querySelector("#modal-card-desc").textContent = c.description;
+
+        const useBtn = this.cardModal.querySelector("#modal-card-use-btn");
+        const isInDeck = DeckState.getActiveDeck().includes(cardId);
+        if (isInDeck) {
+            useBtn.textContent = "EN USO EN ESTE MAZO";
+            useBtn.style.background = "#244166";
+            useBtn.onclick = null;
+        } else {
+            useBtn.textContent = "EQUIPAR EN EL MAZO";
+            useBtn.style.background = "linear-gradient(180deg, #2ea44f, #22863a)";
+            useBtn.onclick = () => {
+                this.actions.clickSound();
+                const targetSlot = fromActiveSlot !== null ? fromActiveSlot : 0;
+                DeckState.setCard(targetSlot, cardId);
+                this.toast(`¡${c.name} equipado en tu mazo!`);
+                this.cardModal.classList.add("hidden");
+                this.renderHubDeckViews();
+            };
+        }
+
+        this.cardModal.classList.remove("hidden");
     }
 
     showHome() {
-        this.isOnline = !1;
-        this.deckBuilderContainer.innerHTML = "";
-        this.show("home", `
-      <div class="brand-sigil">${$}</div>
-      <p class="eyebrow">ESTRATEGIA EN TIEMPO REAL</p>
-      <h1>EMBER<span>GATES</span></h1>
-      <div class="title-rule"><i></i><span>◇</span><i></i></div>
-      <p class="home-description">15 cartas. 3 mazos guardados.<br>Elige tu baraja y conquista la fortaleza.</p>
-      <button class="primary-button" id="start-battle"><span class="crossed">⚔</span> ¡A LA BATALLA! <small>DUELO 1v1 CON TU MAZO</small></button>
-      <button class="secondary-button" id="open-deck-builder" style="margin-top:10px;">🛡️ MAZO BÉLICO (${getActiveBattleDeck().length} CARTAS)</button>
-      <div class="difficulty-picker" style="margin-top:14px;"><span>DIFICULTAD IA</span><button data-difficulty="normal" class="active">Normal</button><button data-difficulty="hard">Veterano</button></div>
-      <button class="text-button" id="online-battle" style="margin-top:10px;">Duelo con un amigo <span>↗</span></button>
-      <button class="text-button" id="home-help">Colección de cartas y ayuda <span>→</span></button>
-    `);
-
-        this.modalContent.querySelector("#start-battle").addEventListener("click", () => this.showDeckBuilder());
-        this.modalContent.querySelector("#open-deck-builder").addEventListener("click", () => this.showDeckBuilder());
-        this.modalContent.querySelector("#online-battle").addEventListener("click", () => this.showRoom());
-        this.modalContent.querySelector("#home-help").addEventListener("click", () => this.showHelp());
-
-        for (const t of this.modalContent.querySelectorAll("[data-difficulty]")) {
-            t.addEventListener("click", () => {
-                this.modalContent.querySelector(".difficulty-picker .active")?.classList.remove("active");
-                t.classList.add("active");
-                this.actions.difficulty(t.dataset.difficulty);
-            });
-        }
+        this.mainHub.classList.remove("hidden");
+        this.switchTab("battle");
     }
 
-    // Clash Royale Deck Builder screen
-    showDeckBuilder() {
-        this.hide();
-        this.modalKind = "deck_builder";
-        this.game.classList.add("in-menu");
-        this.renderDeckBuilder();
-    }
-
-    renderDeckBuilder() {
-        const activeDeck = getActiveBattleDeck();
-        const avgElixir = getAverageElixir(activeDeck);
-
-        this.deckBuilderContainer.innerHTML = `
-      <div class="deck-builder-overlay">
-        <header class="deck-builder-header">
-          <div class="deck-builder-title">
-            <h2>⚔️ MAZO BÉLICO</h2>
-            <div class="deck-tabs">
-              <button class="deck-tab-btn ${CURRENT_DECK_TAB === 1 ? 'active' : ''}" data-tab="1">1</button>
-              <button class="deck-tab-btn ${CURRENT_DECK_TAB === 2 ? 'active' : ''}" data-tab="2">2</button>
-              <button class="deck-tab-btn ${CURRENT_DECK_TAB === 3 ? 'active' : ''}" data-tab="3">3</button>
-            </div>
+    showResult(state, viewTeam) {
+        const team0GatesAlive = state.gates.filter(g => g.team === 0 && g.hp > 0).length;
+        const team1GatesAlive = state.gates.filter(g => g.team === 1 && g.hp > 0).length;
+        const isWin = team1GatesAlive < team0GatesAlive;
+        
+        this.modal.classList.remove("hidden");
+        this.modalContent.innerHTML = `
+          <div class="result-sigil ${isWin ? "win" : ""}">👑</div>
+          <h2 class="result-title">${isWin ? "¡VICTORIA!" : "DERROTA"}</h2>
+          <div class="result-stats">
+            <div><strong>${isWin ? "+32 🏆" : "-18 🏆"}</strong><span>COPAS</span></div>
+            <div><strong>+120 🪙</strong><span>ORO</span></div>
           </div>
-          <div class="deck-stats-badge">
-            <span class="elixir-drop-icon"></span>
-            <span>Coste medio: <strong>${avgElixir}</strong></span>
-          </div>
-        </header>
+          <button class="primary-button" id="result-back-hub">VOLVER AL MENÚ</button>
+        `;
 
-        <div class="deck-builder-content">
-          ${this.swapPendingCard ? `
-            <div class="swap-instruction-banner">
-              ⚠️ Toca una de las 8 cartas de tu mazo arriba para reemplazarla por: <strong>${w[this.swapPendingCard].name.toUpperCase()}</strong>
-              <button id="cancel-swap-btn" style="margin-left:12px;padding:4px 10px;border-radius:6px;border:none;background:#222;color:#fff;cursor:pointer;font-weight:700;">Cancelar</button>
-            </div>
-          ` : ''}
-
-          <!-- Active 8-Card Deck Grid -->
-          <section class="active-deck-section">
-            <div class="section-title-bar">
-              <h3 class="section-title">BARAJA ACTIVA (${activeDeck.length}/8)</h3>
-              <small style="color:#8da7cc;">${this.swapPendingCard ? 'TOCA PARA REEMPLAZAR' : 'Toca para ver estadísticas'}</small>
-            </div>
-            <div class="active-deck-grid" id="active-deck-grid">
-              ${activeDeck.map((k, idx) => `
-                <div class="db-card-item ${this.swapPendingCard ? 'selected-swap' : ''}" data-slot="${idx}" data-card="${k}">
-                  <div class="db-card-elixir"><span>${w[k].cost}</span></div>
-                  <div class="db-card-img" style="${this.artStyle(k)}"></div>
-                  <div class="db-card-name-banner">
-                    <span>${w[k].name}</span>
-                    <span class="db-card-type-badge">${w[k].role.split('·')[0]}</span>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          </section>
-
-          <!-- Collection Section: All 15 cards -->
-          <section class="collection-section">
-            <div class="section-title-bar">
-              <h3 class="section-title">COLECCIÓN DE CARTAS (${ALL_CARD_KEYS.length}/15)</h3>
-              <small style="color:#8da7cc;">Toca cualquier carta para examinar o USAR</small>
-            </div>
-            <div class="collection-grid" id="collection-grid">
-              ${ALL_CARD_KEYS.map(k => {
-                const inDeck = activeDeck.includes(k);
-                return `
-                  <div class="db-card-item ${inDeck ? 'in-deck' : ''}" data-card="${k}">
-                    <div class="db-card-elixir"><span>${w[k].cost}</span></div>
-                    <div class="db-card-img" style="${this.artStyle(k)}"></div>
-                    <div class="db-card-name-banner">
-                      <span>${w[k].name}</span>
-                      <span class="db-card-type-badge">${w[k].role.split('·')[0]}</span>
-                    </div>
-                  </div>
-                `;
-              }).join('')}
-            </div>
-          </section>
-
-          <!-- Launch Battle Button -->
-          <footer class="deck-builder-footer">
-            <button class="btn-back-home" id="btn-back-home">VOLVER AL MENÚ</button>
-            <button class="btn-battle-play" id="btn-battle-play"><span>⚔️</span> ¡A LA BATALLA!</button>
-          </footer>
-        </div>
-      </div>
-    `;
-
-        for (const btn of this.deckBuilderContainer.querySelectorAll(".deck-tab-btn")) {
-            btn.addEventListener("click", () => {
-                CURRENT_DECK_TAB = parseInt(btn.dataset.tab, 10);
-                this.swapPendingCard = null;
-                this.renderDeckBuilder();
-            });
-        }
-
-        for (const slotEl of this.deckBuilderContainer.querySelectorAll("#active-deck-grid .db-card-item")) {
-            slotEl.addEventListener("click", () => {
-                const slotIdx = parseInt(slotEl.dataset.slot, 10);
-                const cardId = slotEl.dataset.card;
-                if (this.swapPendingCard) {
-                    const currentDeck = [...getActiveBattleDeck()];
-                    const oldIndex = currentDeck.indexOf(this.swapPendingCard);
-                    if (oldIndex !== -1) {
-                        const temp = currentDeck[slotIdx];
-                        currentDeck[slotIdx] = this.swapPendingCard;
-                        currentDeck[oldIndex] = temp;
-                    } else {
-                        currentDeck[slotIdx] = this.swapPendingCard;
-                    }
-                    USER_DECKS[CURRENT_DECK_TAB] = currentDeck;
-                    saveDecks(USER_DECKS);
-                    this.swapPendingCard = null;
-                    this.toast("¡Mazo actualizado!");
-                    this.renderDeckBuilder();
-                } else {
-                    this.showCardDetailModal(cardId, !0, slotIdx);
-                }
-            });
-        }
-
-        for (const cardEl of this.deckBuilderContainer.querySelectorAll("#collection-grid .db-card-item")) {
-            cardEl.addEventListener("click", () => {
-                const cardId = cardEl.dataset.card;
-                this.showCardDetailModal(cardId, !1);
-            });
-        }
-
-        const cancelSwap = this.deckBuilderContainer.querySelector("#cancel-swap-btn");
-        if (cancelSwap) {
-            cancelSwap.addEventListener("click", () => {
-                this.swapPendingCard = null;
-                this.renderDeckBuilder();
-            });
-        }
-
-        this.deckBuilderContainer.querySelector("#btn-back-home").addEventListener("click", () => {
-            this.deckBuilderContainer.innerHTML = "";
+        this.modalContent.querySelector("#result-back-hub").addEventListener("click", () => {
+            this.actions.clickSound();
+            this.modal.classList.add("hidden");
             this.showHome();
         });
-
-        this.deckBuilderContainer.querySelector("#btn-battle-play").addEventListener("click", () => {
-            this.deckBuilderContainer.innerHTML = "";
-            this.actions.start(getActiveBattleDeck());
-        });
     }
 
-    showCardDetailModal(cardId, isInActiveDeck = !1, activeSlot = null) {
-        const c = w[cardId];
-        const modalEl = document.createElement("div");
-        modalEl.className = "card-detail-modal-backdrop";
-        modalEl.innerHTML = `
-      <div class="card-detail-card">
-        <button class="modal-close-btn" id="modal-close-x">✕</button>
-        <div class="card-detail-body">
-          <div class="card-detail-preview" style="${this.artStyle(cardId)}"></div>
-          <div class="card-detail-info">
-            <h3 class="card-detail-title">${c.name}</h3>
-            <div class="card-detail-role">${c.role} · COSTE: ${c.cost} ENERGÍA</div>
-            <p class="card-detail-desc">${c.description}</p>
-            <div class="card-stats-grid">
-              <div class="card-stat-box"><span class="card-stat-label">Daño</span><span class="card-stat-val">${c.damage || 'N/A'}</span></div>
-              <div class="card-stat-box"><span class="card-stat-label">Puntos de vida</span><span class="card-stat-val">${c.hp || 'Hechizo'}</span></div>
-              <div class="card-stat-box"><span class="card-stat-label">Velocidad</span><span class="card-stat-val">${c.speed ? c.speed.toFixed(2) : '0'}</span></div>
-              <div class="card-stat-box"><span class="card-stat-label">Alcance</span><span class="card-stat-val">${c.range ? c.range + 'm' : 'Área'}</span></div>
-              <div class="card-stat-box"><span class="card-stat-label">Cadencia</span><span class="card-stat-val">${c.cooldown ? c.cooldown + 's' : 'Instantáneo'}</span></div>
-              <div class="card-stat-box"><span class="card-stat-label">Unidades</span><span class="card-stat-val">${c.count || 'Área'}</span></div>
-            </div>
-            <div class="card-detail-actions">
-              <button class="btn-use-card" id="btn-use-card">USAR EN EL MAZO</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-        document.body.appendChild(modalEl);
-
-        const closeModal = () => modalEl.remove();
-        modalEl.querySelector("#modal-close-x").addEventListener("click", closeModal);
-        modalEl.addEventListener("click", e => {
-            if (e.target === modalEl) closeModal();
-        });
-
-        modalEl.querySelector("#btn-use-card").addEventListener("click", () => {
-            closeModal();
-            this.swapPendingCard = cardId;
-            this.renderDeckBuilder();
-        });
-    }
-
-    showPause(t = !1) {
-        this.show("pause", `
-      <p class="eyebrow">EMBER GATES</p>
-      <h2>${t ? "Duelo en curso" : "Toma un respiro"}</h2>
-      <p>${t ? "La partida continúa para ambos jugadores." : "Tu ejército espera tus órdenes."}</p>
-      <button class="primary-button" id="resume">VOLVER A LA ARENA</button>
-      <button class="secondary-button" id="pause-help">CÓMO JUGAR</button>
-      <button class="text-button" id="leave">${t ? "Abandonar duelo" : "Volver al inicio"}</button>
-    `);
-        this.modalContent.querySelector("#resume").addEventListener("click", () => this.actions.resume());
-        this.modalContent.querySelector("#leave").addEventListener("click", () => this.actions.home());
-        this.modalContent.querySelector("#pause-help").addEventListener("click", () => {
-            this.wasHelpPaused = !0;
-            this.showHelp();
-        });
-    }
-
-    showHelp() {
-        const t = this.modalKind === "home";
-        this.show("help", `
-      <p class="eyebrow">EL ARTE DEL DUELO</p>
-      <h2>Tu primera batalla</h2>
-      <div class="help-steps">
-        <p><b>01</b><span><strong>Elige tus 8 cartas</strong>Configura tu mazo con 8 cartas en el Mazo Bélico. Durante la partida dispondrás de 4 en mano + 1 siguiente.</span></p>
-        <p><b>02</b><span><strong>Despliega con intención</strong>Toca una carta y luego toca tu mitad de la arena. Los hechizos alcanzan cualquier punto.</span></p>
-        <p><b>03</b><span><strong>Abre una brecha</strong>Protege a tus tropas y destruye la fortaleza rival antes de que se agote el tiempo.</span></p>
-      </div>
-      <div class="help-cards" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-        ${ALL_CARD_KEYS.map(s => `
-          <div style="width:72px;text-align:center;">
-            <div style="width:64px;height:86px;${this.artStyle(s)}margin:auto;"></div>
-            <b>${w[s].cost}</b> <span style="font-size:11px;font-weight:700;">${w[s].name}</span>
-          </div>
-        `).join("")}
-      </div>
-      <button class="primary-button" id="help-back" style="margin-top:16px;">ENTENDIDO</button>
-    `);
-        this.modalContent.querySelector("#help-back").addEventListener("click", () => {
-            t ? this.showHome() : this.wasHelpPaused ? (this.wasHelpPaused = !1, this.showPause(this.isOnline)) : this.actions.resume();
-        });
-    }
-
-    showRoom() {
-        this.show("room", '<p class="eyebrow">JUEGA CON UN AMIGO</p><h2>Un duelo. Dos estrategas.</h2><p>Crea una sala o introduce el código de tu rival.<br>Ambos debéis abrir la misma dirección del juego.</p><button class="primary-button" id="create-room">CREAR SALA PRIVADA</button><div class="room-divider"><span>O ÚNETE A UNA SALA</span></div><form id="join-form"><label class="sr-only" for="room-code">Código de sala</label><input id="room-code" placeholder="CÓDIGO" autocomplete="off" maxlength="5" minlength="5" pattern="[A-Za-z0-9]{5}" required /><button class="secondary-button" type="submit">UNIRME AL DUELO</button></form><p class="room-feedback" id="room-feedback" role="status"></p><button class="text-button" id="room-back">Volver al inicio</button>');
-        this.modalContent.querySelector("#create-room").addEventListener("click", () => {
-            this.roomFeedback("Conectando con la arena…");
-            this.actions.createRoom();
-        });
-        this.modalContent.querySelector("#join-form").addEventListener("submit", t => {
-            t.preventDefault();
-            const s = this.modalContent.querySelector("#room-code");
-            this.roomFeedback("Buscando a tu rival…");
-            this.actions.joinRoom(s.value.trim().toUpperCase());
-        });
-        this.modalContent.querySelector("#room-back").addEventListener("click", () => this.actions.home());
-    }
-
-    roomFeedback(t) {
-        const s = this.modalContent.querySelector("#room-feedback");
-        if (s) s.textContent = t;
-    }
-
-    waiting(t) {
-        this.show("room", `<div class="brand-sigil small">${$}</div><p class="eyebrow">TU ARENA ESTÁ PREPARADA</p><h2>Invita a tu rival</h2><p>Comparte este código con tu amigo.</p><div class="room-code-display">${t}</div><button class="secondary-button" id="copy-code">COPIAR INVITACIÓN</button><p class="waiting-dots"><i></i><i></i><i></i> Esperando al segundo jugador</p><p class="help-note">El duelo empezará cuando entre tu rival.</p><button class="text-button" id="cancel-room">Cancelar</button>`);
-        this.modalContent.querySelector("#copy-code").addEventListener("click", async () => {
-            try {
-                await navigator.clipboard.writeText(`${location.origin}/?room=${t}`);
-                this.toast("Invitación copiada");
-            } catch {
-                this.toast(`Código de sala: ${t}`);
-            }
-        });
-        this.modalContent.querySelector("#cancel-room").addEventListener("click", () => this.actions.home());
-    }
-
-    connected() {
-        this.isOnline = !0;
-        this.game.querySelector("#rival-mode").textContent = "SALA PRIVADA · 1v1";
-        this.game.querySelector("#rival-name").textContent = "Estratega rival";
-        this.hide();
-    }
-
-    showResult(t, s) {
-        this.lastResult = t;
-        this.lastView = s;
-        const a = t.winner === s;
-        const e = t.winner === "draw";
-        const i = t.players[s];
-        this.show("result", `
-      <div class="brand-sigil result-sigil ${a ? "win" : ""}">${$}</div>
-      <p class="eyebrow">${e ? "UN DUELO A LA ALTURA" : a ? "LA ARENA ES TUYA" : "CADA DUELO TE HACE MEJOR"}</p>
-      <h2 class="result-title">${e ? "EMPATE" : a ? "VICTORIA" : "DERROTA"}</h2>
-      <p>${e ? "Ambas fortalezas han resistido." : a ? "Tu estrategia ha abierto las puertas." : "La próxima decisión puede cambiarlo todo."}</p>
-      <div class="result-stats">
-        <div><strong>${i.played}</strong><span>CARTAS</span></div>
-        <div><strong>${i.kills}</strong><span>BAJAS</span></div>
-        <div><strong>${Math.round(i.damage).toLocaleString("es")}</strong><span>DAÑO</span></div>
-      </div>
-      <button class="primary-button" id="again">${this.isOnline ? "VOLVER AL INICIO" : "OTRA BATALLA"}</button>
-      <button class="secondary-button" id="result-deck-builder" style="margin-top:10px;">CAMBIAR MAZO</button>
-      <button class="text-button" id="result-home">Volver al inicio</button>
-    `);
-        this.modalContent.querySelector("#again").addEventListener("click", () => this.isOnline ? this.actions.home() : this.actions.start());
-        this.modalContent.querySelector("#result-deck-builder").addEventListener("click", () => this.showDeckBuilder());
-        this.modalContent.querySelector("#result-home").addEventListener("click", () => this.actions.home());
-    }
-
-    reset() {
-        window.clearTimeout(this.resultTimer);
-        this.lastEnergy = -1;
-        this.lastTime = "";
-        this.lastPhase = "";
-        this.lastGateHealth = [-1, -1];
-        this.eventId = 0;
-        this.select(null);
-        this.game.querySelector("#battle-announcement").textContent = "";
-        for (const t of this.gatePieces) {
-            t.classList.remove("destroyed");
-            t.style.setProperty("--damage", "0");
+    select(slotIndex, cardId = null) {
+        for (const [idx, el] of this.cardElements) {
+            el.classList.toggle("selected", idx === slotIndex);
+            el.setAttribute("aria-pressed", String(idx === slotIndex));
         }
-        this.game.querySelector("#rival-mode").textContent = this.isOnline ? "SALA PRIVADA · 1v1" : "DUELO DE ENTRENAMIENTO";
-        this.game.querySelector("#rival-name").textContent = this.isOnline ? "Estratega rival" : "Guardia Carmesí";
-    }
-
-    select(t, s = null) {
-        this.selected = t;
-        this.selectedSlot = s;
-        for (let idx = 0; idx < 4; idx++) {
-            const el = this.handSlotElements[idx];
-            const isSel = idx === s;
-            el.classList.toggle("selected", isSel);
-            el.setAttribute("aria-pressed", String(isSel));
+        const zone = this.game.querySelector("#deploy-zone");
+        if (cardId) {
+            const isSpell = w[cardId]?.isSpell;
+            zone.classList.add("visible");
+            zone.classList.toggle("spell-zone", isSpell);
+            this.game.querySelector("#selected-caption").textContent = `${w[cardId].name.toUpperCase()} · ${isSpell ? "TOCA CUALQUIER PUNTO" : "TOCA TU MITAD DE LA ARENA"}`;
+        } else {
+            zone.classList.remove("visible", "spell-zone");
+            this.game.querySelector("#selected-caption").textContent = "ELIGE UNA CARTA · DESPLIÉGALA EN LA ARENA";
         }
-        const a = this.game.querySelector("#deploy-zone");
-        a.classList.toggle("visible", t !== null);
-        const isSpell = t && w[t] && w[t].isSpell && t !== "the_log";
-        a.classList.toggle("spell-zone", !!isSpell);
-        this.game.querySelector("#selected-caption").textContent = t ? `${w[t].name.toUpperCase()} · ${isSpell ? "TOCA CUALQUIER PUNTO" : "TOCA TU MITAD DE LA ARENA"}` : "ELIGE UNA CARTA · DESPLIÉGALA EN LA ARENA";
     }
 
-    toast(t) {
+    toast(msg) {
         window.clearTimeout(this.toastTimer);
-        this.toastEl.textContent = t;
+        this.toastEl.textContent = msg;
         this.toastEl.classList.add("show");
         this.toastTimer = window.setTimeout(() => this.toastEl.classList.remove("show"), 2500);
     }
 
-    muted(t) {
-        const s = this.game.querySelector("#sound-btn");
-        s.classList.toggle("muted", t);
-        s.setAttribute("aria-label", t ? "Activar sonido" : "Silenciar sonido");
+    muted(isMuted) {
+        const btn = this.game.querySelector("#sound-btn");
+        if (btn) btn.classList.toggle("muted", isMuted);
     }
 
-    connection(t) {
-        const s = this.game.querySelector("#connection-status");
-        s.textContent = t;
-        s.classList.toggle("visible", !!t);
+    connection(msg) {
+        const el = this.game.querySelector("#connection-status");
+        if (el) {
+            el.textContent = msg;
+            el.classList.toggle("visible", !!msg);
+        }
     }
 
-    update(t, s) {
-        const a = t.players[s];
-        const e = Math.floor(a.energy);
-
-        if (this.lastEnergy !== e) {
-            this.energy.textContent = String(e);
-            this.energy.classList.remove("bump");
-            this.energy.offsetWidth;
-            this.energy.classList.add("bump");
-            this.lastEnergy = e;
+    update(state, viewTeam) {
+        const player = state.players[viewTeam];
+        const energyFloor = Math.floor(player.energy);
+        if (this.lastEnergy !== energyFloor) {
+            this.energy.textContent = String(energyFloor);
+            this.lastEnergy = energyFloor;
         }
-        this.energyFill.style.width = `${a.energy * 10}%`;
-        this.energyFill.classList.toggle("full", a.energy >= 9.99);
+        this.energyFill.style.width = `${player.energy * 10}%`;
 
-        const i = Math.max(0, Math.ceil(t.time));
-        const o = `${Math.floor(i / 60)}:${String(i % 60).padStart(2, "0")}`;
-        if (o !== this.lastTime) {
-            this.timer.textContent = o;
-            this.lastTime = o;
+        // Match Timer
+        const timeSec = Math.max(0, Math.ceil(state.time));
+        const timeStr = `${Math.floor(timeSec / 60)}:${String(timeSec % 60).padStart(2, "0")}`;
+        if (timeStr !== this.lastTime) {
+            this.timer.textContent = timeStr;
+            this.lastTime = timeStr;
         }
-        this.timer.parentElement.classList.toggle("urgent", i <= 30 && t.phase === "playing");
-        this.game.querySelector("#overtime").textContent = t.overtime ? "MUERTE SÚBITA" : "";
-        this.game.querySelector("#energy-rate").textContent = t.time <= 60 || t.overtime ? "×2 ENERGÍA" : "+1 / 2,3 s";
 
+        // Update Hand Cards (Square Borderless Cards)
         for (let idx = 0; idx < 4; idx++) {
-            const h = this.handSlotElements[idx];
-            const p = a.hand[idx];
-            if (!p) continue;
-            if (h.dataset.card !== p) {
-                h.dataset.card = p;
-                h.setAttribute("aria-label", `${w[p].name}, ${w[p].cost} de energía`);
-                h.querySelector(".card-art").style.cssText = this.artStyle(p);
-                h.querySelector(".card-name").textContent = w[p].name;
-                h.querySelector(".card-cost").textContent = String(w[p].cost);
-                h.style.setProperty("--accent", w[p].color);
-                h.classList.remove("card-return");
-                h.offsetWidth;
-                h.classList.add("card-return");
-            }
-            h.classList.toggle("unaffordable", a.energy < w[p].cost);
-            h.classList.toggle("recharging", a.cooldowns[p] > 0);
-            h.style.setProperty("--cooldown", String(a.cooldowns[p] / M.cardCooldown));
-        }
-
-        const c = a.next;
-        const l = this.game.querySelector("#next-art");
-        if (c && l.dataset.card !== c) {
-            l.style.cssText = this.artStyle(c);
-            l.dataset.card = c;
-        }
-
-        for (const n of [0, 1]) {
-            const h = n === 0 ? s : 1 - s;
-            const p = t.gates.filter(b => b.team === h);
-            const u = p.reduce((b, m) => b + m.hp, 0);
-            if (u !== this.lastGateHealth[n]) {
-                const b = n === 0 ? "own" : "enemy";
-                const m = u / (M.segmentHp * 5);
-                this.game.querySelector(`#${b}-hp`).textContent = String(Math.ceil(m * 100));
-                this.game.querySelector(`#${b}-health-fill`).style.strokeDashoffset = String(163.363 * (1 - m));
-                const v = this.game.querySelector(`#${b}-fort-status`);
-                const y = `${n === 0 ? "Tu fortaleza" : "Fortaleza rival"}: ${Math.ceil(u).toLocaleString("es")} de vida`;
-                v.title = y;
-                v.setAttribute("aria-label", y);
-                v.classList.toggle("critical", m < .25);
-                this.lastGateHealth[n] = u;
-            }
-            for (const b of p) {
-                const m = n * 5 + (s === 0 ? b.segment : 4 - b.segment);
-                const v = this.gatePieces[m];
-                v.classList.toggle("destroyed", b.hp <= 0);
-                v.classList.toggle("struck", b.hurtTime > 0);
-                v.style.setProperty("--damage", String(1 - b.hp / b.maxHp));
+            const cEl = this.cardElements.get(idx);
+            const cardId = player.hand[idx];
+            if (cEl && cardId && w[cardId]) {
+                if (cEl.dataset.card !== cardId) {
+                    cEl.dataset.card = cardId;
+                    const art = cEl.querySelector(".card-art");
+                    art.style.backgroundImage = `url('./assets/cards/${cardId}.png')`;
+                    cEl.querySelector(".card-name").textContent = w[cardId].name;
+                    cEl.querySelector(".card-cost").textContent = String(w[cardId].cost);
+                }
+                cEl.classList.toggle("unaffordable", player.energy < w[cardId].cost);
+                cEl.style.setProperty("--cooldown", String(player.cooldowns[cardId] / M.cardCooldown));
             }
         }
 
-        const r = this.game.querySelector("#countdown");
-        if (t.phase === "countdown") {
-            const n = String(Math.ceil(t.countdown));
-            if (r.textContent !== n) {
-                r.textContent = n;
-                r.classList.remove("tick");
-                r.offsetWidth;
-                r.classList.add("tick");
+        // Next card preview
+        const nextArt = this.game.querySelector("#next-art");
+        if (nextArt && player.next && w[player.next] && nextArt.dataset.card !== player.next) {
+            nextArt.dataset.card = player.next;
+            nextArt.style.backgroundImage = `url('./assets/cards/${player.next}.png')`;
+        }
+
+        // Fortresses HP
+        for (let team = 0; team <= 1; team++) {
+            const gates = state.gates.filter(g => g.team === team);
+            const totalHp = gates.reduce((acc, g) => acc + g.hp, 0);
+            const pct = Math.ceil((totalHp / (M.segmentHp * 5)) * 100);
+            const id = team === viewTeam ? "own-hp" : "enemy-hp";
+            const el = this.game.querySelector(`#${id}`);
+            if (el) el.textContent = String(Math.max(0, pct));
+        }
+
+        // Countdown
+        const cd = this.game.querySelector("#countdown");
+        if (state.phase === "countdown") {
+            const num = String(Math.ceil(state.countdown));
+            if (cd.textContent !== num) {
+                cd.textContent = num;
+                cd.classList.add("visible");
             }
-            r.classList.add("visible");
         } else {
-            r.classList.remove("visible", "tick");
-            r.textContent = "";
+            cd.classList.remove("visible");
+            cd.textContent = "";
         }
 
-        if (t.phase === "playing" && this.lastPhase === "countdown") {
-            this.toast("¡A la batalla!");
+        if (state.phase === "finished" && this.lastPhase !== "finished") {
+            this.resultTimer = window.setTimeout(() => this.showResult(state, viewTeam), 950);
         }
-        if (t.phase === "finished" && this.lastPhase !== "finished") {
-            this.resultTimer = window.setTimeout(() => this.showResult(t, s), 950);
-        }
-        if (t.phase === "playing" && t.time <= 60 && t.time > 59.8) {
-            const n = this.game.querySelector("#battle-announcement");
-            if (!n.textContent) {
-                n.textContent = "×2 ENERGÍA";
-                n.classList.add("show");
-                setTimeout(() => n.classList.remove("show"), 2200);
-            }
-        }
-        this.lastPhase = t.phase;
+        this.lastPhase = state.phase;
     }
 
-    feedback(t, s, a) {
-        for (const e of t.events) {
-            if (!(e.id <= this.eventId)) {
-                this.eventId = e.id;
-                if ((e.type === "gate-hit" || e.type === "hit") && e.amount && performance.now() - this.lastHitAt > 80) {
-                    this.lastHitAt = performance.now();
-                    const i = a(e.x, 2.6, e.z, s);
-                    const o = this.damagePool.pop() ?? document.createElement("span");
-                    o.className = `damage-number ${e.type === "gate-hit" ? "gate-number" : ""}`;
-                    o.textContent = `−${e.amount}`;
-                    o.style.left = `${i.x}px`;
-                    o.style.top = `${i.y}px`;
-                    this.game.querySelector("#floating-feedback").append(o);
-                    window.setTimeout(() => {
-                        o.remove();
-                        this.damagePool.push(o);
-                    }, 850);
-                }
+    feedback(state, viewTeam, projectFn) {
+        for (const ev of state.events) {
+            if (ev.id <= this.eventId) continue;
+            this.eventId = ev.id;
+            if ((ev.type === "gate-hit" || ev.type === "hit") && ev.amount) {
+                const pt = projectFn(ev.x, 2.4, ev.z, viewTeam);
+                const tag = document.createElement("span");
+                tag.className = "damage-number";
+                tag.textContent = `−${ev.amount}`;
+                tag.style.left = `${pt.x}px`;
+                tag.style.top = `${pt.y}px`;
+                this.game.querySelector("#floating-feedback").append(tag);
+                window.setTimeout(() => tag.remove(), 850);
             }
         }
     }
 
-    stats(t, s, a) {
-        const e = this.game.querySelector("#performance");
-        if (!e.hidden) e.textContent = `${t} FPS · ${s} DRAW · ${Math.round(a * 100)}%`;
+    showHelp() {
+        this.modal.classList.remove("hidden");
+        this.modalContent.innerHTML = `
+          <h2 style="font-size:32px;color:#ffaa33;margin:0 0 16px;">¿CÓMO JUGAR?</h2>
+          <div style="text-align:left;font-size:15px;line-height:1.6;color:#d1e2f6;display:flex;flex-direction:column;gap:12px;">
+            <p>⚔ <b>Objetivo:</b> Destruye la fortaleza rival antes de que acabe el tiempo.</p>
+            <p>⚡ <b>Energía:</b> Se recarga con el tiempo (+1 cada 2,3s). ¡Doble velocidad en el último minuto!</p>
+            <p>🃏 <b>Despliegue:</b> Toca o arrastra tus cartas cuadradas hacia tu mitad de la arena. Los hechizos alcanzan cualquier lugar.</p>
+            <p>🛡 <b>Colección:</b> 15 cartas épicas: Caballero, Titán, Ballesta, Veneno, Hielo, Rayos, Flechas, Duendes, etc.</p>
+          </div>
+          <button class="primary-button" id="help-close-btn" style="margin-top:20px;">¡ENTENDIDO!</button>
+        `;
+        this.modalContent.querySelector("#help-close-btn").addEventListener("click", () => {
+            this.actions.clickSound();
+            this.modal.classList.add("hidden");
+        });
     }
 
-    toggleStats() {
-        const t = this.game.querySelector("#performance");
-        t.hidden = !t.hidden;
-    }
-}
-
-class Jt {
-    context = null;
-    master = null;
-    lastId = 0;
-    lastHit = 0;
-    muted = !1;
-
-    async unlock() {
-        if (!this.context) {
-            this.context = new AudioContext;
-            this.master = this.context.createGain();
-            this.master.gain.value = this.muted ? 0 : .26;
-            this.master.connect(this.context.destination);
-        }
-        if (this.context.state === "suspended") await this.context.resume();
-    }
-
-    toggle() {
-        this.muted = !this.muted;
-        if (this.master) this.master.gain.setTargetAtTime(this.muted ? 0 : .26, this.context.currentTime, .04);
-        return this.muted;
-    }
-
-    reset() {
-        this.lastId = 0;
-    }
-
-    tone(t, s, a = "sine", e = .25, i, o = 0) {
-        if (!this.context || !this.master || this.muted) return;
-        const c = this.context.currentTime + o;
-        const l = this.context.createOscillator();
-        const r = this.context.createGain();
-        l.type = a;
-        l.frequency.setValueAtTime(t, c);
-        if (i) l.frequency.exponentialRampToValueAtTime(i, c + s);
-        r.gain.setValueAtTime(.001, c);
-        r.gain.exponentialRampToValueAtTime(e, c + .012);
-        r.gain.exponentialRampToValueAtTime(.001, c + s);
-        l.connect(r);
-        r.connect(this.master);
-        l.start(c);
-        l.stop(c + s + .02);
-        l.onended = () => {
-            l.disconnect();
-            r.disconnect();
-        };
-    }
-
-    noise(t, s, a) {
-        if (!this.context || !this.master || this.muted) return;
-        const e = this.context;
-        const i = e.currentTime;
-        const o = e.createBuffer(1, Math.ceil(e.sampleRate * t), e.sampleRate);
-        const c = o.getChannelData(0);
-        for (let h = 0; h < c.length; h++) c[h] = (Math.random() * 2 - 1) * (1 - h / c.length);
-        const l = e.createBufferSource();
-        const r = e.createBiquadFilter();
-        const n = e.createGain();
-        l.buffer = o;
-        r.type = "lowpass";
-        r.frequency.value = a;
-        n.gain.setValueAtTime(s, i);
-        n.gain.exponentialRampToValueAtTime(.001, i + t);
-        l.connect(r);
-        r.connect(n);
-        n.connect(this.master);
-        l.start();
-        l.onended = () => {
-            l.disconnect();
-            r.disconnect();
-            n.disconnect();
-        };
-    }
-
-    select() {
-        this.tone(680, .09, "sine", .18, 1e3);
-    }
-
-    error() {
-        this.tone(130, .13, "triangle", .2, 90);
-    }
-
-    events(t) {
-        for (const s of t) {
-            if (!(s.id <= this.lastId)) {
-                this.lastId = s.id;
-                if (s.type === "deploy") {
-                    this.tone(240, .22, "sine", .3, 680);
-                    this.noise(.14, .12, 1300);
-                }
-                if (s.type === "attack" && s.kind !== "mage" && performance.now() - this.lastHit > 70) {
-                    this.tone(s.kind === "knight" ? 170 : s.kind === "titan" ? 95 : 460, .09, "triangle", .12, 100);
-                    this.lastHit = performance.now();
-                }
-                if (s.type === "hit" && performance.now() - this.lastHit > 60) {
-                    this.noise(.07, .12, 3e3);
-                    this.lastHit = performance.now();
-                }
-                if (s.type === "fireball") this.tone(120, .3, "sawtooth", .055, 500);
-                if (s.type === "lightning") {
-                    this.tone(60, .45, "sawtooth", .45, 30);
-                    this.noise(.35, .4, 7500);
-                }
-                if (s.type === "freeze") {
-                    this.tone(1200, .35, "sine", .25, 1800);
-                }
-                if (s.type === "poison") {
-                    this.noise(.5, .2, 2200);
-                }
-                if (s.type === "log-deploy") {
-                    this.tone(90, .6, "triangle", .35, 40);
-                    this.noise(.4, .25, 1200);
-                }
-                if (s.type === "explosion") {
-                    this.noise(.4, .35, 700);
-                    this.tone(80, .3, "sine", .4, 35);
-                }
-                if (s.type === "arrows") this.noise(.4, .17, 4700);
-                if (s.type === "arrow-impact") this.noise(.2, .23, 1700);
-                if (s.type === "gate-destroyed") {
-                    this.noise(.8, .5, 750);
-                    this.tone(55, .5, "triangle", .45, 25);
-                }
-                if (s.type === "countdown") this.tone(s.amount === 0 ? 880 : 440, .18, "sine", .24);
-                if (s.type === "victory") {
-                    for (const [a, e] of [392, 494, 587, 784].entries()) {
-                        this.tone(e, .7, "triangle", .22, void 0, a * .16);
-                    }
-                }
-            }
-        }
+    showRoom() {
+        this.modal.classList.remove("hidden");
+        this.modalContent.innerHTML = `
+          <h2 style="font-size:28px;color:#ffaa33;margin:0 0 16px;">SALA PRIVADA 1v1</h2>
+          <p style="font-size:14px;color:#8da7cc;">Juega duelos en directo contra amigos mediante código de sala.</p>
+          <button class="primary-button" id="room-create-btn" style="margin-bottom:12px;">CREAR NUEVA SALA</button>
+          <input type="text" id="room-code-input" placeholder="CÓDIGO DE 5 LETRAS" style="width:100%;padding:12px;background:#0d1826;border:2px solid #294670;border-radius:10px;color:#fff;text-align:center;font-size:18px;margin-bottom:12px;" />
+          <button class="secondary-button" id="room-join-btn">UNIRSE A SALA</button>
+          <button class="text-button" id="room-close-btn" style="margin-top:14px;">Cancelar</button>
+        `;
+        this.modalContent.querySelector("#room-close-btn").addEventListener("click", () => {
+            this.actions.clickSound();
+            this.modal.classList.add("hidden");
+        });
     }
 }
 
@@ -3210,7 +2629,6 @@ class Yt {
     connecting = null;
     onMessage = () => {};
     onDisconnect = () => {};
-
     async connect() {
         if (this.socket?.readyState !== WebSocket.OPEN) {
             if (this.connecting) return this.connecting;
@@ -3222,61 +2640,29 @@ class Yt {
                 this.socket = e;
                 const i = window.setTimeout(() => {
                     e.close();
-                    s(new Error("El servidor de duelos no responde."));
-                }, 6e3);
-                e.addEventListener("open", () => {
-                    clearTimeout(i);
-                    t();
-                });
-                e.addEventListener("error", () => {
-                    clearTimeout(i);
-                    s(new Error("No se pudo conectar con la arena."));
-                });
+                    s(new Error("Servidor no responde"));
+                }, 6000);
+                e.addEventListener("open", () => { clearTimeout(i); t(); });
+                e.addEventListener("error", () => { clearTimeout(i); s(new Error("Error de conexión")); });
                 e.addEventListener("message", o => {
-                    try {
-                        this.onMessage(JSON.parse(o.data));
-                    } catch {
-                        console.warn("Mensaje no válido");
-                    }
+                    try { this.onMessage(JSON.parse(o.data)); } catch (e) {}
                 });
                 e.addEventListener("close", () => {
                     clearTimeout(i);
                     this.connecting = null;
-                    if (!this.closedIntentionally) this.onDisconnect();
+                    this.closedIntentionally || this.onDisconnect();
                 });
             });
-            try {
-                await this.connecting;
-            } finally {
-                this.connecting = null;
-            }
+            try { await this.connecting; } finally { this.connecting = null; }
         }
     }
-
     send(t) {
-        if (this.socket?.readyState === WebSocket.OPEN) this.socket.send(JSON.stringify(t));
+        this.socket?.readyState === WebSocket.OPEN && this.socket.send(JSON.stringify(t));
     }
-
-    async create() {
-        await this.connect();
-        this.send({ type: "create" });
-    }
-
-    async join(t) {
-        await this.connect();
-        this.send({ type: "join", code: t });
-    }
-
-    deploy(t, s, a, e) {
-        this.send({ type: "deploy", card: t, x: s, z: a, slot: e });
-    }
-
-    close() {
-        this.closedIntentionally = !0;
-        this.socket?.close();
-        this.socket = null;
-        this.connecting = null;
-    }
+    async create() { await this.connect(); this.send({ type: "create" }); }
+    async join(t) { await this.connect(); this.send({ type: "join", code: t }); }
+    deploy(t, s, a, e) { this.send({ type: "deploy", card: t, x: s, z: a, slot: e }); }
+    close() { this.closedIntentionally = !0; this.socket?.close(); this.socket = null; }
 }
 
 class Kt {
@@ -3298,275 +2684,238 @@ class Kt {
     ready = !1;
     suppressClick = !1;
     haptics = !0;
-    networkTick = 0;
 
     constructor() {
         this.sim.start(!1);
         this.sim.state.phase = "menu";
         this.state = this.sim.state;
+
         this.hud = new Wt(document.querySelector("#app"), {
-            start: (deck) => this.start(deck),
+            start: () => this.start(),
             resume: () => this.resume(),
             pause: () => this.pause(),
             home: () => this.home(),
             sound: () => {
                 this.audio.unlock();
                 this.hud.muted(this.audio.toggle());
-                this.savePreferences();
             },
+            soundUnlock: () => this.audio.unlock(),
+            clickSound: () => this.audio.select(),
             createRoom: () => this.createRoom(),
             joinRoom: s => this.joinRoom(s),
-            select: (s, slot) => {
-                if (!this.suppressClick) this.select(s, slot);
-            },
-            difficulty: s => {
-                this.difficulty = s;
-                this.sim.difficulty = s;
-            }
+            select: s => { this.suppressClick || this.select(s); },
+            difficulty: s => { this.difficulty = s; },
+            getDifficulty: () => this.difficulty
         });
-        this.loadPreferences();
 
         try {
             this.render = new jt(this.hud.canvas, this.hud.stage);
         } catch (s) {
-            this.hud.connection("No se ha podido iniciar WebGL 2. Activa la aceleración gráfica del navegador.");
-            console.error(s);
+            console.error("WebGL error:", s);
             return;
         }
 
         this.ready = !0;
-        this.hud.canvas.addEventListener("webglcontextlost", s => {
-            s.preventDefault();
-            this.paused = !0;
-            this.hud.connection("Recuperando el contexto gráfico…");
-        });
-        this.hud.canvas.addEventListener("webglcontextrestored", () => {
-            this.hud.connection("");
-            this.online ? (this.paused = !1) : this.pause();
-        });
-
         new ResizeObserver(() => this.render.resize()).observe(this.hud.stage);
         this.bindInput();
-        this.bindNetwork();
         this.hud.update(this.state, 0);
-
-        document.addEventListener("visibilitychange", () => {
-            this.last = performance.now();
-            this.accumulator = 0;
-            if (document.hidden && !this.online && this.state.phase === "playing") this.pause();
-        });
-
-        window.addEventListener("pagehide", () => this.network.close());
         requestAnimationFrame(s => this.frame(s));
         this.render.warmup();
-
-        const t = new URLSearchParams(location.search).get("room");
-        if (t && /^[A-Z2-9]{5}$/.test(t)) {
-            this.hud.showRoom();
-            const s = document.querySelector("#room-code");
-            if (s) s.value = t;
-        }
-
-        Object.defineProperty(window, "__EMBER__", {
-            value: {
-                get state() { return H.state; },
-                get metrics() {
-                    return {
-                        fps: H.render.fps,
-                        drawCalls: H.render.drawCalls,
-                        quality: H.render.quality
-                    };
-                }
-            },
-            configurable: !0
-        });
     }
 
-    start(playerDeck = null) {
+    start() {
+        if (!this.ready) return;
         this.online = !1;
         this.viewTeam = 0;
-        this.network.close();
-        this.audio.unlock();
-        this.audio.reset();
-        this.hud.reset();
-        this.hud.hide();
-        this.select(null);
-        this.sim.start(!0, playerDeck || getActiveBattleDeck());
-        this.state = this.sim.state;
         this.paused = !1;
+        this.selected = null;
+        this.selectedSlot = null;
+        this.sim = new X(1, this.difficulty);
+        this.sim.start(!0);
+        this.state = this.sim.state;
         this.accumulator = 0;
         this.last = performance.now();
-    }
-
-    resume() {
+        this.hud.select(null);
+        this.render.clearPreview();
+        this.audio.reset();
         this.audio.unlock();
-        this.paused = !1;
-        this.hud.hide();
-        this.last = performance.now();
-    }
-
-    pause() {
-        if (!this.online && this.state.phase === "playing") {
-            this.paused = !0;
-            this.hud.showPause(!1);
-        }
     }
 
     home() {
         this.online = !1;
-        this.network.close();
         this.paused = !0;
+        this.sim = new X;
         this.sim.start(!1);
+        this.sim.state.phase = "menu";
         this.state = this.sim.state;
-        this.hud.reset();
+        this.selected = null;
+        this.selectedSlot = null;
+        this.render.clearPreview();
+        this.hud.select(null);
         this.hud.showHome();
     }
 
-    select(t, slot = null) {
-        if (this.selected === t && this.selectedSlot === slot) {
-            this.selected = null;
-            this.selectedSlot = null;
-        } else {
-            this.selected = t;
-            this.selectedSlot = slot;
-            if (t) this.audio.select();
-        }
-        this.hud.select(this.selected, this.selectedSlot);
+    pause() {
+        if (this.state.phase === "playing") this.paused = !0;
     }
 
-    deploy(t, s, a, e = null) {
-        if (!this.selected) return;
-        const i = this.selected;
-        const o = this.selectedSlot;
+    resume() {
+        this.paused = !1;
+        this.last = performance.now();
+    }
 
-        if (this.online) {
-            this.network.deploy(i, s, a, o);
-            this.select(null);
+    select(slotIndex) {
+        if (this.state.phase !== "playing") return;
+        if (slotIndex === null) {
+            this.selected = null;
+            this.selectedSlot = null;
+            this.hud.select(null);
+            this.render.clearPreview();
             return;
         }
+        this.selectedSlot = slotIndex;
+        const cardId = this.state.players[this.viewTeam].hand[slotIndex];
+        this.selected = cardId;
+        this.hud.select(slotIndex, cardId);
+        this.audio.select();
+    }
 
-        const c = this.sim.deploy({
-            team: t,
-            card: i,
-            x: s,
-            z: a,
-            slot: o
+    deploy(clientX, clientY) {
+        if (this.state.phase !== "playing" || !this.selected) return;
+        const worldPt = this.render.screenToWorld(clientX, clientY, this.viewTeam);
+        if (!worldPt) return;
+
+        const card = this.selected;
+        const slot = this.selectedSlot;
+
+        const res = this.sim.deploy({
+            team: this.viewTeam,
+            card,
+            x: worldPt.x,
+            z: worldPt.z,
+            slot
         });
 
-        if (!c.ok) {
-            this.hud.toast(c.reason);
+        if (!res.ok) {
+            this.hud.toast(res.reason);
             this.audio.error();
             return;
         }
-        this.select(null);
+
+        this.render.effects.events(this.state.events, this.viewTeam);
+        this.audio.events(this.state.events);
+        this.selected = null;
+        this.selectedSlot = null;
+        this.hud.select(null);
+        this.render.clearPreview();
+    }
+
+    preview(clientX, clientY) {
+        if (!this.selected || this.state.phase !== "playing") return;
+        const pt = this.render.screenToWorld(clientX, clientY, this.viewTeam);
+        if (!pt) return;
+        const cardData = w[this.selected];
+        const isSpell = !!cardData.isSpell;
+        const isOwnHalf = this.viewTeam === 0 ? pt.z >= 0.1 : pt.z <= -0.1;
+        const isValid = isSpell || isOwnHalf;
+        const radius = cardData.radius || 0.8;
+        this.render.setPreview(pt.x, pt.z, radius, isValid, this.viewTeam);
     }
 
     bindInput() {
-        window.addEventListener("keydown", t => {
-            if (t.code === "Escape") {
-                this.hud.currentModal === "pause" ? this.resume() : this.pause();
-            }
-            if (t.key >= "1" && t.key <= "4") {
-                const idx = parseInt(t.key, 10) - 1;
-                const c = this.state.players[this.viewTeam].hand[idx];
-                if (c) this.select(c, idx);
+        let dragInfo = null;
+
+        // Card elements in Battle HUD: support click and drag-and-drop
+        for (const [slotIdx, btn] of this.hud.cardElements) {
+            btn.addEventListener("pointerdown", e => {
+                if (this.state.phase !== "playing") return;
+                dragInfo = { id: e.pointerId, x: e.clientX, y: e.clientY, slot: slotIdx, moved: !1 };
+                btn.setPointerCapture(e.pointerId);
+                this.select(slotIdx);
+            });
+
+            btn.addEventListener("pointermove", e => {
+                if (!dragInfo || dragInfo.id !== e.pointerId) return;
+                if (Math.hypot(e.clientX - dragInfo.x, e.clientY - dragInfo.y) > 8) {
+                    dragInfo.moved = !0;
+                }
+                if (dragInfo.moved) {
+                    this.preview(e.clientX, e.clientY);
+                }
+            });
+
+            btn.addEventListener("pointerup", e => {
+                if (!dragInfo || dragInfo.id !== e.pointerId) return;
+                const wasMoved = dragInfo.moved;
+                dragInfo = null;
+                if (wasMoved) {
+                    this.suppressClick = !0;
+                    this.deploy(e.clientX, e.clientY);
+                    setTimeout(() => { this.suppressClick = !1; }, 50);
+                }
+                try { btn.releasePointerCapture(e.pointerId); } catch (err) {}
+            });
+
+            btn.addEventListener("pointercancel", () => {
+                dragInfo = null;
+                this.render.clearPreview();
+            });
+        }
+
+        // Battlefield Canvas: pointer click or drag target
+        this.hud.canvas.addEventListener("pointerdown", e => {
+            this.preview(e.clientX, e.clientY);
+        });
+
+        this.hud.canvas.addEventListener("pointermove", e => {
+            this.preview(e.clientX, e.clientY);
+        });
+
+        this.hud.canvas.addEventListener("pointerup", e => {
+            if (this.selected) {
+                this.deploy(e.clientX, e.clientY);
             }
         });
 
-        this.hud.canvas.addEventListener("click", t => {
-            if (!this.selected) return;
-            const s = this.render.pointer(t, this.viewTeam);
-            if (s) this.deploy(this.viewTeam, s.x, s.z, this.selectedSlot);
+        this.hud.canvas.addEventListener("pointerleave", () => {
+            if (!dragInfo) this.render.clearPreview();
         });
-    }
 
-    bindNetwork() {
-        this.network.onMessage = t => {
-            if (t.type === "waiting") this.hud.waiting(t.code);
-            if (t.type === "start") {
-                this.online = !0;
-                this.viewTeam = t.team;
-                this.state = t.state;
-                this.hud.connected();
-                this.paused = !1;
-                this.last = performance.now();
+        // Keyboard shortcuts
+        window.addEventListener("keydown", e => {
+            if (e.key >= "1" && e.key <= "4") {
+                const idx = parseInt(e.key, 10) - 1;
+                this.select(idx);
             }
-            if (t.type === "sync") this.state = t.state;
-        };
-        this.network.onDisconnect = () => {
-            if (this.online) {
-                this.hud.toast("Conexión perdida");
+            if (e.key === "Escape") {
                 this.home();
             }
-        };
-    }
-
-    async createRoom() {
-        try {
-            await this.network.create();
-        } catch (t) {
-            this.hud.roomFeedback(t.message);
-        }
-    }
-
-    async joinRoom(t) {
-        try {
-            await this.network.join(t);
-        } catch (s) {
-            this.hud.roomFeedback(s.message);
-        }
-    }
-
-    loadPreferences() {
-        try {
-            const t = JSON.parse(localStorage.getItem("ember-preferences") ?? "{}");
-            if (t.muted) {
-                this.audio.muted = !0;
-                this.hud.muted(!0);
-            }
-            if (t.difficulty) {
-                this.difficulty = t.difficulty;
-                this.sim.difficulty = t.difficulty;
-            }
-        } catch (t) {}
-    }
-
-    savePreferences() {
-        try {
-            localStorage.setItem("ember-preferences", JSON.stringify({
-                muted: this.audio.muted,
-                difficulty: this.difficulty
-            }));
-        } catch (t) {}
+        });
     }
 
     frame(t) {
-        requestAnimationFrame(s => this.frame(s));
-        const s = Math.min(.1, (t - this.last) / 1e3);
+        const delta = Math.min(0.1, (t - this.last) / 1000);
         this.last = t;
 
         if (!this.paused && !this.online) {
-            this.accumulator += s;
-            while (this.accumulator >= M.fixedStep) {
+            for (this.accumulator += delta; this.accumulator >= M.fixedStep;) {
                 this.sim.step(M.fixedStep);
                 this.accumulator -= M.fixedStep;
+                this.audio.events(this.state.events);
+                this.render.effects.events(this.state.events, this.viewTeam);
+                this.hud.feedback(this.state, this.viewTeam, (x, y, z, team) => this.render.project(x, y, z, team));
             }
         }
 
-        if (this.ready) {
-            this.render.render(this.state, s, this.viewTeam, this.paused);
-            this.audio.events(this.state.events);
-            this.hud.feedback(this.state, this.viewTeam, (a, e, i, o) => this.render.project(a, e, i, o));
+        this.render.render(this.state, delta, this.viewTeam);
+        this.uiAccumulator += delta;
+        if (this.uiAccumulator >= 0.05) {
+            this.uiAccumulator = 0;
+            this.hud.update(this.state, this.viewTeam);
         }
 
-        this.uiAccumulator += s;
-        if (this.uiAccumulator >= .033) {
-            this.hud.update(this.state, this.viewTeam);
-            this.hud.stats(this.render?.fps ?? 60, this.render?.drawCalls ?? 0, this.render?.quality ?? 1);
-            this.uiAccumulator = 0;
-        }
+        requestAnimationFrame(s => this.frame(s));
     }
 }
 
 const H = new Kt;
-export { H };
