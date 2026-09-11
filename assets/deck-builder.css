@@ -42,6 +42,25 @@
   filter: drop-shadow(0 0 25px rgba(255, 140, 30, 0.8));
 }
 
+.splash-sigil svg {
+  width: 100%;
+  height: 100%;
+  fill: #f5b025;
+  stroke: #fff8cc;
+  stroke-width: 1.5;
+}
+
+.splash-sigil .inner {
+  fill: #1d334d;
+  stroke: #0d1b2a;
+  stroke-width: 3;
+}
+
+.splash-sigil .gem {
+  fill: #ffe680;
+  stroke: none;
+}
+
 .splash-title {
   font-family: 'Ember', 'Trebuchet MS', Arial, sans-serif;
   font-size: 56px;

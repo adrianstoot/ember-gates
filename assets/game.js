@@ -2528,17 +2528,30 @@ class Wt {
         const team0GatesAlive = state.gates.filter(g => g.team === 0 && g.hp > 0).length;
         const team1GatesAlive = state.gates.filter(g => g.team === 1 && g.hp > 0).length;
         const isWin = team1GatesAlive < team0GatesAlive;
+        const isDraw = team1GatesAlive === team0GatesAlive;
+        const playerStats = state.players[viewTeam] || { played: 0, kills: 0, damage: 0 };
         
         this.modal.classList.remove("hidden");
         this.modalContent.innerHTML = `
-          <div class="result-sigil ${isWin ? "win" : ""}">👑</div>
-          <h2 class="result-title">${isWin ? "¡VICTORIA!" : "DERROTA"}</h2>
+          <div class="brand-sigil result-sigil ${isWin ? "win" : ""}">
+            ${$}
+          </div>
+          <p class="eyebrow">${isDraw ? "UN DUELO A LA ALTURA" : isWin ? "LA ARENA ES TUYA" : "CADA DUELO TE HACE MEJOR"}</p>
+          <h2 class="result-title">${isDraw ? "EMPATE" : isWin ? "¡VICTORIA!" : "DERROTA"}</h2>
           <div class="result-stats">
             <div><strong>${isWin ? "+32 🏆" : "-18 🏆"}</strong><span>COPAS</span></div>
-            <div><strong>+120 🪙</strong><span>ORO</span></div>
+            <div><strong>+120 ORO</strong><span>RECOMPENSA</span></div>
+            <div><strong>${Math.round(playerStats.damage || 0).toLocaleString("es")}</strong><span>DAÑO</span></div>
           </div>
-          <button class="primary-button" id="result-back-hub">VOLVER AL MENÚ</button>
+          <button class="primary-button" id="result-again-btn">⚔ OTRA BATALLA</button>
+          <button class="secondary-button" id="result-back-hub" style="margin-top:14px;">VOLVER AL MENÚ</button>
         `;
+
+        this.modalContent.querySelector("#result-again-btn").addEventListener("click", () => {
+            this.actions.clickSound();
+            this.modal.classList.add("hidden");
+            this.actions.start();
+        });
 
         this.modalContent.querySelector("#result-back-hub").addEventListener("click", () => {
             this.actions.clickSound();
