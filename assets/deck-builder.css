@@ -1,0 +1,549 @@
+/* Ember Gates - Clash Royale Style Deck Builder */
+.deck-builder-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background: radial-gradient(ellipse at 50% 20%, #152642, #091220 75%, #050b14);
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-family: inherit;
+  overflow-y: auto;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  padding-bottom: 24px;
+}
+
+.deck-builder-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: linear-gradient(180deg, rgba(20, 36, 62, 0.95), rgba(12, 22, 38, 0.9));
+  border-bottom: 3px solid #294870;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.deck-builder-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.deck-builder-title h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, #ffffff 30%, #a4c9eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.deck-tabs {
+  display: flex;
+  gap: 8px;
+  background: rgba(8, 16, 28, 0.7);
+  padding: 4px;
+  border-radius: 8px;
+  border: 1px solid #233b5c;
+}
+
+.deck-tab-btn {
+  background: #172a45;
+  color: #8da7cc;
+  border: 1px solid #294670;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.deck-tab-btn:hover {
+  background: #223c63;
+  color: #fff;
+}
+
+.deck-tab-btn.active {
+  background: linear-gradient(180deg, #388bfd, #1f6feb);
+  color: #ffffff;
+  border-color: #58a6ff;
+  box-shadow: 0 0 10px rgba(56, 139, 253, 0.5);
+}
+
+.deck-stats-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 20, 35, 0.85);
+  border: 1.5px solid #2c4a75;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #d1e2f6;
+}
+
+.elixir-drop-icon {
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle at 35% 35%, #e056fd, #be2edd 70%, #680d85);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 8px #be2edd99;
+  display: inline-block;
+}
+
+.deck-builder-content {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Active 8-Card Battle Deck */
+.active-deck-section {
+  background: linear-gradient(180deg, rgba(20, 35, 58, 0.7), rgba(12, 22, 38, 0.85));
+  border: 2px solid #284469;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: inset 0 2px 6px rgba(255,255,255,0.05), 0 8px 24px rgba(0,0,0,0.5);
+}
+
+.section-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #79a6d2;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.active-deck-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+/* Card Slot / Card Item */
+.db-card-item {
+  position: relative;
+  aspect-ratio: 266 / 360;
+  background-color: #0f1c2e;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.15s ease, border-color 0.15s ease;
+  border: 2px solid rgba(110, 145, 185, 0.25);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.db-card-item:hover {
+  transform: translateY(-5px) scale(1.03);
+  border-color: #58a6ff;
+  box-shadow: 0 8px 20px rgba(0, 132, 255, 0.4);
+}
+
+.db-card-item.selected-swap {
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 0 3px #ffd700, 0 0 20px rgba(255, 215, 0, 0.6) !important;
+  animation: pulse-border 1.2s infinite alternate;
+}
+
+@keyframes pulse-border {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.06); }
+}
+
+.db-card-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.db-card-elixir {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 26px;
+  height: 26px;
+  background: radial-gradient(circle at 35% 35%, #e056fd, #be2edd 80%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  z-index: 5;
+}
+
+.db-card-elixir span {
+  transform: rotate(45deg);
+  font-size: 14px;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 1px 2px #000;
+}
+
+.db-card-name-banner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(0deg, rgba(7, 14, 24, 0.95) 0%, rgba(12, 22, 38, 0.8) 75%, transparent 100%);
+  padding: 10px 4px 4px 4px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.db-card-name-banner span {
+  font-size: 12px;
+  font-weight: 800;
+  color: #f0f6fc;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.db-card-type-badge {
+  font-size: 9px;
+  text-transform: uppercase;
+  color: #8da7cc;
+  font-weight: 700;
+  display: block;
+  margin-top: 1px;
+}
+
+/* Collection Grid */
+.collection-section {
+  background: linear-gradient(180deg, rgba(16, 28, 48, 0.6), rgba(9, 17, 30, 0.8));
+  border: 1.5px solid #233a57;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.db-card-item.in-deck {
+  filter: brightness(0.6) saturate(0.7);
+  opacity: 0.75;
+}
+
+.db-card-item.in-deck:hover {
+  filter: brightness(0.9) saturate(0.9);
+  opacity: 1;
+}
+
+.db-card-item.in-deck::after {
+  content: 'EN EL MAZO';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+  background: rgba(14, 25, 42, 0.92);
+  border: 1px solid #388bfd;
+  color: #58a6ff;
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Action Bar Bottom */
+.deck-builder-footer {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 20px;
+  margin-top: 10px;
+}
+
+.btn-battle-play {
+  background: linear-gradient(180deg, #ff9f1a, #eb5a00 60%, #b83d00);
+  border: 2px solid #ffbe76;
+  border-radius: 12px;
+  padding: 16px 48px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(235, 90, 0, 0.5), inset 0 2px 4px rgba(255,255,255,0.4);
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 1px;
+}
+
+.btn-battle-play:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 10px 28px rgba(255, 120, 20, 0.7), inset 0 2px 6px rgba(255,255,255,0.6);
+  filter: brightness(1.1);
+}
+
+.btn-battle-play:active {
+  transform: translateY(2px) scale(0.98);
+}
+
+.btn-back-home {
+  background: #1a2c47;
+  border: 1px solid #324c73;
+  color: #9ab4d6;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-back-home:hover {
+  background: #253e63;
+  color: #fff;
+}
+
+/* Card Detail / Inspect Modal */
+.card-detail-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(4, 9, 16, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.card-detail-card {
+  background: linear-gradient(180deg, #182a46, #0e1a2c);
+  border: 2px solid #385d8a;
+  border-radius: 18px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.8), 0 0 30px rgba(56, 139, 253, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  animation: modal-pop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modal-pop {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.15s;
+}
+
+.modal-close-btn:hover {
+  background: rgba(255, 71, 87, 0.8);
+}
+
+.card-detail-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.card-detail-preview {
+  width: 160px;
+  aspect-ratio: 266 / 360;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+  border: 2px solid #4a75a8;
+}
+
+.card-detail-info {
+  width: 100%;
+  text-align: center;
+}
+
+.card-detail-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.card-detail-role {
+  font-size: 12px;
+  font-weight: 800;
+  color: #58a6ff;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.card-detail-desc {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #adc5e3;
+  margin: 10px 0 16px;
+  padding: 8px 12px;
+  background: rgba(8, 16, 28, 0.6);
+  border-radius: 8px;
+  border-left: 3px solid #388bfd;
+  text-align: left;
+}
+
+.card-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.card-stat-box {
+  background: rgba(13, 24, 40, 0.8);
+  border: 1px solid #233d61;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #799ec7;
+  text-transform: uppercase;
+}
+
+.card-stat-val {
+  font-size: 14px;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.card-detail-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.btn-use-card {
+  flex: 1;
+  background: linear-gradient(180deg, #2ed573, #26af5f);
+  border: 1.5px solid #7bed9f;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 14px rgba(46, 213, 115, 0.4);
+  transition: all 0.15s ease;
+}
+
+.btn-use-card:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 18px rgba(46, 213, 115, 0.6);
+}
+
+.swap-instruction-banner {
+  background: #ffd700;
+  color: #1a1a1a;
+  font-weight: 900;
+  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  animation: pulse-instruction 1.5s infinite alternate;
+}
+
+@keyframes pulse-instruction {
+  from { opacity: 0.9; transform: scale(1); }
+  to { opacity: 1; transform: scale(1.02); }
+}
+
+@media (max-width: 600px) {
+  .active-deck-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  .collection-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+  .deck-builder-header {
+    padding: 12px 14px;
+  }
+  .deck-builder-title h2 {
+    font-size: 18px;
+  }
+  .btn-battle-play {
+    padding: 12px 28px;
+    font-size: 18px;
+  }
+}
