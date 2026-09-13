@@ -2305,6 +2305,18 @@ class Wt {
 
         this.bindEvents();
         this.renderHubDeckViews();
+        this.resize();
+        new ResizeObserver(() => this.resize()).observe(this.stage);
+        window.addEventListener("resize", () => this.resize());
+    }
+
+    resize() {
+        if (!this.stage || !this.game) return;
+        const rect = this.stage.getBoundingClientRect();
+        if (rect.width > 0) {
+            const scale = rect.width / 940;
+            this.game.style.transform = `scale(${scale})`;
+        }
     }
 
     bindEvents() {
